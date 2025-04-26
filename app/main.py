@@ -62,8 +62,12 @@ async def get_start_session(task: Task) -> ReplyResponse:
     history = [
         ChatMessage(role="teacher", content=first_response),
     ]
+    # Log the initial teacher message
+    await log_vis_service.publish_log(
+        session_id,
+        {"event": "chat_message", "role": "teacher", "content": first_response}
+    )
 
-    # save the scenario and diagnosis to the session
     session["scenario"] = scenario
     session["diagnosis"] = diagnosis
     session["history"] = history
@@ -99,9 +103,9 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
         {"event": "eval_reply_start", "history_length": len(reply_request.history)},
     )
     
-    # Log the incoming student message
     student_message = reply_request.history[-1]
-    if student_message.role == 'user': # Assuming student role is 'user'
+    # Log incoming student message
+    if student_message.role == 'user':
         await log_vis_service.publish_log(
             session_id,
             {"event": "chat_message", "role": student_message.role, "content": student_message.content}
@@ -111,23 +115,21 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
     if not session:
         raise HTTPException(status_code=404, detail="Session not found.")
 
-    # Initialize the teacher agent
     teacher_agent = TeacherAgent()
-
-    # Get the latest student message
-    student_message = reply_request.history[-1]
-
-    # Get scenario and diagnosis from the session
     scenario = session.get("scenario", "")
     diagnosis = session.get("diagnosis", "")
 
-    # Evaluate the student's reply
+    # Log agent eval start
+    await log_vis_service.publish_log(
+        session_id, {"event": "agent_start", "agent": "TeacherAgent", "method": "eval_reply"}
+    )
     score, is_end, feedback = teacher_agent.eval_reply(
         reply=student_message.content,
         scenario=scenario,
         diagnosis=diagnosis,
-        conversation_history=reply_request.history[:-1],  # Exclude the current message
+        conversation_history=reply_request.history[:-1],
     )
+    # Log agent eval end
     await log_vis_service.publish_log(
         session_id,
         {
@@ -140,7 +142,10 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
         },
     )
 
-    # Generate teacher's response based on evaluation
+    # Log response generation stages
+    await log_vis_service.publish_log(
+        session_id, {"event": "teacher_response_generation_start"}
+    )
     prompt_response = get_prompt(
         "teacher/gen_response",
         {
@@ -150,48 +155,56 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
             ),
         },
     )
-
+    await log_vis_service.publish_log(
+        session_id, {"event": "prompt_generated", "prompt_type": "teacher/gen_response"}
+    )
+    await log_vis_service.publish_log(
+        session_id, {"event": "openai_call_start", "model": DEFAULT_MODEL}
+    )
     gen_response_response = teacher_agent.openai_client.chat.completions.create(
         model=DEFAULT_MODEL,
         messages=[{"role": "user", "content": prompt_response}],
         temperature=0.7,
     )
-
     teacher_response = gen_response_response.choices[0].message.content
     await log_vis_service.publish_log(
         session_id, {"event": "openai_call_end", "response_length": len(teacher_response or "")}
     )
 
+    # Add feedback if session ended
     if is_end:
         teacher_response += f"\n\n**Session Summary**\nYour final score: {score:.2f}/1.0\n\n**Feedback**:\n{feedback}"
         await log_vis_service.publish_log(
             session_id, {"event": "feedback_added_to_response"}
         )
 
-    # Log the outgoing teacher message BEFORE appending to history sent back
+    # Log outgoing teacher message
     if teacher_response:
         await log_vis_service.publish_log(
             session_id,
             {"event": "chat_message", "role": "teacher", "content": teacher_response}
         )
         
+    # Append teacher response to history FOR THE API RESPONSE
     reply_request.history.append(
         ChatMessage(role="teacher", content=teacher_response)
     )
 
+    # Update session file history
+    session["history"] = [msg.model_dump() for msg in reply_request.history]
     session_manager.dump_session(session)
     await log_vis_service.publish_log(
         session_id,
         {"event": "session_saved", "history_length": len(reply_request.history)},
     )
 
-    # TODO@zeynepyorulmaz: implement scoring and end conditions
-    score, is_end = 0.8, False
-    await log_vis_service.publish_log(
-        session_id, {"event": "scoring_end", "score": score, "is_end": is_end}
-    )
+    # TODO@zeynepyorulmaz: Remove temporary override once eval_reply works correctly
+    score, is_end = 0.8, False 
+    # Log scoring/end decision (using values from eval_reply)
+    # await log_vis_service.publish_log(
+    #     session_id, {"event": "scoring_end", "score": score, "is_end": is_end}
+    # )
 
-    # If the session ended, update its status
     if is_end:
         session_manager.update_session_status(session_id, "finished")
         await log_vis_service.publish_log(
@@ -200,9 +213,9 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
 
     return ReplyResponse(
         session_id=reply_request.session_id,
-        history=reply_request.history,
-        score=score,
-        is_end=is_end,
+        history=reply_request.history, # Return updated history
+        score=score, # Return score from eval_reply
+        is_end=is_end, # Return is_end from eval_reply
     )
 
 

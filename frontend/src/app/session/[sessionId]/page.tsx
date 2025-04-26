@@ -17,8 +17,6 @@ if (!supabaseUrl || !supabaseKey) {
 }
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const clientId = Math.random().toString(36).substring(2, 15);
-
 type LogPayload = {
   event: string;
   role?: string;
@@ -40,26 +38,9 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
   const [logMessages, setLogMessages] = useState<LogPayload[]>([]);
   const [chatMessages, setChatMessages] = useState<ChatMessagePayload[]>([]);
   const [isConnected, setIsConnected] = useState(false);
-  const [onlineAgents, setOnlineAgents] = useState<string[]>([]);
 
   useEffect(() => {
     const channel = supabase.channel(channelId);
-
-    // Presence logic
-    channel.on("presence", { event: "sync" }, () => {
-      const state = channel.presenceState<{ username: string }>();
-      const presenceList: string[] = [];
-
-      Object.keys(state).forEach((key) => {
-        const presences = state[key];
-        presences.forEach((presence) => {
-          presenceList.push(presence.username);
-        });
-      });
-
-      const uniqueAgents = [...new Set(presenceList)];
-      setOnlineAgents(uniqueAgents);
-    });
 
     // Broadcast listener
     channel
@@ -79,11 +60,6 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
       })
       .subscribe(async (status) => {
         if (status === "SUBSCRIBED") {
-          await channel.track({
-            user_id: clientId,
-            username: `viewer-${clientId.substring(0, 5)}`,
-            online_at: new Date().getTime(),
-          });
           setIsConnected(true);
           console.log(`Subscribed to channel: ${channelId}`);
         } else {
@@ -100,7 +76,10 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
 
   return (
     <div className="container mx-auto py-10 max-w-4xl">
-      <h1 className="text-2xl font-bold mb-4">Session {sessionId} ({isConnected ? <span className="text-green-600">Connected</span> : <span className="text-red-600">Disconnected</span>})</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        Session {sessionId} (
+        {isConnected ? <span className="text-green-600">Connected</span> : <span className="text-red-600">Disconnected</span>})
+      </h1>
 
       {/* --- Chat Area --- */}
       <div className="space-y-4 border rounded-lg p-4 h-dhv overflow-y-auto bg-slate-50">
