@@ -16,7 +16,7 @@ from langchain.docstore.document import Document
 
 # Add the project root to path to enable imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import OPENAI_API_KEY, DOCUMENTS_PATH
+from app.config import OPENAI_API_KEY, DOCUMENTS_PATH
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

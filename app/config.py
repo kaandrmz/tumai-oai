@@ -5,7 +5,6 @@ Handles environment variables and LLM setup.
 
 import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
 from openai import OpenAI
 
 # Load environment variables
@@ -23,12 +22,5 @@ DOCUMENTS_PATH = os.getenv("DOCUMENTS_PATH", "./documents")
 DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gpt-4-turbo")
 DEFAULT_TEMPERATURE = float(os.getenv("DEFAULT_TEMPERATURE", "0.5"))
 
-# Initialize LLM
-llm = ChatOpenAI(
-    model=DEFAULT_MODEL,
-    temperature=DEFAULT_TEMPERATURE,
-    api_key=OPENAI_API_KEY
-)
-
-# Initialize OpenAI client for direct API calls
-openai_client = OpenAI(api_key=OPENAI_API_KEY)
+# Backend api
+FASTAPI_URL = os.getenv("FASTAPI_URL", "http://localhost:8000")

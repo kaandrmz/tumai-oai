@@ -9,7 +9,7 @@ from crewai.tools import tool
 
 # Add the project root to path to enable imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import llm
+from app.config import llm
 from utils.document_retriever import DocumentRetriever
 
 
