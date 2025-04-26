@@ -27,7 +27,6 @@ TASKS = [
     Task(id=2, title="Prognosis", description="Prognosis description?"),
 ]
 
-
 class SessionManager:
     """
     Optimized session manager using SQLite for storage and with connection pooling.
