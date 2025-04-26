@@ -6,9 +6,11 @@ Handles environment variables and LLM setup.
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from pathlib import Path
 
 # Load environment variables
-load_dotenv()
+this_dir = Path(__file__).parent
+load_dotenv(this_dir.parent / ".env")
 
 # Set up OpenAI API key
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -24,3 +26,10 @@ DEFAULT_TEMPERATURE = float(os.getenv("DEFAULT_TEMPERATURE", "0.5"))
 
 # Backend api
 FASTAPI_URL = os.getenv("FASTAPI_URL", "http://localhost:8000")
+
+# Supabase configuration for Log Visualization
+NEXT_PUBLIC_SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+
+if not NEXT_PUBLIC_SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
+    raise ValueError("Supabase URL or Service Key not found. Make sure they are set in your .env file.")
