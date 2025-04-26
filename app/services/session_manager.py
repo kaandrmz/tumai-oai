@@ -17,10 +17,21 @@ TASKS = [
     Task(id=2, title="Prognosis", description="Prognosis description?"),
 ]
 
+
 class SessionManager:
     def __init__(self, storage_dir: Path = STORAGE_DIR):
         self.storage_dir = storage_dir
         self.storage_dir.mkdir(exist_ok=True)
+
+    def delete_session(self, session_id: int) -> tuple[bool, str]:
+        """
+        Deletes the session file.
+        """
+        if (file := (STORAGE_DIR / f"{session_id}.json")).exists():
+            file.unlink()
+            return True, f"Session {session_id} deleted successfully."
+        else:
+            return False, f"Session {session_id} does not exist. Cannot delete."
 
     def init_session(self, task: Task) -> Dict:
         """
@@ -33,7 +44,7 @@ class SessionManager:
             "history": [
                 ChatMessage(role="teacher", content=task.description),
             ],
-            "status": "active", # Initial status
+            "status": "active",  # Initial status
         }
         self.dump_session(scenario)
         return scenario
@@ -61,31 +72,19 @@ class SessionManager:
         session_file = self.storage_dir / f"{scenario['session_id']}.json"
         # Ensure status is present, default to 'active' if missing
         scenario_to_dump = scenario.copy()
-        scenario_to_dump.setdefault("status", "active") 
+        scenario_to_dump.setdefault("status", "active")
 
         # Convert ChatMessage objects to dictionaries for serialization
         scenario_to_dump["history"] = [
             msg.model_dump() if isinstance(msg, ChatMessage) else msg
-            for msg in scenario.get("history", []) # Handle potential missing history
+            for msg in scenario.get("history", [])  # Handle potential missing history
         ]
-        
+
         try:
-             with open(session_file, "w") as f:
-                json.dump(scenario_to_dump, f, indent=2) # Add indent for readability
+            with open(session_file, "w") as f:
+                json.dump(scenario_to_dump, f, indent=2)  # Add indent for readability
         except IOError as e:
             print(f"Error dumping session {scenario.get('session_id', 'UNKNOWN')}: {e}")
-
-
-    def delete_session(self, session_id: int):
-        """
-        Deletes the session file.
-        """
-        try:
-            session_file = self.storage_dir / f"{session_id}.json"
-            session_file.unlink(missing_ok=True) # Don't error if already deleted
-        except IOError as e:
-            print(f"Error deleting session file {session_id}.json: {e}")
-
 
     def list_sessions(self) -> List[Dict[str, str]]:
         """
@@ -93,17 +92,19 @@ class SessionManager:
         Defaults status to 'unknown' if file read fails or status is missing.
         """
         sessions = []
-        for session_file in self.storage_dir.glob("*.json"): 
+        for session_file in self.storage_dir.glob("*.json"):
             if session_file.is_file() and session_file.stem.isdigit():
                 session_id = session_file.stem
-                status = "unknown" # Default status
+                status = "unknown"  # Default status
                 try:
                     with open(session_file, "r") as f:
                         data = json.load(f)
                         status = data.get("status", "active")
                 except (json.JSONDecodeError, IOError) as e:
-                     print(f"Error reading status from {session_file.name}: {e}. Setting status to 'unknown'.")
-                
+                    print(
+                        f"Error reading status from {session_file.name}: {e}. Setting status to 'unknown'."
+                    )
+
                 sessions.append({"id": session_id, "status": status})
         return sessions
 
@@ -114,4 +115,6 @@ class SessionManager:
             session["status"] = status
             self.dump_session(session)
         else:
-            print(f"Warning: Could not update status for non-existent session {session_id}")
+            print(
+                f"Warning: Could not update status for non-existent session {session_id}"
+            )

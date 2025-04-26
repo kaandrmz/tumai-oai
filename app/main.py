@@ -12,6 +12,7 @@ app = FastAPI()
 session_manager = SessionManager()
 log_vis_service = LogVisService()
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Manage LogVisService connection during app lifespan."""
@@ -22,8 +23,10 @@ async def lifespan(app: FastAPI):
     # Code here runs on shutdown
     print("Application shutdown: (LogVisService cleanup if needed)")
 
+
 # Pass the lifespan manager to the FastAPI app
 app = FastAPI(lifespan=lifespan)
+
 
 async def get_start_session(task: Task) -> ReplyResponse:
     """
@@ -33,13 +36,25 @@ async def get_start_session(task: Task) -> ReplyResponse:
     session = session_manager.init_session(task)
     session_id = session["session_id"]
 
-    await log_vis_service.publish_log(session_id, {"event": "session_init", "task_id": task.id, "task_title": task.title})
+    await log_vis_service.publish_log(
+        session_id,
+        {"event": "session_init", "task_id": task.id, "task_title": task.title},
+    )
 
     teacher_agent = TeacherAgent()
-    await log_vis_service.publish_log(session_id, {"event": "agent_start", "agent": "TeacherAgent"})
+    await log_vis_service.publish_log(
+        session_id, {"event": "agent_start", "agent": "TeacherAgent"}
+    )
 
     scenario, diagnosis, first_response = teacher_agent.start_session(task)
-    await log_vis_service.publish_log(session_id, {"event": "agent_end", "agent": "TeacherAgent", "output_type": "first_response"})
+    await log_vis_service.publish_log(
+        session_id,
+        {
+            "event": "agent_end",
+            "agent": "TeacherAgent",
+            "output_type": "first_response",
+        },
+    )
 
     history = [
         ChatMessage(role="user", content=first_response),
@@ -50,7 +65,9 @@ async def get_start_session(task: Task) -> ReplyResponse:
     session["diagnosis"] = diagnosis
     session["history"] = history
     session_manager.dump_session(session)
-    await log_vis_service.publish_log(session_id, {"event": "session_saved", "history_length": len(history)})
+    await log_vis_service.publish_log(
+        session_id, {"event": "session_saved", "history_length": len(history)}
+    )
 
     return ReplyResponse(
         session_id=session["session_id"],
@@ -74,7 +91,10 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
     Evaluates the response of the student, appends a new message.
     """
     session_id = reply_request.session_id
-    await log_vis_service.publish_log(session_id, {"event": "eval_reply_start", "history_length": len(reply_request.history)})
+    await log_vis_service.publish_log(
+        session_id,
+        {"event": "eval_reply_start", "history_length": len(reply_request.history)},
+    )
 
     session = session_manager.load_session(reply_request.session_id)
     if not session:
@@ -95,19 +115,24 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
         reply=student_message.content,
         scenario=scenario,
         diagnosis=diagnosis,
-        conversation_history=reply_request.history[:-1]  # Exclude the current message
+        conversation_history=reply_request.history[:-1],  # Exclude the current message
     )
 
     # Generate teacher's response based on evaluation
-    prompt_response = get_prompt("teacher/gen_response", {
-        "scenario": scenario,
-        "conversation_history": "\n".join([f"{msg.role}: {msg.content}" for msg in reply_request.history])
-    })
+    prompt_response = get_prompt(
+        "teacher/gen_response",
+        {
+            "scenario": scenario,
+            "conversation_history": "\n".join(
+                [f"{msg.role}: {msg.content}" for msg in reply_request.history]
+            ),
+        },
+    )
 
     gen_response_response = teacher_agent.openai_client.chat.completions.create(
         model=DEFAULT_MODEL,
         messages=[{"role": "user", "content": prompt_response}],
-        temperature=0.7
+        temperature=0.7,
     )
 
     teacher_response = gen_response_response.choices[0].message.content
@@ -118,21 +143,34 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
 
     # Append the teacher's response to the history
     reply_request.history.append(
-        ChatMessage(role="teacher", content="A sample reply from the teacher.")
+        ChatMessage(role="teacher", content=teacher_response)
     )
-    await log_vis_service.publish_log(session_id, {"event": "teacher_reply_end", "reply_length": len("A sample reply from the teacher.")})
+    await log_vis_service.publish_log(
+        session_id,
+        {
+            "event": "teacher_reply_end",
+            "reply_length": len(teacher_response),
+        },
+    )
 
     session_manager.dump_session(session)
-    await log_vis_service.publish_log(session_id, {"event": "session_saved", "history_length": len(reply_request.history)})
+    await log_vis_service.publish_log(
+        session_id,
+        {"event": "session_saved", "history_length": len(reply_request.history)},
+    )
 
     # TODO@zeynepyorulmaz: implement scoring and end conditions
     score, is_end = 0.8, False
-    await log_vis_service.publish_log(session_id, {"event": "scoring_end", "score": score, "is_end": is_end})
+    await log_vis_service.publish_log(
+        session_id, {"event": "scoring_end", "score": score, "is_end": is_end}
+    )
 
     # If the session ended, update its status
     if is_end:
         session_manager.update_session_status(session_id, "finished")
-        await log_vis_service.publish_log(session_id, {"event": "session_status_updated", "status": "finished"})
+        await log_vis_service.publish_log(
+            session_id, {"event": "session_status_updated", "status": "finished"}
+        )
 
     return ReplyResponse(
         session_id=reply_request.session_id,
@@ -155,6 +193,7 @@ def get_sessions():
     sessions = session_manager.list_sessions()
     return sessions
 
+
 @app.post("/start_session", response_model=ReplyResponse)
 async def start_session(task_id: int) -> ReplyResponse:
     task = get_task_by_id(task_id)
@@ -168,3 +207,13 @@ async def eval_reply(
     request: ReplyRequest = Depends(validate_teacher_reply),
 ) -> ReplyResponse:
     return await _eval_reply(request)
+
+
+@app.delete("/delete_session/{session_id}")
+async def delete_session(session_id: int):
+    """
+    Deletes the session with the given ID.
+    """
+    sm = SessionManager()
+    is_ok, msg = sm.delete_session(session_id)
+    return {"success": is_ok, "message": msg}
