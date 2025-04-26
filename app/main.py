@@ -143,13 +143,13 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
 
     # Append the teacher's response to the history
     reply_request.history.append(
-        ChatMessage(role="teacher", content="A sample reply from the teacher.")
+        ChatMessage(role="teacher", content=teacher_response)
     )
     await log_vis_service.publish_log(
         session_id,
         {
             "event": "teacher_reply_end",
-            "reply_length": len("A sample reply from the teacher."),
+            "reply_length": len(teacher_response),
         },
     )
 
