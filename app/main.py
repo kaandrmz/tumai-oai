@@ -18,7 +18,7 @@ def get_start_session(task: Task) -> ReplyResponse:
     teacher_agent = TeacherAgent()
     scenario, first_response = teacher_agent.start_session(task)
     history = [
-        ChatMessage(role="user", content=scenario),
+        ChatMessage(role="user", content=first_response),
     ]
 
     # save the scenario to the session

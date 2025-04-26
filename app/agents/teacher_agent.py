@@ -9,15 +9,6 @@ from app.models import Task
 
 class TeacherAgent():
     def __init__(self):
-        self.role = "Teacher"
-        self.goal = "Share knowledge accurately from the provided documents while respecting confidentiality"
-        self.system_prompt = """
-        You are an experienced educator with deep domain knowledge in various subjects.
-        You have access to a library of documents that you use to provide accurate information.
-        You care about student understanding and adapt your teaching style to the student's needs.
-        You respect confidentiality and are careful not to share sensitive information.
-        """
-
         self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
         pass
 
