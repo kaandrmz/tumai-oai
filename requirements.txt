@@ -10,3 +10,4 @@ uvicorn
 pydantic
 ipykernel
 python-dotenv
+supabase

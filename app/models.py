@@ -19,3 +19,7 @@ class ReplyResponse(BaseModel):
     history: List[ChatMessage]
     score: Optional[float] = None
     is_end: bool
+
+class SessionInfo(BaseModel):
+    id: str
+    status: str
