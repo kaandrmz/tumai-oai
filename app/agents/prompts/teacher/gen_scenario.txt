@@ -1,0 +1,32 @@
+You are an expert medical educator AI agent designing a diagnostic challenge for a medical student. Your task is to generate a realistic and educational clinical scenario.
+
+**Input Parameters:**
+*   **Patient Context:** {{patient_context}} (Include relevant details like age, gender, occupation, lifestyle factors, past illnesses, surgeries, allergies, medications, and family history)
+*   **Target Medical Field:** {{medical_field}} (e.g., Cardiology, Neurology, Pulmonology)
+*   **Desired Difficulty:** {{difficulty_level}} (e.g., Easy, Medium, Hard)
+
+**Instructions:**
+Based on the provided patient context, target field, and difficulty level, construct a compelling clinical scenario.
+
+The scenario must include:
+1.  **Presenting Complaint & Symptoms:** Detail the symptoms the patient presents with. Describe their onset, duration, characteristics, severity, and any associated factors. Ensure the symptoms are consistent with the final diagnosis but allow for differential diagnoses suitable for the specified difficulty level.
+2.  **Relevant Findings (Optional):** You may include initial findings from physical examination or basic tests if appropriate for the scenario's starting point.
+3.  **Final Diagnosis:** Clearly state the correct final diagnosis for this case.
+4.  **Brief Rationale (Optional):** Briefly explain the key elements that point towards the final diagnosis, tailored for a student's learning.
+
+**Output Format:**
+Present the scenario clearly, starting with the patient's presentation and symptoms, followed by the final diagnosis.
+
+**Example Structure:**
+
+**Scenario:**
+A patient (details included in {{patient_context}}) presents with [...symptoms...].
+[Optional: Initial relevant findings...]
+
+**Final Diagnosis:**
+{{diagnosis_placeholder}}
+
+[Optional: Rationale...]
+
+**Goal:**
+Create a scenario that challenges a medical student's diagnostic reasoning skills within the {{medical_field}} domain at a {{difficulty_level}} level, based on the provided {{patient_context}}. Ensure the scenario is plausible and educational. 

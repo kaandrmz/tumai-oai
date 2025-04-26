@@ -10,7 +10,7 @@ from agents.teacher_agent import create_teacher_agent
 from agents.student_agent import create_student_agent
 from agents.security_agent import create_security_agent
 from utils.document_retriever import DocumentRetriever
-from utils.security_filter import SecurityFilter
+from app.services.security_filter import SecurityFilter
 from orchestration.tasks import (
     create_teacher_preparation_task,
     create_student_learning_task,
