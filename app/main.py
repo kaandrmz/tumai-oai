@@ -1,7 +1,9 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from app.models import Task, ChatMessage, ScoreFeedback, Scenario, ReplyRequest
+
 # from app.security import SecurityLayer
 from app.storage import init_session, TASKS, load_session, dump_session
+from app.security import validate_teacher_reply
 
 
 app = FastAPI()
@@ -61,5 +63,7 @@ def start_session(task_id: int) -> Scenario:
 
 
 @app.post("/eval_reply", response_model=ScoreFeedback)
-def eval_reply(request: ReplyRequest) -> ScoreFeedback:
+def eval_reply(
+    request: ReplyRequest = Depends(validate_teacher_reply),
+) -> ScoreFeedback:
     return _eval_reply(request)
