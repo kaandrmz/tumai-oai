@@ -2,10 +2,12 @@ from fastapi import FastAPI, HTTPException, Depends
 from app.models import Task, ChatMessage, ScoreFeedback, Scenario, ReplyRequest
 from app.services.session_manager import SessionManager, TASKS
 from app.services.log_vis import LogVisService
+from app.routes.dependencies.security import validate_teacher_reply
 
 app = FastAPI()
 session_manager = SessionManager()
 log_vis_service = LogVisService()
+
 
 def get_start_session(task: Task) -> Scenario:
     """
