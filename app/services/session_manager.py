@@ -17,7 +17,6 @@ TASKS = [
     Task(id=2, title="Prognosis", description="Prognosis description?"),
 ]
 
-
 class SessionManager:
     def __init__(self, storage_dir: Path = STORAGE_DIR):
         self.storage_dir = storage_dir

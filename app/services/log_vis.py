@@ -56,3 +56,18 @@ class LogVisService:
                  print(f"Error publishing to {channel_name}: Still getting 'before joining' error. Investigate channel state management.")
             else:
                  print(f"Error publishing log to Supabase channel {channel_name}: {type(e).__name__}: {e}")
+
+    async def disconnect(self):
+        """Disconnects the Supabase realtime client and clears channels."""
+        if self.supabase and hasattr(self.supabase, 'realtime') and self.supabase.realtime.is_connected:
+            try:
+                print("Disconnecting LogVisService Supabase realtime client...")
+                await self.supabase.realtime.disconnect()
+                print("LogVisService Supabase realtime client disconnected.")
+            except Exception as e:
+                print(f"Error disconnecting LogVisService Supabase realtime client: {e}")
+        else:
+            print("LogVisService Supabase client not initialized or realtime not connected, skipping disconnect.")
+        
+        # Clear stored channels
+        self.channels = {}

@@ -18,10 +18,11 @@ async def lifespan(app: FastAPI):
     """Manage LogVisService connection during app lifespan."""
     print("Application startup: Connecting LogVisService...")
     await log_vis_service.connect()
-    # TODO: Consider adding a disconnect method to LogVisService and call it here on shutdown
+
+    # Initialize the teacher agent at startup
     yield
-    # Code here runs on shutdown
-    print("Application shutdown: (LogVisService cleanup if needed)")
+    print("Application shutdown: Disconnecting LogVisService...")
+    await log_vis_service.disconnect()
 
 
 # Pass the lifespan manager to the FastAPI app
@@ -43,7 +44,7 @@ async def get_start_session(task: Task) -> ReplyResponse:
 
     teacher_agent = TeacherAgent()
     await log_vis_service.publish_log(
-        session_id, {"event": "agent_start", "agent": "TeacherAgent"}
+        session_id, {"event": "agent_start", "agent": "TeacherAgent", "method": "start_session"}
     )
 
     scenario, diagnosis, first_response = teacher_agent.start_session(task)
@@ -52,12 +53,14 @@ async def get_start_session(task: Task) -> ReplyResponse:
         {
             "event": "agent_end",
             "agent": "TeacherAgent",
-            "output_type": "first_response",
+            "method": "start_session",
+            "output_type": "scenario_diagnosis_response",
+            "diagnosis_preview": diagnosis[:100] + "..." if diagnosis else "N/A"
         },
     )
 
     history = [
-        ChatMessage(role="user", content=first_response),
+        ChatMessage(role="teacher", content=first_response),
     ]
 
     # save the scenario and diagnosis to the session
@@ -95,6 +98,14 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
         session_id,
         {"event": "eval_reply_start", "history_length": len(reply_request.history)},
     )
+    
+    # Log the incoming student message
+    student_message = reply_request.history[-1]
+    if student_message.role == 'user': # Assuming student role is 'user'
+        await log_vis_service.publish_log(
+            session_id,
+            {"event": "chat_message", "role": student_message.role, "content": student_message.content}
+        )
 
     session = session_manager.load_session(reply_request.session_id)
     if not session:
@@ -117,6 +128,17 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
         diagnosis=diagnosis,
         conversation_history=reply_request.history[:-1],  # Exclude the current message
     )
+    await log_vis_service.publish_log(
+        session_id,
+        {
+            "event": "agent_end",
+            "agent": "TeacherAgent",
+            "method": "eval_reply",
+            "score": score,
+            "is_end": is_end,
+            "feedback_preview": feedback[:100] + "..." if feedback else "N/A"
+        },
+    )
 
     # Generate teacher's response based on evaluation
     prompt_response = get_prompt(
@@ -136,21 +158,25 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
     )
 
     teacher_response = gen_response_response.choices[0].message.content
+    await log_vis_service.publish_log(
+        session_id, {"event": "openai_call_end", "response_length": len(teacher_response or "")}
+    )
 
-    # If the session is ending, add a summary and feedback
     if is_end:
         teacher_response += f"\n\n**Session Summary**\nYour final score: {score:.2f}/1.0\n\n**Feedback**:\n{feedback}"
+        await log_vis_service.publish_log(
+            session_id, {"event": "feedback_added_to_response"}
+        )
 
-    # Append the teacher's response to the history
+    # Log the outgoing teacher message BEFORE appending to history sent back
+    if teacher_response:
+        await log_vis_service.publish_log(
+            session_id,
+            {"event": "chat_message", "role": "teacher", "content": teacher_response}
+        )
+        
     reply_request.history.append(
         ChatMessage(role="teacher", content=teacher_response)
-    )
-    await log_vis_service.publish_log(
-        session_id,
-        {
-            "event": "teacher_reply_end",
-            "reply_length": len(teacher_response),
-        },
     )
 
     session_manager.dump_session(session)
