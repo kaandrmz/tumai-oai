@@ -1,9 +1,12 @@
 from fastapi import FastAPI, HTTPException, Depends, Body
-from app.models import Task, ChatMessage, ReplyResponse, ReplyRequest
+from contextlib import asynccontextmanager
+from app.models import Task, ChatMessage, ReplyResponse, ReplyRequest, SessionInfo
 from app.services.session_manager import SessionManager, TASKS
 from app.services.log_vis import LogVisService
 from app.routes.dependencies.security import validate_teacher_reply
 from app.agents.teacher_agent import TeacherAgent
+from app.config import DEFAULT_MODEL
+from app.agents.prompts.prompt_factory import get_prompt
 
 app = FastAPI()
 session_manager = SessionManager()
