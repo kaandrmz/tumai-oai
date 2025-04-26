@@ -160,31 +160,62 @@ class TeacherAgent():
         # Create a prompt for the evaluation model
         # Optimize by reducing the prompt size and focusing on key elements
         prompt = f"""
-        Expert medical educator evaluating a medical student's diagnostic case performance.
-        
-        Case: {scenario[:1000]}... [truncated]
-        
-        Diagnosis: {diagnosis}
-        
-        Conversation History: {self._format_conversation_history(conversation_history)[:1000]}... [truncated]
-        
-        Student's Reply: {reply}
-        
-        Evaluate on:
-        1. Diagnostic Reasoning (0-10)
-        2. Information Gathering (0-10)
-        3. Diagnosis Accuracy (0-10)
-        4. Communication (0-10)
-        
-        Format your response precisely:
-        Diagnostic Reasoning Score: [0-10]
-        Information Gathering Score: [0-10]
-        Diagnosis Accuracy Score: [0-10]
-        Communication Score: [0-10]
-        Overall Score: [calculated average /10]
-        End Conversation: [Yes/No]
-        Reason: [Brief reason for ending or continuing]
-        Feedback: [Brief specific feedback]
+        **Role**: You are an expert medical educator evaluating a student doctor's diagnostic performance in a simulated patient case.
+
+        **Task**: Analyze the student's response and provide structured feedback with scores. Use these exact response fields:
+
+        1. **Diagnostic Reasoning Score** (0-10):
+        - Evaluate logical progression from symptoms to differential diagnoses.
+        - 10: Clear hypothesis-driven approach, considers multiple possibilities.
+        - 5: Some logical gaps or limited differentials.
+        - 0: Illogical or absent reasoning.
+
+        2. **Information Gathering Score** (0-10):
+        - Assess relevance and completeness of questions/history-taking.
+        - 10: Systematic, covers vital signs, history, and red flags.
+        - 5: Misses key elements or asks redundant questions.
+        - 0: No meaningful data collection.
+
+        3. **Diagnosis Accuracy Score** (0-10):
+        - Rate correctness of the proposed diagnosis.
+        - 10: Matches ground truth diagnosis with confidence.
+        - 5: Partially correct (e.g., correct organ system but wrong condition).
+        - 0: Incorrect diagnosis.
+
+        4. **Communication Score** (0-10):
+        - Judge clarity, professionalism, and patient-centeredness.
+        - 10: Clear, empathetic, and structured communication.
+        - 5: Understandable but lacks polish or empathy.
+        - 0: Confusing or unprofessional.
+
+        5. **End Conversation** (Yes/No):
+        - "Yes" if: 
+            - Diagnosis is correct AND student demonstrated mastery, OR
+            - Critical errors require restarting the case.
+        - "No" if: More teaching opportunities exist.
+
+        6. **Reason** (1-2 sentences):
+        - Justify the "End Conversation" decision.
+        - Example: "Student correctly diagnosed asthma but needs practice with differentials."
+
+        7. **Feedback** (3-4 bullet points):
+        - Specific, actionable suggestions.
+        - Example:
+            - "Ask about symptom triggers next time."
+            - "Consider COPD in your differentials."
+            - "Improve eye contact during patient explanations."
+
+        **Case Details**:
+        {scenario[:1000]}
+
+        **Correct Diagnosis**:
+        {diagnosis}
+
+        **Conversation History**:
+        {self._format_conversation_history(conversation_history)[:1000]}
+
+        **Student's Response**:
+        {reply}
         """
 
         try:
