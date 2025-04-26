@@ -34,7 +34,8 @@ def create_teacher_preparation_task(teacher_agent: Agent) -> Task:
         4. Organizing information in a logical sequence for teaching
         """,
         agent=teacher_agent,
-        expected_output="A summary of your preparation and approach to teaching the subject"
+        expected_output="A summary of your preparation and approach to teaching the subject",
+        output_file="teacher_preparation.txt"  # Save output to file for reference
     )
 
     return teacher_preparation_task
@@ -51,47 +52,75 @@ def create_student_learning_task(student_agent: Agent, topic: str = None) -> Tas
     Returns:
         Configured student learning task
     """
-    topic_context = f" about {topic}" if topic else ""
-
-    logger.info(f"Creating student learning task for topic '{topic}'")
+    topic_str = topic if topic else "the subject"
+    logger.info(f"Creating student learning task for topic '{topic_str}'")
 
     description = f"""
-    Ask the Teacher questions{topic_context} to learn about the subject.
-    Continue asking questions until you fully understand the material.
-    Your questions should be progressive and build on previous answers.
-    Be specific and ask for clarification when needed.
+    You are a student engaged in a learning session with a teacher about {topic_str}.
     
-    Your learning process should include:
-    1. Starting with foundational questions to establish basic understanding
-    2. Following up with more specific questions based on the Teacher's responses
-    3. Challenging your understanding by asking about connections between concepts
-    4. Summarizing what you've learned periodically to ensure retention
-    5. Identifying when you have sufficient understanding to conclude the session
+    Start by asking fundamental questions about {topic_str} to establish a baseline understanding.
+    After each answer from the teacher, ask follow-up questions to deepen your knowledge.
+    
+    Your questions should:
+    1. Be clear and specific
+    2. Build upon the previous answers
+    3. Address different aspects of {topic_str}
+    4. Challenge your understanding
+    
+    Continue the conversation until you feel you have a comprehensive understanding of {topic_str}.
+    
+    IMPORTANT: For each response, include "STUDENT:" at the beginning to identify your part of the conversation.
+    Always format your final summary as a dialogue between you (STUDENT) and the teacher.
     """
-
-    # If topic is provided, include it in the description instead of context
-    if topic:
-        description = f"""
-        Ask the Teacher questions about {topic} to learn about the subject.
-        Continue asking questions until you fully understand {topic}.
-        Your questions should be progressive and build on previous answers.
-        Be specific and ask for clarification when needed.
-        
-        Your learning process should include:
-        1. Starting with foundational questions to establish basic understanding of {topic}
-        2. Following up with more specific questions based on the Teacher's responses
-        3. Challenging your understanding by asking about connections between concepts in {topic}
-        4. Summarizing what you've learned about {topic} periodically to ensure retention
-        5. Identifying when you have sufficient understanding to conclude the session
-        """
 
     student_learning_task = Task(
         description=description,
         agent=student_agent,
-        expected_output=f"A summary of what you learned about {topic if topic else 'the subject'} and any remaining questions"
+        expected_output=f"A detailed transcript of your learning conversation about {topic_str}, including all questions asked and knowledge gained",
+        output_file="student_learning.txt"  # Save output to file for reference
     )
 
     return student_learning_task
+
+
+def create_teacher_response_task(teacher_agent: Agent, topic: str = None) -> Task:
+    """
+    Create a task for the teacher to respond to student questions.
+
+    Args:
+        teacher_agent: The teacher agent
+        topic: Optional topic to focus on
+
+    Returns:
+        Configured teacher response task
+    """
+    topic_str = topic if topic else "the subject"
+    logger.info(f"Creating teacher response task for topic '{topic_str}'")
+
+    description = f"""
+    You are a teacher conducting a learning session about {topic_str}.
+    
+    A student will ask you questions about {topic_str}. Use your knowledge and the documents 
+    you have access to in order to provide clear, accurate, and educational responses.
+    
+    Your responses should:
+    1. Be informative and accurate
+    2. Use examples and analogies when helpful
+    3. Acknowledge when you're not certain about something
+    4. Build progressively on the student's understanding
+    
+    IMPORTANT: For each response, include "TEACHER:" at the beginning to identify your part of the conversation.
+    Always format your final summary as a dialogue between the student and you (TEACHER).
+    """
+
+    teacher_response_task = Task(
+        description=description,
+        agent=teacher_agent,
+        expected_output=f"A detailed transcript of your teaching conversation about {topic_str}, including all answers provided and concepts explained",
+        output_file="teacher_response.txt"  # Save output to file for reference
+    )
+
+    return teacher_response_task
 
 
 def create_security_monitoring_task(security_agent: Agent) -> Task:
@@ -109,19 +138,19 @@ def create_security_monitoring_task(security_agent: Agent) -> Task:
     security_monitoring_task = Task(
         description="""
         Monitor all exchanges between the Teacher and Student.
-        Prevent any disclosure of confidential information.
-        Flag any potential security risks in the Teacher's responses.
-        If confidential information is detected, intervene immediately.
+        Your role is to work silently in the background, checking all information shared by the Teacher.
         
-        Your monitoring process should include:
-        1. Analyzing all Teacher responses for potential security risks
-        2. Filtering out any detected confidential information
-        3. Providing explanations when information is removed for security reasons
-        4. Balancing security concerns with educational needs
-        5. Reporting any security incidents or near-misses
+        If you detect any confidential information in the Teacher's responses:
+        1. Use your tools to analyze the security risks
+        2. Filter out the sensitive content
+        3. Notify the system administrators (in your private logs)
+        
+        Do not interrupt the conversation unless absolutely necessary for security reasons.
+        Your work should be invisible to the student, allowing for a natural learning experience.
         """,
         agent=security_agent,
-        expected_output="A security report detailing any interventions made and overall assessment"
+        expected_output="A security report detailing any interventions made and overall assessment",
+        output_file="security_monitoring.txt"  # Save output to file but not print to conversation
     )
 
     return security_monitoring_task

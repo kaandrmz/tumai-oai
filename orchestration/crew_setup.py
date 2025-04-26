@@ -14,6 +14,7 @@ from utils.security_filter import SecurityFilter
 from orchestration.tasks import (
     create_teacher_preparation_task,
     create_student_learning_task,
+    create_teacher_response_task,
     create_security_monitoring_task
 )
 
@@ -44,10 +45,11 @@ class CrewOrchestrator:
             self.student_agent = create_student_agent()
             self.security_agent = create_security_agent(self.security_filter)
 
-            # Initialize tasks
-            self.teacher_preparation_task = create_teacher_preparation_task(self.teacher_agent)
-            self.student_learning_task = None  # Will be created at runtime with topic
-            self.security_monitoring_task = create_security_monitoring_task(self.security_agent)
+            # Tasks will be created at setup time when the topic is known
+            self.teacher_preparation_task = None
+            self.student_learning_task = None
+            self.teacher_response_task = None
+            self.security_monitoring_task = None
 
             # Initialize crew
             self.crew = None
@@ -71,8 +73,19 @@ class CrewOrchestrator:
         logger.info(f"Setting up crew with topic '{topic}' and process type '{process_type}'")
 
         try:
-            # Create student learning task with specified topic
+            # Create tasks with the specified topic
+            self.teacher_preparation_task = create_teacher_preparation_task(self.teacher_agent)
             self.student_learning_task = create_student_learning_task(self.student_agent, topic)
+            self.teacher_response_task = create_teacher_response_task(self.teacher_agent, topic)
+            self.security_monitoring_task = create_security_monitoring_task(self.security_agent)
+
+            # Define task sequence for better conversation flow
+            tasks = [
+                self.teacher_preparation_task,  # Teacher prepares first
+                self.student_learning_task,     # Student asks questions
+                self.teacher_response_task,     # Teacher responds
+                self.security_monitoring_task   # Security monitors in background
+            ]
 
             # Create the crew
             self.crew = Crew(
@@ -81,11 +94,7 @@ class CrewOrchestrator:
                     self.student_agent,
                     self.security_agent
                 ],
-                tasks=[
-                    self.teacher_preparation_task,
-                    self.student_learning_task,
-                    self.security_monitoring_task
-                ],
+                tasks=tasks,
                 verbose=True,
                 process=process_type,
                 memory=True  # Enable memory for better conversation flow
@@ -117,7 +126,7 @@ class CrewOrchestrator:
             # Run the crew
             result = self.crew.kickoff(inputs={"topic": topic})
 
-            logger.info(f"Educational session completed with result: {result}")
+            logger.info(f"Educational session completed")
             return result
         except Exception as e:
             logger.error(f"Error running educational session: {e}")
