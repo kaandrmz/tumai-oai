@@ -4,7 +4,7 @@
 Exposes the data for the students.
 <!-- TODO@Vlad fix -->
 ```sh
-uvicorn app:main --reload
+uvicorn app.main:app --reload
 ```
 
 ## student

@@ -1,56 +1,65 @@
 """
 Teacher agent implementation for the multiagent system.
 """
+from app.agents.prompts.prompt_factory import get_prompt
+from app.config import OPENAI_API_KEY, DEFAULT_MODEL
+from openai import OpenAI
 
-import os
-import sys
-from crewai import Agent
-from crewai.tools import tool
+from app.models import Task
 
-# Add the project root to path to enable imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from app.config import llm
-from utils.document_retriever import DocumentRetriever
-
-
-def create_teacher_agent(document_retriever: DocumentRetriever) -> Agent:
-    """
-    Create the teacher agent with RAG capabilities.
-
-    Args:
-        document_retriever: Initialized DocumentRetriever instance
-
-    Returns:
-        Configured teacher agent
-    """
-    # Create a tool using the decorator pattern
-    @tool("RetrieveContext")
-    def retrieve_relevant_context(query: str) -> str:
-        """
-        Retrieve relevant information from the knowledge base about a specific topic or question.
-        This tool searches through the available documents to find information related to the query.
-
-        Args:
-            query: The topic or question to search for information about
-
-        Returns:
-            Information related to the query from the knowledge base
-        """
-        return document_retriever.retrieve_relevant_context(query)
-
-    teacher_agent = Agent(
-        role="Teacher",
-        goal="Share knowledge accurately from the provided documents while respecting confidentiality",
-        backstory="""
+class TeacherAgent():
+    def __init__(self):
+        self.role = "Teacher"
+        self.goal = "Share knowledge accurately from the provided documents while respecting confidentiality"
+        self.system_prompt = """
         You are an experienced educator with deep domain knowledge in various subjects.
         You have access to a library of documents that you use to provide accurate information.
         You care about student understanding and adapt your teaching style to the student's needs.
         You respect confidentiality and are careful not to share sensitive information.
-        """,
-        verbose=True,
-        allow_delegation=True,
-        llm=llm,
-        tools=[retrieve_relevant_context]
-    )
+        """
 
-    return teacher_agent
+        self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
+        pass
+
+    def start_session(self, task: Task):
+        """
+        Starts the session:
+        - generate the scenario (e.g. specific patient diagnosis and symptoms)
+        - create the first response
+        
+        Args:
+            task: Task (title, description)
+
+        Returns:
+            scenario: str
+            first_response: str
+        """
+
+        # generating the scenario
+        prompt_scenario = get_prompt("teacher/gen_scenario", {
+            "patient_context": "A 30-year-old woman with a history of migraines",
+            "medical_field": "Neurology",
+            "difficulty_level": "Medium"
+        })
+        gen_scenario_response = self.openai_client.responses.create(
+            model=DEFAULT_MODEL,
+            input=prompt_scenario
+        )
+
+        # generating the first response
+        prompt_response = get_prompt("teacher/gen_response", {
+            "scenario": gen_scenario_response.output_text,
+            "conversation_history": ""
+        })
+        gen_response_response = self.openai_client.responses.create(
+            model=DEFAULT_MODEL,
+            input=prompt_response
+        )
+
+        return gen_scenario_response.output_text, gen_response_response.output_text
+
+    def eval_reply(self, reply: str) -> bool:
+        """
+        Evaluate the reply of the student.
+        """
+        return 1
