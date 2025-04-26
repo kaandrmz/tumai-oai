@@ -1,11 +1,11 @@
 from fastapi import FastAPI, HTTPException, Depends, Body
-from contextlib import asynccontextmanager
-from app.models import Task, ChatMessage, ReplyResponse, ReplyRequest, SessionInfo
+from app.models import Task, ChatMessage, ReplyResponse, ReplyRequest
 from app.services.session_manager import SessionManager, TASKS
 from app.services.log_vis import LogVisService
 from app.routes.dependencies.security import validate_teacher_reply
 from app.agents.teacher_agent import TeacherAgent
 
+app = FastAPI()
 session_manager = SessionManager()
 log_vis_service = LogVisService()
 
@@ -34,14 +34,17 @@ async def get_start_session(task: Task) -> ReplyResponse:
 
     teacher_agent = TeacherAgent()
     await log_vis_service.publish_log(session_id, {"event": "agent_start", "agent": "TeacherAgent"})
-    scenario, first_response = teacher_agent.start_session(task)
+
+    scenario, diagnosis, first_response = teacher_agent.start_session(task)
     await log_vis_service.publish_log(session_id, {"event": "agent_end", "agent": "TeacherAgent", "output_type": "first_response"})
+
     history = [
         ChatMessage(role="user", content=first_response),
     ]
 
-    # save the scenario to the session
+    # save the scenario and diagnosis to the session
     session["scenario"] = scenario
+    session["diagnosis"] = diagnosis
     session["history"] = history
     session_manager.dump_session(session)
     await log_vis_service.publish_log(session_id, {"event": "session_saved", "history_length": len(history)})
@@ -74,27 +77,60 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
     if not session:
         raise HTTPException(status_code=404, detail="Session not found.")
 
-    await log_vis_service.publish_log(session_id, {"event": "teacher_reply_start"})
-    # Simulate teacher thinking/processing
+    # Initialize the teacher agent
+    teacher_agent = TeacherAgent()
+
+    # Get the latest student message
+    student_message = reply_request.history[-1]
+
+    # Get scenario and diagnosis from the session
+    scenario = session.get("scenario", "")
+    diagnosis = session.get("diagnosis", "")
+
+    # Evaluate the student's reply
+    score, is_end, feedback = teacher_agent.eval_reply(
+        reply=student_message.content,
+        scenario=scenario,
+        diagnosis=diagnosis,
+        conversation_history=reply_request.history[:-1]  # Exclude the current message
+    )
+
+    # Generate teacher's response based on evaluation
+    prompt_response = get_prompt("teacher/gen_response", {
+        "scenario": scenario,
+        "conversation_history": "\n".join([f"{msg.role}: {msg.content}" for msg in reply_request.history])
+    })
+
+    gen_response_response = teacher_agent.openai_client.chat.completions.create(
+        model=DEFAULT_MODEL,
+        messages=[{"role": "user", "content": prompt_response}],
+        temperature=0.7
+    )
+
+    teacher_response = gen_response_response.choices[0].message.content
+
+    # If the session is ending, add a summary and feedback
+    if is_end:
+        teacher_response += f"\n\n**Session Summary**\nYour final score: {score:.2f}/1.0\n\n**Feedback**:\n{feedback}"
+
+    # Append the teacher's response to the history
     reply_request.history.append(
         ChatMessage(role="teacher", content="A sample reply from the teacher.")
     )
     await log_vis_service.publish_log(session_id, {"event": "teacher_reply_end", "reply_length": len("A sample reply from the teacher.")})
 
-    session["history"] = [msg.model_dump() for msg in reply_request.history] # Update session with new history
     session_manager.dump_session(session)
     await log_vis_service.publish_log(session_id, {"event": "session_saved", "history_length": len(reply_request.history)})
 
     # TODO@zeynepyorulmaz: implement scoring and end conditions
-    await log_vis_service.publish_log(session_id, {"event": "scoring_start"})
-    score, is_end = 0.8, False # Replace with actual logic
+    score, is_end = 0.8, False
     await log_vis_service.publish_log(session_id, {"event": "scoring_end", "score": score, "is_end": is_end})
 
     # If the session ended, update its status
     if is_end:
         session_manager.update_session_status(session_id, "finished")
         await log_vis_service.publish_log(session_id, {"event": "session_status_updated", "status": "finished"})
-    
+
     return ReplyResponse(
         session_id=reply_request.session_id,
         history=reply_request.history,
