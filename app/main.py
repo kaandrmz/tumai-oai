@@ -46,7 +46,6 @@ async def lifespan(app: FastAPI):
     await log_vis_service.connect()
     # Start background task to keep DB optimized
     logger.info("Starting database optimization background task")
-    session_manager.optimize_database()
 
     # Initialize the teacher agent at startup
     logger.info("Initializing teacher agent")
