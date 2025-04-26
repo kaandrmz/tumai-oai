@@ -1,12 +1,14 @@
 """
 Security agent implementation for the multiagent system.
 """
+
 from app.config import OPENAI_API_KEY
 from openai import OpenAI
 from typing import List
 
-class SecurityAgent():
-    def __init__(self, custom_keywords: List[str] = None):
+
+class SecurityAgent:
+    def __init__(self, custom_keywords: List[str] = []):
         self.role = "Security Officer"
         self.goal = "Ensure no confidential information is exposed during the educational session"
         self.backstory = """
@@ -18,15 +20,27 @@ class SecurityAgent():
         """
         # Default sensitive keywords (from SecurityFilter)
         self.sensitive_keywords = [
-            "confidential", "secret", "private", "personal", "sensitive",
-            "password", "ssn", "social security", "credit card", "phone number",
-            "address", "email address", "classified", "internal only",
-            "not for distribution", "proprietary", "restricted"
+            "confidential",
+            "secret",
+            "private",
+            "personal",
+            "sensitive",
+            "password",
+            "ssn",
+            "social security",
+            "credit card",
+            "phone number",
+            "address",
+            "email address",
+            "classified",
+            "internal only",
+            "not for distribution",
+            "proprietary",
+            "restricted",
         ]
-
+        self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
         # Add custom keywords if provided (from SecurityFilter)
-        if custom_keywords:
-            self.sensitive_keywords.extend(custom_keywords)
+        self.sensitive_keywords.extend(custom_keywords)
 
     def contains_sensitive_info(self, text: str) -> bool:
         """
@@ -62,35 +76,16 @@ class SecurityAgent():
         """
 
         try:
-            response = openai_client.chat.completions.create(
-                model="gpt-4-turbo",
+            response = self.openai_client.chat.completions.create(
+                model="gpt-4.1-mini-2025-04-14",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.0,
-                max_tokens=100
             )
-            analysis = response.choices[0].message.content.strip()
+            analysis = response.choices[0].message.content.strip()  # type: ignore
             return analysis
         except Exception as e:
             print(f"Error analyzing security risks: {e}")
             # Default to flagging as unsafe if analysis fails
             return "UNSAFE: Analysis failed"
-
-    # Merging SecurityFilter.contains_sensitive_info logic here
-    def check_for_confidential_information(self, text: str) -> bool:
-        """
-        Check if the text contains confidential information using keyword matching
-        and OpenAI analysis.
-        """
-        # Basic keyword check
-        if self.contains_sensitive_info(text):
-            return True
-
-        # Advanced security check (Optional: Decide if a deeper check is always needed)
-        # security_analysis = self.analyze_security_risks(text)
-        # if security_analysis.startswith("UNSAFE"):
-        #     return True
-
-        return False
 
     def check_for_prompt_injection(self, text: str) -> bool:
         """
@@ -100,7 +95,7 @@ class SecurityAgent():
         # TODO: Implement prompt injection detection logic
         # Example placeholder checks (very basic):
         injection_patterns = [
-            "ignore previous instructions",
+            "ignore previous",
             "act as",
             "you are now",
             # Add more sophisticated patterns
@@ -130,9 +125,28 @@ class SecurityAgent():
         security_analysis = self.analyze_security_risks(text)
         if security_analysis.startswith("UNSAFE"):
             # Provide more specific reason if available
-            reason = security_analysis.split(":", 1)[1].strip() if ":" in security_analysis else "Detected confidential information"
+            reason = (
+                security_analysis.split(":", 1)[1].strip()
+                if ":" in security_analysis
+                else "Detected confidential information"
+            )
             return f"[Content removed due to security analysis: {reason}]"
 
         return text
-    
-    
+
+    def check(self, text: str) -> str:
+        """
+        Check the text for security risks and return a report.
+        If save, return empty string.
+        """
+        if self.check_for_prompt_injection(text):
+            return "Prompt injection detected"
+
+        if self.contains_sensitive_info(text):
+            return "Sensitive information detected"
+
+        sec_risk_analysis = self.analyze_security_risks(text)
+        if not sec_risk_analysis.startswith("SAFE"):
+            return sec_risk_analysis
+        # If no risks detected, return safe message
+        return ""
