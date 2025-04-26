@@ -19,7 +19,7 @@ if not OPENAI_API_KEY:
 DOCUMENTS_PATH = os.getenv("DOCUMENTS_PATH", "./documents")
 
 # LLM configuration
-DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gpt-4-turbo")
+DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gpt-4o")
 DEFAULT_TEMPERATURE = float(os.getenv("DEFAULT_TEMPERATURE", "0.5"))
 
 # Backend api

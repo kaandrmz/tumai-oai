@@ -1,0 +1,1022 @@
+{
+    "103": {
+      "dlg_id": "r1_103",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there. Can you tell me why you've come to the hospital today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I've been having really bad stomach pain, and today I couldn't stop vomiting.", "keywords": ["abdominal pain", "vomiting"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry to hear that. When did the pain first start?", "keywords": ["pain onset"]},
+        {"speaker": "patient", "uttr_id": 3, "text": "It started about four weeks ago. It was mild at first, but now it's happening every day and getting worse.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Where exactly do you feel the pain?", "keywords": ["pain location"]},
+        {"speaker": "patient", "uttr_id": 5, "text": "Mostly right in the center of my stomach, sometimes on the sides.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 6, "text": "Alright, let's check your vital signs. *[Tool Use: Temperature, Heart Rate, Blood Pressure Check]*", "keywords": ["vital signs"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Temperature 36.7°C, Heart Rate 84 bpm, Blood Pressure 113/78 mmHg.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 8, "text": "Have you noticed any constipation or changes in bowel movements?", "keywords": ["bowel habits"]},
+        {"speaker": "patient", "uttr_id": 9, "text": "Yes, I've been really constipated. No bowel movement for three days.", "keywords": ["constipation"]},
+        {"speaker": "doctor", "uttr_id": 10, "text": "Thanks. We'll run some labs. *[Tool Use: Order CBC, CMP, Pregnancy Test]*", "keywords": ["lab tests"]},
+        {"speaker": "control", "uttr_id": 11, "text": "Lab Results: WBC 15,720/µL, Hemoglobin 10.8 g/dL, normal electrolytes, negative pregnancy test.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "Your white cell count is a bit high, which could mean inflammation or infection. Let's gently examine your belly.", "keywords": ["physical exam"]},
+        {"speaker": "patient", "uttr_id": 13, "text": "OK.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 14, "text": "You have some tenderness in the upper abdomen with guarding. We'll need imaging. *[Tool Use: Abdominal CT with IV contrast]*", "keywords": ["ct scan"]},
+        {"speaker": "control", "uttr_id": 15, "text": "CT Results: Normal appendix, small stool burden, mottled material in stomach. No bowel obstruction.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 16, "text": "Your CT shows some material in your stomach that looks unusual. Given your symptoms, I want to do an endoscopy. *[Tool Use: Esophagogastroduodenoscopy (EGD)]*", "keywords": ["egd"]},
+        {"speaker": "control", "uttr_id": 17, "text": "EGD Results: Large trichobezoar extending from the stomach into the duodenum.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 18, "text": "We found a large mass of hair in your stomach causing a blockage. It's called a trichobezoar.", "keywords": ["trichobezoar"]},
+        {"speaker": "patient", "uttr_id": 19, "text": "Oh wow, how did that happen?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 20, "text": "Sometimes, unknowingly swallowing hair over time can cause this. We'll need to remove it surgically. *[Tool Use: Schedule Exploratory Laparotomy and Gastrostomy]*", "keywords": ["surgery"]},
+        {"speaker": "patient", "uttr_id": 21, "text": "Is it dangerous?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 22, "text": "If untreated, it can cause more severe blockages or even perforation. The surgery is generally safe, and we'll also arrange psychiatric support afterward.", "keywords": ["complications", "psychiatry"]},
+        {"speaker": "patient", "uttr_id": 23, "text": "OK. Thank you for explaining everything.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 24, "text": "You're welcome. We'll take good care of you. Final diagnosis: Trichobezoar.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "104": {
+      "dlg_id": "r1_104",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, can you tell me what brings you to the hospital today?", "keywords": []},
+        {"speaker": "daughter", "uttr_id": 1, "text": "My mom has been very confused and sleepy. She's not acting like herself at all.", "keywords": ["altered mental status"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry to hear that. Has anything else been going on recently?", "keywords": []},
+        {"speaker": "daughter", "uttr_id": 3, "text": "Yes, she had blood in her urine, some chills, swelling in her legs, and trouble breathing.", "keywords": ["hematuria", "chills", "dyspnea", "edema"]},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Thanks. Let's quickly check her vitals. *[Tool Use: Temperature, BP, HR, O2 sat check]*", "keywords": ["vital signs"]},
+        {"speaker": "control", "uttr_id": 5, "text": "Temperature 36.3°C, BP 102/54 mmHg, HR 73 bpm, O2 sat 96% on 4L nasal cannula.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 6, "text": "She's breathing faster than normal and looks drowsy. I'll need blood work and urine tests. *[Tool Use: CBC, CMP, Urinalysis, Blood Gas]*", "keywords": ["blood tests", "urinalysis", "blood gas"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Lab Results: WBC 12,690/µL, Hgb 8.5 g/dL, BUN 89 mg/dL, Creatinine 3.18 mg/dL, Glucose 184 mg/dL, Urinalysis: 3+ blood, 2+ protein, turbid.", "keywords": []},
+        {"speaker": "control", "uttr_id": 8, "text": "Arterial Blood Gas: pH 7.17, pCO2 68 mmHg, pO2 84 mmHg, HCO3 17 mmol/L.", "keywords": ["abg"]},
+        {"speaker": "doctor", "uttr_id": 9, "text": "She has acidemia and signs of possible infection. Let's also get a chest x-ray. *[Tool Use: Chest Radiograph]*", "keywords": ["chest x-ray"]},
+        {"speaker": "control", "uttr_id": 10, "text": "Chest X-Ray: Mild pulmonary edema, small bilateral pleural effusions.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 11, "text": "Given her low blood pressure, we'll start norepinephrine and give IV antibiotics. *[Tool Use: Start Vasopressor, Start IV Antibiotics]*", "keywords": ["vasopressor", "antibiotics"]},
+        {"speaker": "doctor", "uttr_id": 12, "text": "Does she take any diabetes medications like metformin or newer ones like dapagliflozin?", "keywords": ["medication history"]},
+        {"speaker": "daughter", "uttr_id": 13, "text": "Yes, she's on metformin and something called dapagliflozin.", "keywords": ["metformin", "dapagliflozin"]},
+        {"speaker": "doctor", "uttr_id": 14, "text": "Thanks. That's very helpful. I suspect her acid-base problem may be related to her medications. Let's measure ketones. *[Tool Use: Serum Beta-Hydroxybutyrate]*", "keywords": ["ketones"]},
+        {"speaker": "control", "uttr_id": 15, "text": "Serum Beta-Hydroxybutyrate: 9.1 mmol/L (Normal <0.4).", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 16, "text": "Her ketones are very high. This confirms she has diabetic ketoacidosis, but her sugar isn't that high. This is a condition called euglycemic diabetic ketoacidosis.", "keywords": ["euglycemic diabetic ketoacidosis"]},
+        {"speaker": "daughter", "uttr_id": 17, "text": "Is it serious?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 18, "text": "Yes, but we caught it early. We'll start IV insulin and dextrose to correct it. *[Tool Use: Start IV Insulin and Dextrose Infusion]*", "keywords": ["insulin", "dextrose"]},
+        {"speaker": "doctor", "uttr_id": 19, "text": "We also need to stop her dapagliflozin permanently and monitor her blood sugars closely.", "keywords": ["medication change"]},
+        {"speaker": "daughter", "uttr_id": 20, "text": "OK, thank you for taking care of her.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 21, "text": "You're welcome. Final diagnosis: Euglycemic Diabetic Ketoacidosis triggered by SGLT2 inhibitor use.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "105": {
+      "dlg_id": "r1_105",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, what brings you to the emergency department today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I woke up at 4 AM with this sharp chest pain that radiates to my neck. It hurts more when I breathe in.", "keywords": ["chest pain", "neck pain", "pleuritic pain"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry you're feeling this way. Let's go over some questions. Have you had any fevers, chills, coughing, or vomiting?", "keywords": ["fever", "chills", "cough", "vomiting"]},
+        {"speaker": "patient", "uttr_id": 3, "text": "No, none of that.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Any recent injuries, surgeries, or heavy lifting?", "keywords": ["trauma", "surgery"]},
+        {"speaker": "patient", "uttr_id": 5, "text": "No trauma or surgery.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 6, "text": "Do you smoke or use any substances?", "keywords": ["smoking", "substance use"]},
+        {"speaker": "patient", "uttr_id": 7, "text": "Yeah, I smoke cigarettes and sometimes marijuana.", "keywords": ["cigarettes", "marijuana"]},
+        {"speaker": "doctor", "uttr_id": 8, "text": "Thanks for being honest. Let's check your vitals quickly. *[Tool Use: Temperature, BP, HR, O2 sat check]*", "keywords": ["vital signs"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Temperature 36.7°C, BP 94/58 mmHg, HR 67 bpm, Respiratory Rate 20/min, O2 saturation 95% on room air.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "Vitals are stable but your oxygen is a bit borderline. I noticed some crackling under your skin. We should run some tests. *[Tool Use: Order CBC, BMP, Urine Toxicology, ECG, Chest X-Ray]*", "keywords": ["blood tests", "ecg", "chest x-ray"]},
+        {"speaker": "control", "uttr_id": 11, "text": "Lab Results: WBC 11k, Hgb 15.1 g/dL, Platelets normal, BMP normal, Urine toxicology negative. ECG shows normal sinus rhythm, no ST changes.", "keywords": []},
+        {"speaker": "control", "uttr_id": 12, "text": "Chest X-Ray: Linear and curvilinear lucencies suggestive of pneumomediastinum.", "keywords": ["chest x-ray", "pneumomediastinum"]},
+        {"speaker": "doctor", "uttr_id": 13, "text": "Your chest x-ray shows air trapped in the mediastinum. We need a CT scan to confirm. *[Tool Use: Chest CT Scan]*", "keywords": ["ct scan"]},
+        {"speaker": "control", "uttr_id": 14, "text": "CT Scan: Pneumomediastinum confirmed. Minimal pneumopericardium. No pneumothorax.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 15, "text": "The CT confirmed you have a spontaneous pneumomediastinum with a little air around your heart, but no collapse of the lung.", "keywords": ["pneumomediastinum", "pneumopericardium"]},
+        {"speaker": "patient", "uttr_id": 16, "text": "Is that dangerous?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 17, "text": "Most of the time it's self-limiting. We'll admit you for observation, give you oxygen to help reabsorb the air, and manage your pain. *[Tool Use: Start Oxygen Therapy and Analgesics]*", "keywords": ["oxygen", "pain management"]},
+        {"speaker": "patient", "uttr_id": 18, "text": "Do I need surgery or anything?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 19, "text": "No surgery needed unless complications arise, which are very rare. We'll repeat a chest x-ray tomorrow to monitor progress.", "keywords": ["follow-up chest x-ray"]},
+        {"speaker": "patient", "uttr_id": 20, "text": "OK. Thank you, doctor.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 21, "text": "You're welcome. Final diagnosis: Spontaneous Pneumomediastinum and Pneumopericardium likely triggered by marijuana smoking.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "106": {
+      "dlg_id": "r1_106",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. What brings you in today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I've been having a lot of joint pain and stiffness, especially in the mornings. It takes about an hour to loosen up.", "keywords": ["joint pain", "morning stiffness"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry to hear that. Which joints are bothering you the most?", "keywords": ["joint involvement"]},
+        {"speaker": "patient", "uttr_id": 3, "text": "It started in my right fourth toe, and now it's in my wrist, forearm, lower back, neck, and ankle.", "keywords": ["toe pain", "wrist pain", "spinal pain", "ankle pain"]},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Any skin issues, rashes, or nail changes?", "keywords": ["rash", "nail changes"]},
+        {"speaker": "patient", "uttr_id": 5, "text": "Yeah, I have a rash in the fold between my buttocks and scaly patches on my scalp. No nail problems though.", "keywords": ["rash", "scalp rash"]},
+        {"speaker": "doctor", "uttr_id": 6, "text": "Thanks. Let's do a physical exam. *[Tool Use: Physical Examination of Joints and Skin]*", "keywords": ["physical exam"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Exam: Swelling, tenderness, erythema at right wrist, left DIP joint, right ankle. Warmth present. Scaly scalp rash and erythematous intergluteal rash noted.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 8, "text": "We'll also order some blood work to check for inflammation and autoantibodies. *[Tool Use: Order CBC, Rheumatoid Factor (RF), ANA, Uric Acid]*", "keywords": ["blood tests"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Lab Results: Hgb 11.8 g/dL, WBC normal, Platelets normal, RF negative, ANA negative, Uric Acid 6.7 mg/dL.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "Your labs are mostly normal, but there's mild anemia. Let's take some X-rays of your hands and wrists. *[Tool Use: Order Hand and Wrist X-Rays]*", "keywords": ["x-rays"]},
+        {"speaker": "control", "uttr_id": 11, "text": "X-Ray Results: Soft tissue swelling at wrist and forearm; erosion at left fourth DIP joint; no juxta-articular osteoporosis.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "Your X-rays show joint swelling and an erosion at the DIP joint but no signs of osteoporosis. Based on everything — the joint pattern, skin findings, family history, and X-rays — this fits with a condition called psoriatic arthritis.", "keywords": ["psoriatic arthritis"]},
+        {"speaker": "patient", "uttr_id": 13, "text": "Psoriatic arthritis? I thought that was just skin-related.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 14, "text": "Psoriasis and psoriatic arthritis are linked. Even when the rash is mild or misdiagnosed as dandruff, arthritis can develop. It's an inflammatory joint disease.", "keywords": []},
+        {"speaker": "patient", "uttr_id": 15, "text": "What can we do about it?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 16, "text": "We'll start you on naproxen for pain and methotrexate to control the joint inflammation. *[Tool Use: Prescribe Naproxen and Methotrexate]* We'll monitor your blood counts and liver function regularly.", "keywords": ["naproxen", "methotrexate", "monitoring"]},
+        {"speaker": "patient", "uttr_id": 17, "text": "Thank you. I was starting to get really worried.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 18, "text": "You're welcome. We'll work together on this. Final diagnosis: Psoriatic Arthritis.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "108": {
+      "dlg_id": "r1_108",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, what brings you to the emergency room today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I think I'm having another panic attack. My heart is racing, and I feel like I can't breathe.", "keywords": ["palpitations", "dyspnea"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry you're feeling that way. Let's get your vital signs quickly. *[Tool Use: Vitals Check]*", "keywords": ["vital signs"]},
+        {"speaker": "control", "uttr_id": 3, "text": "Vitals: HR 170-300 bpm (irregular), BP 80/46 mmHg, RR 18/min, O2 sat 99% on 2L.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Your heart rate is very fast and irregular. We'll do an ECG immediately. *[Tool Use: 12-lead ECG]*", "keywords": ["ecg"]},
+        {"speaker": "control", "uttr_id": 5, "text": "ECG: Irregular wide-complex tachycardia at 224 bpm.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 6, "text": "You are in a dangerous heart rhythm. We need to urgently restore a normal rhythm. We'll use a controlled electrical shock. *[Tool Use: Synchronized Cardioversion]*", "keywords": ["cardioversion"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Synchronized cardioversion performed. Heart rhythm converted to sinus rhythm at 58 bpm.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 8, "text": "You're stable now. We'll repeat the ECG to see what your normal heart rhythm looks like. *[Tool Use: Repeat 12-lead ECG]*", "keywords": ["ecg repeat"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Repeat ECG: Short PR interval, delta wave present, suggesting Wolff-Parkinson-White (WPW) syndrome.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "The findings explain your symptoms. You have a condition called Wolff-Parkinson-White syndrome, where an extra electrical pathway causes abnormal heart rhythms.", "keywords": ["wolff-parkinson-white syndrome"]},
+        {"speaker": "patient", "uttr_id": 11, "text": "I thought these were just panic attacks!", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "That's understandable. WPW can mimic anxiety because it causes sudden racing heartbeats. But it's actually a serious heart rhythm issue.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 13, "text": "We'll start you on medication to stabilize things for now. *[Tool Use: Start IV Procainamide]*", "keywords": ["procainamide"]},
+        {"speaker": "patient", "uttr_id": 14, "text": "What happens next?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 15, "text": "You'll meet with a cardiologist. They will likely recommend a procedure called radiofrequency catheter ablation to cure it. *[Tool Use: Consult Cardiology for Electrophysiology Study]*", "keywords": ["electrophysiology consultation"]},
+        {"speaker": "patient", "uttr_id": 16, "text": "Thank you for explaining. I'm relieved to know what's going on.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 17, "text": "You're welcome. We'll take excellent care of you. Final diagnosis: Wolff-Parkinson-White Syndrome with Atrial Fibrillation.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "109": {
+      "dlg_id": "r1_109",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, what brings you into the hospital today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I've been throwing up almost every time I try to eat. My stomach hurts all the time.", "keywords": ["vomiting", "abdominal pain"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I see. How long has this been going on?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 3, "text": "About two months. It just keeps getting worse.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Any surgeries in the past?", "keywords": ["surgical history"]},
+        {"speaker": "patient", "uttr_id": 5, "text": "Yeah, I had a sleeve gastrectomy about a year ago. I lost a lot of weight after that.", "keywords": ["sleeve gastrectomy"]},
+        {"speaker": "doctor", "uttr_id": 6, "text": "Thanks. Any other symptoms like heartburn, bitter taste, or blood in vomit?", "keywords": ["heartburn", "hematemesis"]},
+        {"speaker": "patient", "uttr_id": 7, "text": "Yes! Terrible heartburn and a bitter taste. Last week I even vomited some blood.", "keywords": ["hematemesis"]},
+        {"speaker": "doctor", "uttr_id": 8, "text": "I'm glad you came in. Let's check your vitals and hydration status. *[Tool Use: Physical Exam and Vitals Check]*", "keywords": ["physical exam", "vitals"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Vitals: BP 100/70 mmHg, HR 90 bpm. Exam: Dehydrated tongue, decreased muscle mass, mild leg edema.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "We'll run some labs to check your blood counts and electrolytes. *[Tool Use: Order CBC, CMP]*", "keywords": ["lab tests"]},
+        {"speaker": "control", "uttr_id": 11, "text": "Lab Results: WBC 3000/µL, Platelets 100,000/µL, Hgb 10 g/dL, MCV 120 fL, K+ 2.5 mEq/L, Na+ 150 mEq/L, Albumin 3.0 g/dL.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "You have some anemia, low potassium, and signs of malnutrition. We'll also need to look inside your stomach. *[Tool Use: Upper GI Endoscopy]*", "keywords": ["endoscopy"]},
+        {"speaker": "control", "uttr_id": 13, "text": "Endoscopy: Wide, unreactive pylorus; bile pooling in the stomach; severe esophageal hyperemia with punctate bleeding.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 14, "text": "Your endoscopy shows that bile is refluxing from the intestine back into your stomach and esophagus, irritating the lining.", "keywords": ["biliary reflux"]},
+        {"speaker": "patient", "uttr_id": 15, "text": "So that's why the burning and vomiting are so bad?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 16, "text": "Exactly. This is called biliary reflux gastritis, and it's a complication from the sleeve gastrectomy.", "keywords": ["biliary reflux gastritis"]},
+        {"speaker": "doctor", "uttr_id": 17, "text": "We'll start you on medications to control it: a proton pump inhibitor and ursodeoxycholic acid. *[Tool Use: Start PPI and Ursodeoxycholic Acid]*", "keywords": ["proton pump inhibitor", "ursodeoxycholic acid"]},
+        {"speaker": "patient", "uttr_id": 18, "text": "And if that doesn't help?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 19, "text": "If symptoms persist, we may need to convert your surgery to a Roux-en-Y gastric bypass, which can fix the reflux.", "keywords": ["roux-en-y gastric bypass"]},
+        {"speaker": "patient", "uttr_id": 20, "text": "OK, thank you. I just want to feel normal again.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 21, "text": "You're welcome. We'll work closely to get you better. Final diagnosis: Biliary Reflux Gastritis after Sleeve Gastrectomy.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "110": {
+      "dlg_id": "r1_110",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I need dentures, but I have this big sore in my jaw that's not healing. It leaks pus every morning.", "keywords": ["non-healing lesion", "pus"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "How long has this been going on?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 3, "text": "A few years, since I broke my jaw. I've tried antibiotics but nothing helped.", "keywords": ["mandibular fracture"]},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Any other symptoms like fever, night sweats, or weight loss?", "keywords": ["systemic symptoms"]},
+        {"speaker": "patient", "uttr_id": 5, "text": "Yeah, I've had night sweats, lost about 30 pounds, and sometimes I feel feverish at night.", "keywords": ["fever", "weight loss", "night sweats"]},
+        {"speaker": "doctor", "uttr_id": 6, "text": "Thanks. Let's do a physical exam and check your vitals. *[Tool Use: Physical Exam and Vitals Check]*", "keywords": ["physical exam", "vitals"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Vitals: Temp 38.2°C, HR 96 bpm, BP 130/85 mmHg. Exam: Left mandibular soft tissue defect with purulent drainage, palpable cervical nodes.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 8, "text": "We'll take some blood tests and imaging. *[Tool Use: CBC, ESR, Mandible X-Ray]*", "keywords": ["lab tests", "x-ray"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Lab Results: WBC 3000/µL, Hemoglobin 10 g/dL, ESR 80 mm/hr. X-Ray: Extensive radiolucency of left mandible, irregular borders, sparing condyle.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "You have significant bone loss in your jaw. I'm concerned about a chronic infection. We'll do a PPD skin test and take a sample for cultures. *[Tool Use: PPD Test and Culture of Drainage]*", "keywords": ["ppd", "culture"]},
+        {"speaker": "control", "uttr_id": 11, "text": "PPD: Positive. Culture: Positive for acid-fast bacilli after 5 weeks.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "The tests show that you have a tuberculosis infection in your jaw — it's called tuberculous osteomyelitis.", "keywords": ["tuberculous osteomyelitis"]},
+        {"speaker": "patient", "uttr_id": 13, "text": "TB in my jaw? I thought TB only affected the lungs!", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 14, "text": "Usually it does, but it can affect bones, especially when the immune system is weakened by things like diabetes and alcohol use.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 15, "text": "We'll start you on standard TB treatment: isoniazid, rifampin, ethambutol, and pyrazinamide. *[Tool Use: Start Anti-Tuberculosis Therapy]*", "keywords": ["tb treatment"]},
+        {"speaker": "patient", "uttr_id": 16, "text": "How long will the treatment last?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 17, "text": "You'll need treatment for at least 6 to 9 months. We'll monitor your healing closely and adjust if necessary.", "keywords": ["follow-up care"]},
+        {"speaker": "patient", "uttr_id": 18, "text": "Thanks for finding the cause. I thought I'd never heal.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 19, "text": "You're welcome. We'll help you recover fully. Final diagnosis: Tuberculous Osteomyelitis of the Mandible.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "111": {
+      "dlg_id": "r1_111",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, what brings you in today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I've been having diarrhea and stomach pain for months. It's really affecting my life.", "keywords": ["diarrhea", "abdominal pain"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry to hear that. How often are you having bowel movements?", "keywords": ["bowel habits"]},
+        {"speaker": "patient", "uttr_id": 3, "text": "Three to four loose stools a day. Sometimes watery, with a burning feeling in my upper belly.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Have you lost weight, had blood in your stools, or fevers?", "keywords": ["weight loss", "fever"]},
+        {"speaker": "patient", "uttr_id": 5, "text": "No weight loss or blood. No fevers either.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 6, "text": "Thank you. Let's check your vitals and do an exam. *[Tool Use: Physical Exam and Vitals Check]*", "keywords": ["physical exam", "vitals"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Vitals: Temp 36.8°C, HR 72 bpm, BP 113/68 mmHg. Exam: Normal. No tenderness or masses.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 8, "text": "I'd like to order some labs and stool tests. *[Tool Use: Order CBC, CMP, Stool Ova and Parasites, Stool Antigen for H. pylori]*", "keywords": ["lab tests", "h. pylori stool test"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Lab Results: Normal CBC, CMP. Stool O&P negative. Stool Antigen: Positive for H. pylori.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "Your stool test shows you have an H. pylori infection, a common cause of stomach ulcers and inflammation.", "keywords": ["h. pylori infection"]},
+        {"speaker": "patient", "uttr_id": 11, "text": "I see. Is that why my stomach burns?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "Exactly. H. pylori damages the stomach lining and can cause peptic ulcers, which explains your symptoms.", "keywords": ["peptic ulcer disease"]},
+        {"speaker": "doctor", "uttr_id": 13, "text": "We'll treat this with antibiotics and a medication to reduce stomach acid. *[Tool Use: Start Triple Therapy: PPI, Amoxicillin, Clarithromycin]*", "keywords": ["h. pylori treatment"]},
+        {"speaker": "patient", "uttr_id": 14, "text": "How long will the treatment last?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 15, "text": "You'll take the medications for 14 days. After that, we'll repeat a test to make sure the infection is gone. *[Tool Use: Plan Follow-up Stool Antigen or Urea Breath Test]*", "keywords": ["follow-up testing"]},
+        {"speaker": "patient", "uttr_id": 16, "text": "Sounds good. I'm ready to get started.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 17, "text": "Great. Final diagnosis: Peptic Ulcer Disease secondary to H. pylori infection.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "112": {
+      "dlg_id": "r1_112",
+      "utterances": [
+        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, what brings you in today?", "keywords": []},
+        {"speaker": "patient", "uttr_id": 1, "text": "I've had rectal pain and bleeding for about six months. It's gotten bad enough that I stopped having sex.", "keywords": ["rectal pain", "hematochezia"]},
+        {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry to hear that. Any fevers, diarrhea, or constipation?", "keywords": ["systemic symptoms"]},
+        {"speaker": "patient", "uttr_id": 3, "text": "No fever or diarrhea. Just pain, bleeding, and I lost about 15 pounds recently.", "keywords": ["weight loss"]},
+        {"speaker": "doctor", "uttr_id": 4, "text": "Thanks. Let's do a physical exam including a rectal exam. *[Tool Use: Physical Exam and Rectal Exam]*", "keywords": ["physical exam"]},
+        {"speaker": "control", "uttr_id": 5, "text": "Vitals normal. Rectal exam: Mild tenderness, anal fissure at 11 o'clock, a few external hemorrhoids.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 6, "text": "We'll run some labs and get imaging to see what's going on. *[Tool Use: CBC, CMP, Rectal CT Scan]*", "keywords": ["lab tests", "imaging"]},
+        {"speaker": "control", "uttr_id": 7, "text": "Labs: Mild anemia, WBC normal. CT: Irregular thickening of rectum with fat stranding and lymphadenopathy.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 8, "text": "Your CT shows abnormal thickening of the rectum. We need to do a colonoscopy to look more closely. *[Tool Use: Diagnostic Colonoscopy]*", "keywords": ["colonoscopy"]},
+        {"speaker": "control", "uttr_id": 9, "text": "Colonoscopy: Fungating, infiltrative rectal mass, nonbleeding ulcers noted. Biopsies taken.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 10, "text": "The colonoscopy shows a mass with ulcers. We'll wait for the biopsy results, but we are also sending tests for infections. *[Tool Use: STI Testing, Histopathology and Immunohistochemistry]*", "keywords": ["biopsy", "stains"]},
+        {"speaker": "control", "uttr_id": 11, "text": "Histology: Viral cytopathic changes seen. Immunohistochemistry: Positive for HSV-1. Other infections negative.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 12, "text": "The biopsy shows that this mass is due to herpes simplex virus infection, not cancer.", "keywords": ["hsv proctitis"]},
+        {"speaker": "patient", "uttr_id": 13, "text": "Herpes? I thought that only caused blisters, not masses!", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 14, "text": "It's less common, but HSV can cause severe proctitis, especially in people with HIV.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 15, "text": "We'll treat you with antiviral medications. *[Tool Use: Start Valacyclovir 1g every 8 hours for 3 weeks]*", "keywords": ["valacyclovir"]},
+        {"speaker": "patient", "uttr_id": 16, "text": "How long until I feel better?", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 17, "text": "You should notice improvement within a few days of starting treatment. We'll also schedule a follow-up sigmoidoscopy to confirm healing.", "keywords": ["follow-up sigmoidoscopy"]},
+        {"speaker": "patient", "uttr_id": 18, "text": "Thank you. I was really scared it was cancer.", "keywords": []},
+        {"speaker": "doctor", "uttr_id": 19, "text": "You're welcome. Final diagnosis: Herpes Simplex Virus Proctitis presenting as a rectal mass.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "113": {
+      "dlg_id": "r1_113",
+      "utterances": [
+            {"speaker": "doctor", "uttr_id": 0, "text": "Good morning! What brings you and your son in today?", "keywords": []},
+            {"speaker": "parent", "uttr_id": 1, "text": "He has a painful bump on his big toe. It's been there for months and is getting worse.", "keywords": ["toe nodule", "pain"]},
+            {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry to hear that. Any trauma or injury to the toe before this started?", "keywords": ["trauma"]},
+            {"speaker": "parent", "uttr_id": 3, "text": "He plays a lot of soccer and hockey. He thinks he might have hurt it, but not sure exactly when.", "keywords": ["sports injury"]},
+            {"speaker": "doctor", "uttr_id": 4, "text": "Got it. Let's take a look. *[Tool Use: Physical Exam of Left Great Toe]*", "keywords": ["physical exam"]},
+            {"speaker": "control", "uttr_id": 5, "text": "Exam: Firm, painful nodule over distal medial aspect of left great toe.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 6, "text": "We'll get an X-ray to see if there's anything abnormal with the bone. *[Tool Use: Plain Film X-ray of Left Foot]*", "keywords": ["x-ray"]},
+            {"speaker": "control", "uttr_id": 7, "text": "X-ray: Calcified projection emanating from distal phalanx of left great toe.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 8, "text": "The X-ray shows a piece of bone growing out from the tip of his toe. This is called a bony exostosis.", "keywords": ["bony exostosis"]},
+            {"speaker": "parent", "uttr_id": 9, "text": "Is it dangerous?", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 10, "text": "It's benign, meaning it's not cancer. But it can cause pain and nail problems if not treated.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 11, "text": "The best treatment is to surgically remove it to relieve the pain. *[Tool Use: Refer to Pediatric Orthopedic Surgery]*", "keywords": ["surgical referral"]},
+            {"speaker": "parent", "uttr_id": 12, "text": "Will he be able to play sports again?", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 13, "text": "Yes! After recovery, he should be able to return to full activity.", "keywords": []},
+            {"speaker": "parent", "uttr_id": 14, "text": "Thank you so much.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 15, "text": "You're welcome. Final diagnosis: Subungual Bony Exostosis of the Left Great Toe.", "keywords": ["final diagnosis"]}
+      ]
+    },
+    "114": {
+        "dlg_id": "r1_114",
+        "utterances": [
+            {"speaker": "doctor", "uttr_id": 0, "text": "Hello! What brings you back to the clinic today?", "keywords": []},
+            {"speaker": "patient", "uttr_id": 1, "text": "I've been having diarrhea for about a week now. It started right after I finished antibiotics for my pneumonia.", "keywords": ["diarrhea", "post-antibiotics"]},
+            {"speaker": "doctor", "uttr_id": 2, "text": "I'm sorry you're going through that. Any blood in the stools, fever, or abdominal pain?", "keywords": ["stool symptoms"]},
+            {"speaker": "patient", "uttr_id": 3, "text": "No blood, but I have had some cramping and chills.", "keywords": ["chills", "abdominal cramping"]},
+            {"speaker": "doctor", "uttr_id": 4, "text": "Alright. Let's check your vitals and do a physical exam. *[Tool Use: Vitals and Physical Exam]*", "keywords": ["vital signs", "physical exam"]},
+            {"speaker": "control", "uttr_id": 5, "text": "Vitals: Temp 99.1°F, HR 95 bpm, BP 120/86 mmHg, RR 19/min, O2 sat 94%. Abdominal exam: Soft, diffusely tender, hyperactive bowel sounds.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 6, "text": "Given your history and exam, we need to test your stool for infections. *[Tool Use: Order Stool PCR Panel and C. difficile Toxin Test]*", "keywords": ["stool test"]},
+            {"speaker": "control", "uttr_id": 7, "text": "Stool PCR: Positive for C. difficile toxin.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 8, "text": "The tests confirm that you have C. difficile infection, which often happens after antibiotic use.", "keywords": ["c. difficile colitis"]},
+            {"speaker": "patient", "uttr_id": 9, "text": "Is it serious?", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 10, "text": "It can be, but we caught it early. We'll treat it with antibiotics targeted specifically for C. diff. *[Tool Use: Start Fidaxomicin 200mg BID for 10 Days]*", "keywords": ["fidaxomicin"]},
+            {"speaker": "patient", "uttr_id": 11, "text": "Will I need to be in the hospital?", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 12, "text": "Not at this point. You're stable, so we can treat you at home, but we'll follow up closely.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 13, "text": "We'll also keep an eye out for recurrence. If symptoms return after treatment, there are newer options like bezlotoxumab.", "keywords": ["recurrence management"]},
+            {"speaker": "patient", "uttr_id": 14, "text": "Good to know. Thank you for explaining everything.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 15, "text": "You're welcome. Final diagnosis: Clostridioides difficile colitis following antibiotic therapy.", "keywords": ["final diagnosis"]}
+          ]
+    },
+    "115": {
+        "dlg_id": "r1_115",
+        "utterances": [
+            {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in today?", "keywords": []},
+            {"speaker": "patient", "uttr_id": 1, "text": "I've had this really bad headache for three days straight. It's mostly behind my right eye.", "keywords": ["headache", "eye pain"]},
+            {"speaker": "doctor", "uttr_id": 2, "text": "I see. Any other symptoms like nausea, vomiting, or sensitivity to light or sound?", "keywords": ["nausea", "vomiting", "photophobia", "phonophobia"]},
+            {"speaker": "patient", "uttr_id": 3, "text": "Yes, bright lights make it much worse, and I felt a bit nauseous yesterday.", "keywords": ["photophobia", "nausea"]},
+            {"speaker": "doctor", "uttr_id": 4, "text": "Have you experienced headaches like this before?", "keywords": ["headache history"]},
+            {"speaker": "patient", "uttr_id": 5, "text": "Not this bad. I get occasional tension headaches, but this feels different.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 6, "text": "Alright, let's check your vitals and perform a quick neurological exam. *[Tool Use: Vitals Check, Neurological Exam]*", "keywords": ["vital signs", "neurological exam"]},
+            {"speaker": "control", "uttr_id": 7, "text": "Vitals: Stable, BP 125/80 mmHg. Neuro exam: Cranial nerves intact, no focal deficits.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 8, "text": "Your exam is normal. Based on your symptoms, this sounds like a migraine.", "keywords": ["migraine"]},
+            {"speaker": "patient", "uttr_id": 9, "text": "A migraine? What can I do?", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 10, "text": "We can give you medication now to help break the headache. For the future, we can discuss preventative strategies and rescue medications. *[Tool Use: Administer Sumatriptan Injection]*", "keywords": ["sumatriptan", "migraine treatment"]},
+            {"speaker": "patient", "uttr_id": 11, "text": "Okay, thank you. I hope it helps.", "keywords": []},
+            {"speaker": "doctor", "uttr_id": 12, "text": "It should provide relief soon. We'll monitor you for a bit. Final diagnosis: Migraine without aura.", "keywords": ["final diagnosis"]}
+            ]
+            },
+    "116": {
+        "dlg_id": "r1_116",
+        "utterances": [
+                {"speaker": "doctor", "uttr_id": 0, "text": "Hi, what seems to be the problem today?", "keywords": []},
+                {"speaker": "patient", "uttr_id": 1, "text": "I've had this persistent cough for over a month. It's dry sometimes, but other times I cough up greenish phlegm.", "keywords": ["cough", "sputum production"]},
+                {"speaker": "doctor", "uttr_id": 2, "text": "Any fever, shortness of breath, or chest pain with the cough?", "keywords": ["fever", "dyspnea", "chest pain"]},
+                {"speaker": "patient", "uttr_id": 3, "text": "No fever, but I do feel a bit short of breath when I walk fast. No real pain.", "keywords": ["dyspnea on exertion"]},
+                {"speaker": "doctor", "uttr_id": 4, "text": "Do you smoke?", "keywords": ["smoking history"]},
+                {"speaker": "patient", "uttr_id": 5, "text": "Yes, about half a pack a day for 20 years.", "keywords": ["smoking"]},
+                {"speaker": "doctor", "uttr_id": 6, "text": "Okay. Let's listen to your lungs and check your oxygen levels. *[Tool Use: Lung Auscultation, Pulse Oximetry]*", "keywords": ["physical exam", "oxygen saturation"]},
+                {"speaker": "control", "uttr_id": 7, "text": "Lungs: Decreased breath sounds bilaterally, scattered wheezes. O2 Sat: 93% on room air.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 8, "text": "Your oxygen is a little low, and I hear some wheezing. Given your smoking history and persistent cough, I'm concerned about chronic bronchitis or COPD. We need a chest X-ray and breathing tests. *[Tool Use: Order Chest X-Ray, Spirometry]*", "keywords": ["copd", "chronic bronchitis", "chest x-ray", "spirometry"]},
+                {"speaker": "control", "uttr_id": 9, "text": "Chest X-Ray: Mild hyperinflation, no acute infiltrate. Spirometry: FEV1/FVC ratio 0.65, consistent with obstructive lung disease.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 10, "text": "The tests confirm you have COPD, likely chronic bronchitis type. The most important thing you can do is stop smoking.", "keywords": ["copd diagnosis", "smoking cessation"]},
+                {"speaker": "patient", "uttr_id": 11, "text": "I know, it's hard. What else can help?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 12, "text": "We'll prescribe inhalers to help open your airways and reduce inflammation. We can also discuss smoking cessation programs. *[Tool Use: Prescribe Bronchodilator and Inhaled Corticosteroid]*", "keywords": ["inhalers", "copd treatment"]},
+                {"speaker": "patient", "uttr_id": 13, "text": "Okay, I'll try.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 14, "text": "Good. We'll schedule a follow-up. Final diagnosis: Chronic Obstructive Pulmonary Disease (COPD).", "keywords": ["final diagnosis"]}
+              ]
+            },
+             "117": {
+              "dlg_id": "r1_117",
+              "utterances": [
+                {"speaker": "doctor", "uttr_id": 0, "text": "Hello, please tell me what's bothering you.", "keywords": []},
+                {"speaker": "patient", "uttr_id": 1, "text": "I have this itchy red rash on my arms and neck. It started a few days ago after I went hiking.", "keywords": ["rash", "itching", "skin irritation"]},
+                {"speaker": "doctor", "uttr_id": 2, "text": "Did you notice any blisters forming?", "keywords": ["blisters"]},
+                {"speaker": "patient", "uttr_id": 3, "text": "Yes, some small watery blisters, especially where I scratched it.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 4, "text": "Let me take a look. *[Tool Use: Skin Examination]*", "keywords": ["physical exam"]},
+                {"speaker": "control", "uttr_id": 5, "text": "Exam: Erythematous, vesicular rash in linear streaks on forearms and neck.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 6, "text": "This looks very typical for contact dermatitis, likely from poison ivy or a similar plant you encountered while hiking.", "keywords": ["contact dermatitis", "poison ivy"]},
+                {"speaker": "patient", "uttr_id": 7, "text": "Oh no! What should I do?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 8, "text": "We'll prescribe a topical steroid cream to reduce the inflammation and itching. Cool compresses can also help. It's important not to scratch, as that can spread it or lead to infection. *[Tool Use: Prescribe High-Potency Topical Steroid]*", "keywords": ["topical steroids", "rash treatment"]},
+                {"speaker": "patient", "uttr_id": 9, "text": "How long will it take to go away?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 10, "text": "It usually clears up within 1-3 weeks with treatment. Make sure to wash any clothes or gear that might have the plant oil on them.", "keywords": ["prevention"]},
+                {"speaker": "patient", "uttr_id": 11, "text": "Okay, I will. Thank you.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 12, "text": "You're welcome. Final diagnosis: Allergic Contact Dermatitis (likely poison ivy).", "keywords": ["final diagnosis"]}
+              ]
+            },
+            "118": {
+              "dlg_id": "r1_118",
+              "utterances": [
+                {"speaker": "doctor", "uttr_id": 0, "text": "Hi, what happened?", "keywords": []},
+                {"speaker": "patient", "uttr_id": 1, "text": "I twisted my ankle playing basketball yesterday. It swelled up immediately and hurts to walk on.", "keywords": ["ankle injury", "swelling", "pain"]},
+                {"speaker": "doctor", "uttr_id": 2, "text": "Where exactly is the pain located?", "keywords": ["pain location"]},
+                {"speaker": "patient", "uttr_id": 3, "text": "Mostly on the outside of the ankle.", "keywords": ["lateral ankle pain"]},
+                {"speaker": "doctor", "uttr_id": 4, "text": "Did you hear or feel a pop when it happened?", "keywords": ["injury mechanism"]},
+                {"speaker": "patient", "uttr_id": 5, "text": "I don't think so.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 6, "text": "Okay, let's examine it carefully. *[Tool Use: Ankle Examination, Ottawa Ankle Rules Assessment]*", "keywords": ["physical exam", "ottawa ankle rules"]},
+                {"speaker": "control", "uttr_id": 7, "text": "Exam: Moderate swelling and tenderness over anterior talofibular ligament (ATFL). Limited range of motion due to pain. Negative Ottawa ankle rules.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 8, "text": "Based on the exam and the Ottawa rules, a fracture is unlikely. This appears to be a moderate ankle sprain, likely involving the ATFL ligament. An X-ray isn't necessary right now.", "keywords": ["ankle sprain", "atfl injury"]},
+                {"speaker": "patient", "uttr_id": 9, "text": "So, just a sprain? What's the treatment?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 10, "text": "We'll follow the RICE protocol: Rest, Ice, Compression, and Elevation. An ankle brace can provide support. Over-the-counter pain relievers can help with pain and swelling. *[Tool Use: Recommend RICE Therapy, Ankle Brace, NSAIDs]*", "keywords": ["rice therapy", "ankle brace", "nsaids"]},
+                {"speaker": "patient", "uttr_id": 11, "text": "How long until I can play basketball again?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 12, "text": "Recovery varies, but typically 4-6 weeks for a moderate sprain. We can discuss physical therapy to help with rehabilitation.", "keywords": ["recovery time", "physical therapy"]},
+                {"speaker": "patient", "uttr_id": 13, "text": "Okay, thanks doctor.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. Follow up if the pain worsens or doesn't improve. Final diagnosis: Lateral Ankle Sprain (Grade II).", "keywords": ["final diagnosis"]}
+              ]
+            },
+            "119": {
+               "dlg_id": "r1_119",
+               "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi there. What can I help you with today?", "keywords": []},
+                    {"speaker": "parent", "uttr_id": 1, "text": "My daughter has been pulling at her right ear and seems really fussy, especially at night. She also had a bit of a fever.", "keywords": ["ear pulling", "fussiness", "fever"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "How old is she?", "keywords": []},
+                    {"speaker": "parent", "uttr_id": 3, "text": "She's 18 months old.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Has she had a cold recently?", "keywords": ["recent illness"]},
+                    {"speaker": "parent", "uttr_id": 5, "text": "Yes, she had a runny nose last week.", "keywords": ["cold symptoms"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, let me take a look in her ears. *[Tool Use: Otoscopy]*", "keywords": ["otoscopy", "physical exam"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Otoscopy: Right tympanic membrane bulging, erythematous, with loss of landmarks. Left ear clear.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Her right eardrum is red and bulging, which indicates an ear infection, also known as acute otitis media.", "keywords": ["acute otitis media", "ear infection"]},
+                    {"speaker": "parent", "uttr_id": 9, "text": "Oh dear. Does she need antibiotics?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "Yes, given her age and the appearance of the eardrum, antibiotics are recommended. We'll prescribe amoxicillin. You can also give her infant pain reliever for discomfort. *[Tool Use: Prescribe Amoxicillin, Recommend Analgesics]*", "keywords": ["amoxicillin", "antibiotics", "pain relief"]},
+                    {"speaker": "parent", "uttr_id": 11, "text": "Okay. How long will it take for her to feel better?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "She should start feeling better within 2-3 days of starting the antibiotics. Be sure to complete the full course.", "keywords": ["treatment course"]},
+                    {"speaker": "parent", "uttr_id": 13, "text": "Thank you, doctor.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. Let us know if she doesn't improve or gets worse. Final diagnosis: Acute Otitis Media (Right Ear).", "keywords": ["final diagnosis"]}
+                ]
+            },
+             "120": {
+              "dlg_id": "r1_120",
+              "utterances": [
+                {"speaker": "doctor", "uttr_id": 0, "text": "Good afternoon. What seems to be the trouble?", "keywords": []},
+                {"speaker": "patient", "uttr_id": 1, "text": "I've been feeling incredibly tired lately, much more than usual. And I've noticed I'm bruising really easily.", "keywords": ["fatigue", "easy bruising"]},
+                {"speaker": "doctor", "uttr_id": 2, "text": "How long has this been going on?", "keywords": ["symptom duration"]},
+                {"speaker": "patient", "uttr_id": 3, "text": "For the past month or so. I also had a couple of nosebleeds last week.", "keywords": ["epistaxis"]},
+                {"speaker": "doctor", "uttr_id": 4, "text": "Any fevers, night sweats, or weight loss?", "keywords": ["systemic symptoms"]},
+                {"speaker": "patient", "uttr_id": 5, "text": "Maybe some night sweats, now that you mention it. No significant weight loss.", "keywords": ["night sweats"]},
+                {"speaker": "doctor", "uttr_id": 6, "text": "Okay. Let's do a physical exam and check your vitals. *[Tool Use: Physical Exam, Vitals Check]*", "keywords": ["physical exam", "vital signs"]},
+                {"speaker": "control", "uttr_id": 7, "text": "Vitals stable. Exam: Multiple scattered ecchymoses on arms and legs. Mild pallor. No palpable lymphadenopathy or hepatosplenomegaly.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 8, "text": "The fatigue, bruising, and nosebleeds are concerning. We need to run some blood tests, particularly a complete blood count (CBC). *[Tool Use: Order Complete Blood Count (CBC) with Differential]*", "keywords": ["cbc", "blood tests"]},
+                {"speaker": "control", "uttr_id": 9, "text": "CBC Results: Hemoglobin 9.2 g/dL (low), Platelets 35,000/µL (low), WBC 2,100/µL (low) with 70% blasts.", "keywords": ["anemia", "thrombocytopenia", "leukopenia", "blasts"]},
+                {"speaker": "doctor", "uttr_id": 10, "text": "Your blood counts are very low, and there are abnormal cells called blasts present. This is highly suspicious for acute leukemia. We need to admit you to the hospital immediately for further testing, including a bone marrow biopsy. *[Tool Use: Admit Patient to Hospital, Consult Hematology/Oncology, Schedule Bone Marrow Biopsy]*", "keywords": ["acute leukemia", "hospital admission", "bone marrow biopsy", "hematology consult"]},
+                {"speaker": "patient", "uttr_id": 11, "text": "Leukemia? Oh my god... Is it treatable?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 12, "text": "Yes, acute leukemia is serious, but there are treatments available, often starting with chemotherapy. The specialists will discuss the specific type and treatment plan once we have the biopsy results. We need to act quickly.", "keywords": ["leukemia treatment", "chemotherapy"]},
+                {"speaker": "patient", "uttr_id": 13, "text": "Okay... okay. I understand.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 14, "text": "We'll take good care of you. Final diagnosis pending further workup, high suspicion for Acute Leukemia.", "keywords": ["final diagnosis"]}
+                ]
+            },
+             "121": {
+              "dlg_id": "r1_121",
+              "utterances": [
+                {"speaker": "doctor", "uttr_id": 0, "text": "Hello, how can I help you today?", "keywords": []},
+                {"speaker": "patient", "uttr_id": 1, "text": "I've been having pain and burning when I urinate for the past two days. And I feel like I have to go all the time.", "keywords": ["dysuria", "urinary frequency", "urinary urgency"]},
+                {"speaker": "doctor", "uttr_id": 2, "text": "Any fever, back pain, or blood in your urine?", "keywords": ["fever", "back pain", "hematuria"]},
+                {"speaker": "patient", "uttr_id": 3, "text": "No, none of that. Just the burning and frequency.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 4, "text": "Are you sexually active? Any chance of pregnancy?", "keywords": ["sexual history", "pregnancy"]},
+                {"speaker": "patient", "uttr_id": 5, "text": "Yes, I'm sexually active. No chance of pregnancy, I use an IUD.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 6, "text": "Okay. We need to check a urine sample to see if there's an infection. *[Tool Use: Order Urinalysis and Urine Culture]*", "keywords": ["urinalysis", "urine culture"]},
+                {"speaker": "control", "uttr_id": 7, "text": "Urinalysis: Positive for leukocyte esterase and nitrites. Many bacteria seen.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 8, "text": "The urinalysis confirms you have a urinary tract infection (UTI).", "keywords": ["urinary tract infection", "uti"]},
+                {"speaker": "patient", "uttr_id": 9, "text": "That's what I thought it might be. What's the treatment?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 10, "text": "We'll prescribe a short course of antibiotics. Nitrofurantoin or trimethoprim-sulfamethoxazole are common choices. Drink plenty of fluids as well. *[Tool Use: Prescribe Nitrofurantoin]*", "keywords": ["antibiotics", "nitrofurantoin", "uti treatment"]},
+                {"speaker": "patient", "uttr_id": 11, "text": "Okay. Will it come back?", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 12, "text": "UTIs can sometimes recur. Staying well-hydrated and urinating after intercourse can help prevent them. If they become frequent, we can discuss other strategies.", "keywords": ["uti prevention", "recurrence"]},
+                {"speaker": "patient", "uttr_id": 13, "text": "Good to know. Thank you.", "keywords": []},
+                {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. You should start feeling better in a day or two. Final diagnosis: Uncomplicated Cystitis (UTI).", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "122": {
+                "dlg_id": "r1_122",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. What brings you in?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I've been having this sharp pain in my heel, especially when I first get out of bed in the morning. It feels like stepping on a nail.", "keywords": ["heel pain", "morning pain"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Does the pain improve after you walk around a bit?", "keywords": ["pain pattern"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Yes, it usually gets better after a few minutes of walking, but it can come back later in the day if I'm on my feet a lot.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Are you a runner or do you stand for long periods at work?", "keywords": ["risk factors"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "I stand most of the day for my job as a teacher.", "keywords": ["prolonged standing"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Let me examine your foot. *[Tool Use: Foot Examination]*", "keywords": ["physical exam"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Exam: Point tenderness over the medial calcaneal tuberosity. Pain elicited with passive dorsiflexion of the toes.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Your symptoms and the tenderness location are classic for plantar fasciitis, which is inflammation of the band of tissue on the bottom of your foot.", "keywords": ["plantar fasciitis"]},
+                    {"speaker": "patient", "uttr_id": 9, "text": "Plantar fasciitis? What causes it?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "It's often caused by overuse, strain, improper footwear, or tightness in the calf muscles. Standing for long periods is a common factor.", "keywords": ["etiology"]},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "Treatment focuses on stretching exercises for the calf and plantar fascia, wearing supportive shoes or orthotics, and using ice. Pain relievers can help too. *[Tool Use: Recommend Stretching Exercises, Orthotics, Ice, NSAIDs]*", "keywords": ["stretching", "orthotics", "ice", "nsaids", "plantar fasciitis treatment"]},
+                    {"speaker": "patient", "uttr_id": 12, "text": "How long does it take to get better?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 13, "text": "It can take several weeks to months for significant improvement. Consistency with stretching is key. Physical therapy can be beneficial too.", "keywords": ["prognosis", "physical therapy"]},
+                    {"speaker": "patient", "uttr_id": 14, "text": "Okay, I'll start doing the stretches. Thank you.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 15, "text": "You're welcome. Let me know if it doesn't improve. Final diagnosis: Plantar Fasciitis.", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "123": {
+                "dlg_id": "r1_123",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi, what can I do for you today?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I've been feeling dizzy and lightheaded off and on for the past week. Sometimes the room feels like it's spinning.", "keywords": ["dizziness", "lightheadedness", "vertigo"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Does anything trigger the spinning sensation, like changing head position?", "keywords": ["triggers"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Yes, it often happens when I roll over in bed or tilt my head back. It only lasts for less than a minute, but it's intense.", "keywords": ["positional trigger"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Any hearing loss, ringing in the ears, or nausea associated with it?", "keywords": ["associated symptoms"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Maybe a little bit of nausea when it's really spinning, but no hearing problems.", "keywords": ["nausea"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, I'd like to perform a specific maneuver to check for positional vertigo. *[Tool Use: Dix-Hallpike Maneuver]*", "keywords": ["dix-hallpike maneuver", "physical exam"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Dix-Hallpike test: Positive on the right side, eliciting rotatory nystagmus and subjective vertigo.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "The test confirms you have Benign Paroxysmal Positional Vertigo, or BPPV. It's caused by tiny calcium crystals getting dislodged in your inner ear.", "keywords": ["bppv", "benign paroxysmal positional vertigo"]},
+                    {"speaker": "patient", "uttr_id": 9, "text": "Crystals in my ear? Is it serious?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "No, it's not serious, just uncomfortable. The good news is it's often easily treated with repositioning maneuvers. We can do one now called the Epley maneuver. *[Tool Use: Perform Epley Maneuver for Right Posterior Canal BPPV]*", "keywords": ["epley maneuver", "bppv treatment"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "Will that fix it right away?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "It often resolves the symptoms after one or two treatments. I'll give you instructions on how to do it at home if needed, and precautions to take for the next day or so.", "keywords": ["home treatment", "precautions"]},
+                    {"speaker": "patient", "uttr_id": 13, "text": "That's a relief. Thank you!", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. Follow up if the symptoms persist or change. Final diagnosis: Benign Paroxysmal Positional Vertigo (BPPV).", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "124": {
+                "dlg_id": "r1_124",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what seems to be the problem?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I've been having heartburn almost every day for the past few months. Sometimes food or acid comes back up into my throat.", "keywords": ["heartburn", "regurgitation"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Does it get worse after eating, lying down, or bending over?", "keywords": ["triggers"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Yes, definitely worse after big meals or when I lie down at night. I've also developed a dry cough.", "keywords": ["postprandial symptoms", "nocturnal symptoms", "cough"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Have you tried any over-the-counter antacids or acid reducers?", "keywords": ["previous treatments"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Antacids help a little, but not for long.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Your symptoms strongly suggest Gastroesophageal Reflux Disease, or GERD. *[Tool Use: Clinical Diagnosis based on Symptoms]*", "keywords": ["gerd", "gastroesophageal reflux disease"]},
+                    {"speaker": "patient", "uttr_id": 7, "text": "GERD? What can I do about it?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "We usually start with lifestyle modifications and medication. Lifestyle changes include avoiding trigger foods (like spicy or fatty foods, caffeine, alcohol), eating smaller meals, not lying down for 2-3 hours after eating, and elevating the head of your bed.", "keywords": ["lifestyle modifications"]},
+                    {"speaker": "doctor", "uttr_id": 9, "text": "For medication, we'll start you on a Proton Pump Inhibitor (PPI) once daily before breakfast. This is very effective at reducing stomach acid. *[Tool Use: Prescribe Omeprazole (PPI)]*", "keywords": ["proton pump inhibitor", "ppi", "omeprazole", "gerd treatment"]},
+                    {"speaker": "patient", "uttr_id": 10, "text": "How long do I need to take the medication?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "We'll try it for 8 weeks and see how you respond. Many people need long-term treatment, but we aim for the lowest effective dose. If symptoms persist or are severe, we might consider further tests like an endoscopy.", "keywords": ["treatment duration", "follow-up", "endoscopy"]},
+                    {"speaker": "patient", "uttr_id": 12, "text": "Okay, that makes sense. Thank you.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 13, "text": "You're welcome. Let's see how you do with these changes. Final diagnosis: Gastroesophageal Reflux Disease (GERD).", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "125": {
+                "dlg_id": "r1_125",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, what brings you in today?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I've got this painful lump in my armpit. It started a few days ago and seems to be getting bigger and redder.", "keywords": ["axillary lump", "pain", "redness", "swelling"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Any fever or chills?", "keywords": ["fever", "chills"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "I felt a bit feverish last night, yes.", "keywords": ["fever"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Have you noticed any recent cuts, scrapes, or insect bites on that arm or hand?", "keywords": ["potential entry point"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Not that I recall.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Let me examine the area. *[Tool Use: Physical Examination of Axilla]*", "keywords": ["physical exam"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Exam: Tender, erythematous, fluctuant 3 cm nodule in the right axilla. No visible drainage point.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "This appears to be an abscess, which is a collection of pus under the skin, likely from a bacterial infection, often involving a hair follicle or sweat gland. The fluctuance means there's fluid (pus) inside.", "keywords": ["abscess", "skin infection", "folliculitis", "hidradenitis"]},
+                    {"speaker": "patient", "uttr_id": 9, "text": "An abscess? What needs to be done?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "Because it's fluctuant, it needs to be drained. We'll numb the area and make a small incision to let the pus out. This usually provides immediate relief. *[Tool Use: Incision and Drainage (I&D) of Abscess]*", "keywords": ["incision and drainage", "i&d", "abscess treatment"]},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "We may also prescribe antibiotics, especially since you had a fever. We'll likely send a sample of the pus for culture to confirm the bacteria involved. *[Tool Use: Prescribe Antibiotics (e.g., Clindamycin or TMP-SMX), Send Wound Culture]*", "keywords": ["antibiotics", "wound culture"]},
+                    {"speaker": "patient", "uttr_id": 12, "text": "Okay. Will it hurt?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 13, "text": "We'll numb it well, so you should mainly feel pressure. Afterwards, you'll need to keep the area clean and change the dressing as instructed.", "keywords": ["local anesthesia", "wound care"]},
+                    {"speaker": "patient", "uttr_id": 14, "text": "Alright, let's do it.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 15, "text": "Okay. We'll get everything ready. Final diagnosis: Axillary Abscess.", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "126": {
+                "dlg_id": "r1_126",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in today? You look quite unwell.", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I've been having these episodes... severe abdominal pain, vomiting, my arms and legs feel weak, and I feel confused. My urine looked dark yesterday.", "keywords": ["abdominal pain", "vomiting", "weakness", "confusion", "dark urine"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "How long have these episodes been happening? Any triggers?", "keywords": ["episode frequency", "triggers"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "They started a few months ago, maybe once a month. This time it happened after I tried a new crash diet.", "keywords": ["diet trigger"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Any psychiatric symptoms like anxiety or hallucinations during the episodes?", "keywords": ["psychiatric symptoms"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Yes, I feel very anxious and saw strange shadows last night.", "keywords": ["anxiety", "hallucinations"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, this constellation of symptoms is concerning for a specific metabolic disorder. Let's check your vitals and basic labs. *[Tool Use: Vitals Check, CBC, CMP]*", "keywords": ["vital signs", "lab tests"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Vitals: HR 110 bpm, BP 155/95 mmHg. Labs: Sodium 128 mEq/L (low), otherwise unremarkable CBC/CMP.", "keywords": ["tachycardia", "hypertension", "hyponatremia"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Given the episodic neurovisceral symptoms, especially triggered by fasting/dieting, and the hyponatremia, we must test for Acute Intermittent Porphyria (AIP). *[Tool Use: Order Spot Urine Porphobilinogen (PBG) and ALA Test (STAT)]*", "keywords": ["acute intermittent porphyria", "aip", "urine pbg"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "Urine PBG: Markedly elevated.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The elevated PBG confirms AIP. This is an acute attack. We need to treat it urgently to prevent further nerve damage. We'll start IV fluids with dextrose and give hemin. *[Tool Use: Start IV Dextrose Infusion, Administer IV Hemin, Consult Hematology/Metabolics]*", "keywords": ["aip attack", "iv dextrose", "iv hemin", "hematology consult"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "What is AIP? Is it dangerous?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "It's a rare genetic disorder affecting hemoglobin production. Attacks can be severe and life-threatening if untreated, but with prompt treatment like hemin, patients usually recover. We also need to identify and avoid your specific triggers in the future.", "keywords": ["aip explanation", "triggers", "treatment"]},
+                    {"speaker": "patient", "uttr_id": 13, "text": "Okay... Thank you for figuring it out.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. We'll monitor you closely. Final diagnosis: Acute Intermittent Porphyria (AIP) Attack.", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "127": {
+                "dlg_id": "r1_127",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi, please tell me why you've come to the emergency department.", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "It started with tingling in my feet a week ago after I had a bad stomach flu. Now my legs feel weak, like rubber, and it's hard to walk. The weakness is moving up.", "keywords": ["paresthesias", "ascending weakness", "gait disturbance", "post-infectious"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Weakness moving up your legs after an infection is a serious concern. Any trouble breathing or swallowing?", "keywords": ["respiratory symptoms", "bulbar symptoms"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "My breathing feels a little shallow today. No trouble swallowing yet.", "keywords": ["dyspnea"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Okay, we need to assess this urgently. Let's check your vitals, strength, and reflexes. *[Tool Use: Vitals Check, Neurological Exam (Strength, Reflexes, Sensation)]*", "keywords": ["vital signs", "neurological exam"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "Vitals: Stable. Neuro Exam: Symmetric ascending weakness (legs worse than arms), absent deep tendon reflexes (areflexia) in lower extremities, decreased vibration sense distally.", "keywords": ["areflexia", "symmetric weakness"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "The ascending paralysis with areflexia following an infection strongly suggests Guillain-Barré Syndrome (GBS). We need to monitor your breathing very closely. *[Tool Use: Continuous Pulse Oximetry, Serial Negative Inspiratory Force (NIF) / Vital Capacity (VC) Measurement]*", "keywords": ["guillain-barre syndrome", "gbs", "respiratory monitoring", "nif", "vc"]},
+                    {"speaker": "doctor", "uttr_id": 7, "text": "We also need to confirm the diagnosis and rule out other causes. *[Tool Use: Order Lumbar Puncture for CSF Analysis, Order Nerve Conduction Studies (NCS), Consult Neurology]*", "keywords": ["lumbar puncture", "csf analysis", "nerve conduction studies", "ncs", "neurology consult"]},
+                    {"speaker": "control", "uttr_id": 8, "text": "CSF Analysis: High protein, normal white cell count (albuminocytologic dissociation). NCS results pending.", "keywords": ["albuminocytologic dissociation"]},
+                    {"speaker": "doctor", "uttr_id": 9, "text": "The CSF findings support GBS. Given the progressive weakness and potential respiratory involvement, we need to start treatment immediately. *[Tool Use: Admit to ICU/Step-Down Unit, Start Intravenous Immunoglobulin (IVIG) Therapy]*", "keywords": ["ivig", "gbs treatment", "icu admission"]},
+                    {"speaker": "patient", "uttr_id": 10, "text": "Will I recover from this?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "Most people with GBS make a good recovery, but it can take weeks or months. IVIG helps speed up the recovery process. Close monitoring and physical therapy are crucial.", "keywords": ["prognosis", "rehabilitation"]},
+                    {"speaker": "patient", "uttr_id": 12, "text": "Okay. Thank you for your help.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 13, "text": "We're here to support you through this. Final diagnosis: Guillain-Barré Syndrome (GBS).", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "128": {
+                "dlg_id": "r1_128",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what's been going on?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "For years, I've had these fevers, up to 104°F, that last 2-3 days and come back every month. With them, I get terrible pain in my stomach and sometimes my joints or chest.", "keywords": ["recurrent fever", "periodic fever", "abdominal pain", "joint pain", "chest pain"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Every month? That's very specific. Any rashes with the fevers?", "keywords": ["periodicity", "rash"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Sometimes a red rash on my lower legs. My family is originally from Turkey, and my cousin had similar issues as a kid.", "keywords": ["erysipelas-like erythema", "family history", "mediterranean ancestry"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Thank you, that family history and ancestry are very important clues. This sounds like a periodic fever syndrome, possibly Familial Mediterranean Fever (FMF). Let's check labs during an episode if possible, but also specific genetic testing. *[Tool Use: Order Inflammatory Markers (CRP, ESR, SAA - during flare if possible), Order Genetic Testing for MEFV Gene Mutations]*", "keywords": ["familial mediterranean fever", "fmf", "periodic fever syndrome", "inflammatory markers", "genetic testing", "mefv gene"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "Labs (during recent flare): CRP 150 mg/L, ESR 80 mm/hr, SAA elevated. Genetic Testing: Positive for homozygous M694V mutation in MEFV gene.", "keywords": ["elevated inflammatory markers", "mefv mutation positive"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "The elevated inflammatory markers during a flare and the confirmation of two copies of a common FMF-causing mutation confirm the diagnosis of Familial Mediterranean Fever.", "keywords": ["fmf diagnosis"]},
+                    {"speaker": "patient", "uttr_id": 7, "text": "So that's what it is! Is there a treatment?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Yes, the standard treatment is a daily medication called colchicine. It's very effective at preventing the attacks and also prevents a serious long-term complication called amyloidosis. *[Tool Use: Prescribe Colchicine Daily, Counsel on Importance of Adherence]*", "keywords": ["colchicine", "fmf treatment", "amyloidosis prevention"]},
+                    {"speaker": "patient", "uttr_id": 9, "text": "Will I have to take it forever?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "Yes, colchicine is typically lifelong therapy for FMF to control symptoms and prevent kidney damage from amyloidosis. We'll monitor your labs regularly. *[Tool Use: Schedule Regular Follow-up with Urinalysis and Renal Function Tests]*", "keywords": ["lifelong therapy", "monitoring"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "It's a relief to finally have an answer and a treatment. Thank you.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "You're welcome. Managing FMF well makes a big difference. Final diagnosis: Familial Mediterranean Fever (FMF).", "keywords": ["final diagnosis"]}
+                ]
+            },
+             "129": {
+                "dlg_id": "r1_129",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi, you were referred from the emergency department? Tell me what happened.", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I had a really stressful event at work yesterday, felt like a panic attack, but then I developed severe chest pain, like my heart was squeezed. I thought I was having a heart attack.", "keywords": ["stress trigger", "chest pain", "anxiety"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "I see the ED report. Your ECG showed some changes and your troponin levels were elevated, correct?", "keywords": ["ecg changes", "elevated troponin"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Yes, that's why they admitted me. They mentioned doing a heart catheterization.", "keywords": ["hospital admission"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "That's standard procedure with those findings. Let's review the results. *[Tool Use: Review ECG, Review Serial Troponins, Review Coronary Angiography Report]*", "keywords": ["ecg review", "troponin review", "angiography review"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "ECG: Anterior ST elevation initially, now resolving T-wave inversions. Troponin: Peaked at 3.5 ng/mL, now trending down. Coronary Angiography: Normal coronary arteries, no significant blockages.", "keywords": ["st elevation", "t wave inversion", "troponin peak", "normal coronary arteries"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, so you had ECG changes and heart muscle enzyme elevation like a heart attack, but your coronary arteries are clear. This points away from a typical blockage. Did they do an echocardiogram?", "keywords": ["discrepant findings"]},
+                    {"speaker": "patient", "uttr_id": 7, "text": "Yes, they did one this morning.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Let's look at that. *[Tool Use: Review Echocardiogram Report and Images]*", "keywords": ["echocardiogram review"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "Echocardiogram: Apical ballooning of the left ventricle with significantly reduced ejection fraction (estimated 35%). Basal segments are hyperdynamic.", "keywords": ["apical ballooning", "reduced ejection fraction", "takotsubo pattern"]},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The echocardiogram shows a specific pattern called apical ballooning. Combined with the preceding stressful event, normal arteries, and ECG/troponin changes, this confirms a diagnosis of Takotsubo Cardiomyopathy, also known as 'broken heart syndrome'.", "keywords": ["takotsubo cardiomyopathy", "stress cardiomyopathy", "broken heart syndrome"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "Broken heart syndrome? So stress caused this?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "Yes, intense emotional or physical stress can trigger a temporary stunning and weakening of the heart muscle in this pattern. The good news is that it's usually reversible. Treatment is supportive. *[Tool Use: Start Beta-blocker, Start ACE inhibitor, Recommend Stress Management]*", "keywords": ["reversible cardiomyopathy", "supportive care", "beta blocker", "ace inhibitor"]},
+                    {"speaker": "patient", "uttr_id": 13, "text": "Wow, I had no idea stress could do that. Thank you for explaining.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. We'll monitor your heart function recovery with follow-up echocardiograms. Final diagnosis: Takotsubo Cardiomyopathy.", "keywords": ["final diagnosis", "follow-up echo"]}
+                ]
+            },
+            "130": {
+                "dlg_id": "r1_130",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. You mentioned feeling unwell after starting treatment for your myasthenia gravis?", "keywords": ["myasthenia gravis"]},
+                    {"speaker": "patient", "uttr_id": 1, "text": "Yes, I started pyridostigmine a few days ago. Now I have bad diarrhea, stomach cramps, and I feel like I'm sweating more.", "keywords": ["pyridostigmine side effects", "diarrhea", "abdominal cramps", "sweating"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Those sound like cholinergic side effects, which can happen with pyridostigmine. Are you also experiencing any muscle twitching or excessive tearing/salivation?", "keywords": ["cholinergic symptoms", "muscle fasciculations", "salivation"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Yes, some muscle twitching in my eyelids and arms.", "keywords": ["fasciculations"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Okay, it sounds like the dose might be a bit too high or you're sensitive to these side effects. This isn't a myasthenic crisis, but rather over-medication effects, sometimes called a cholinergic crisis in severe cases. Let's check your vitals. *[Tool Use: Vitals Check]*", "keywords": ["cholinergic crisis", "pyridostigmine toxicity"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "Vitals: HR 55 bpm, BP 110/70 mmHg, RR 18/min.", "keywords": ["bradycardia"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Your heart rate is a bit slow, which also fits. We need to manage these side effects. We can add another medication to counteract the gastrointestinal and sweating issues, or adjust the pyridostigmine dose. Let's try adding glycopyrrolate first. *[Tool Use: Prescribe Glycopyrrolate]*", "keywords": ["glycopyrrolate", "side effect management"]},
+                    {"speaker": "patient", "uttr_id": 7, "text": "What does that do?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Glycopyrrolate blocks some of the unwanted cholinergic effects like diarrhea and sweating, without significantly affecting the muscle strength benefits from pyridostigmine.", "keywords": ["glycopyrrolate mechanism"]},
+                    {"speaker": "doctor", "uttr_id": 9, "text": "Alternatively, we could slightly reduce your pyridostigmine dose and see if that helps while maintaining good control of your myasthenia symptoms. We need to find the right balance. *[Tool Use: Discuss Dose Adjustment Strategy for Pyridostigmine]*", "keywords": ["dose adjustment"]},
+                    {"speaker": "patient", "uttr_id": 10, "text": "Let's try adding the new medication first. The pyridostigmine was helping my strength.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "Okay, we'll start glycopyrrolate. Call us if the side effects don't improve within a few days, or if your myasthenia symptoms worsen.", "keywords": ["follow-up plan"]},
+                    {"speaker": "patient", "uttr_id": 12, "text": "Will do. Thank you.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 13, "text": "You're welcome. Final diagnosis: Cholinergic Side Effects secondary to Pyridostigmine Therapy.", "keywords": ["final diagnosis"]}
+                ]
+            },
+             "131": {
+                "dlg_id": "r1_131",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in today?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I've been having episodes of bright red skin flushing, mostly on my face and neck, along with watery diarrhea and sometimes wheezing. It's been happening for about six months.", "keywords": ["flushing", "diarrhea", "wheezing"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Does anything seem to trigger the flushing, like certain foods or alcohol?", "keywords": ["triggers"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Alcohol definitely makes the flushing worse. Sometimes stress seems to bring it on too.", "keywords": ["alcohol trigger", "stress trigger"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Have you noticed any heart palpitations or dizziness during these episodes?", "keywords": ["cardiac symptoms"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Yes, sometimes my heart races.", "keywords": ["palpitations"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "This combination of flushing, diarrhea, wheezing, and palpitations raises concern for Carcinoid Syndrome, caused by hormones released from certain tumors. We need to run specific tests. *[Tool Use: Order 24-hour Urine Collection for 5-HIAA, Order Plasma Chromogranin A Level]*", "keywords": ["carcinoid syndrome", "neuroendocrine tumor", "urine 5-hiaa", "chromogranin a"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Lab Results: 24-hour Urine 5-HIAA significantly elevated. Plasma Chromogranin A elevated.", "keywords": ["elevated 5-hiaa", "elevated chromogranin a"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "These results strongly support the diagnosis of Carcinoid Syndrome. The next step is to locate the primary tumor, which is often in the small intestine or lungs. *[Tool Use: Order CT Scan of Chest/Abdomen/Pelvis with Contrast, Order Octreotide Scan (Somatostatin Receptor Scintigraphy)]*", "keywords": ["tumor localization", "ct scan", "octreotide scan"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "CT Scan: Suggestive lesion in the terminal ileum with mesenteric lymphadenopathy and multiple liver lesions. Octreotide Scan: Shows uptake in the ileum, mesentery, and liver, consistent with metastatic neuroendocrine tumor.", "keywords": ["ileal neuroendocrine tumor", "liver metastases"]},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The scans confirm a neuroendocrine tumor likely originating in your small intestine, which has spread to the liver. This explains the Carcinoid Syndrome symptoms. We need to manage both the tumor and the symptoms. *[Tool Use: Consult Oncology, Consult Surgery, Start Octreotide Therapy (Somatostatin Analog)]*", "keywords": ["metastatic neuroendocrine tumor", "oncology consult", "surgery consult", "octreotide therapy"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "A tumor? This is a lot to take in.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "I understand this is difficult news. These tumors often grow slowly. Octreotide medication can help control the flushing and diarrhea symptoms effectively. The oncology team will discuss specific tumor treatment options.", "keywords": ["prognosis", "symptom management", "tumor treatment"]},
+                    {"speaker": "patient", "uttr_id": 13, "text": "Okay. Thank you for explaining.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "We'll coordinate your care with the specialists. Final diagnosis: Metastatic Neuroendocrine Tumor with Carcinoid Syndrome.", "keywords": ["final diagnosis"]}
+                ]
+            },
+             "132": {
+                "dlg_id": "r1_132",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "What brings you to the clinic today?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "I have this weird yellowing under my fingernails, and the nails seem to be lifting off the nail bed. It's not painful, just looks strange.", "keywords": ["nail discoloration", "onycholysis", "yellow nails"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "How long have you noticed this?", "keywords": ["symptom duration"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Maybe for the past year or so? It seems to be slowly getting worse. All my fingernails are affected.", "keywords": ["gradual onset", "multiple nails"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Do you have any respiratory problems, like chronic cough, shortness of breath, or frequent lung infections? Or any swelling in your legs?", "keywords": ["respiratory symptoms", "lymphedema"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Yes, I've had chronic bronchitis for years, and my legs do swell up sometimes, especially by the end of the day.", "keywords": ["chronic bronchitis", "leg swelling"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Let me examine your nails and legs, and listen to your lungs. *[Tool Use: Nail Examination, Lower Extremity Exam for Edema, Lung Auscultation]*", "keywords": ["physical exam"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Exam: All fingernails show yellowish discoloration, thickening, loss of cuticles, and onycholysis. Bilateral 2+ pitting edema of lower legs. Decreased breath sounds with scattered rhonchi.", "keywords": ["yellow nail findings", "pitting edema", "abnormal lung sounds"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "The combination of yellow nails, lymphedema (leg swelling), and chronic respiratory issues (like bronchitis or sinusitis) forms a triad known as Yellow Nail Syndrome. It's a rare disorder.", "keywords": ["yellow nail syndrome", "rare disease"]},
+                    {"speaker": "patient", "uttr_id": 9, "text": "Yellow Nail Syndrome? I've never heard of it. What causes it?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The exact cause isn't fully understood, but it's thought to be related to problems with the lymphatic system, which affects fluid drainage and nail growth. We should confirm there's no fungal infection, though it looks less likely. *[Tool Use: Order Nail Clipping for Fungal Culture/PAS Stain]*", "keywords": ["pathophysiology", "lymphatic system", "fungal culture"]},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "There's no specific cure, but treatment focuses on managing the symptoms. Vitamin E supplements are sometimes tried for the nails. Managing the lymphedema with compression stockings and treating the respiratory condition are important. *[Tool Use: Recommend Vitamin E Supplementation, Prescribe Compression Stockings, Refer to Pulmonology for Respiratory Management]*", "keywords": ["yellow nail syndrome treatment", "vitamin e", "compression stockings", "pulmonology referral"]},
+                    {"speaker": "control", "uttr_id": 12, "text": "Nail clippings: Negative for fungus.", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 13, "text": "So it's mostly about managing the other problems? The nails don't hurt, they just look bad.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "Correct. Sometimes the nail changes can improve if the underlying respiratory or lymphatic issues are better controlled, but often they persist. The main focus is managing the lung and swelling problems. Final diagnosis: Yellow Nail Syndrome.", "keywords": ["prognosis", "symptom management", "final diagnosis"]}
+                ]
+            },
+             "133": {
+                "dlg_id": "r1_133",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi there. You were admitted after breaking your femur? How are you feeling?", "keywords": ["femur fracture", "post-operative"]},
+                    {"speaker": "patient", "uttr_id": 1, "text": "The surgery was two days ago. Last night I started feeling short of breath, confused, and I noticed these weird little red dots on my chest.", "keywords": ["dyspnea", "confusion", "petechial rash", "post-traumatic"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Shortness of breath and confusion after a long bone fracture are very concerning. Let's get your vitals immediately. *[Tool Use: STAT Vitals Check (HR, RR, BP, O2 Sat), Neurological Assessment]*", "keywords": ["vital signs", "neurological exam"]},
+                    {"speaker": "control", "uttr_id": 3, "text": "Vitals: HR 120 bpm, RR 28/min, BP 115/75 mmHg, O2 Sat 88% on room air. Patient is agitated and disoriented to time.", "keywords": ["tachycardia", "tachypnea", "hypoxia", "agitation", "disorientation"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "You're hypoxic and tachycardic. The combination of respiratory distress, neurological changes, and petechial rash after a femur fracture is classic for Fat Embolism Syndrome (FES). *[Tool Use: Place Patient on High-Flow Oxygen, Order STAT Arterial Blood Gas (ABG), Order STAT Portable Chest X-Ray]*", "keywords": ["fat embolism syndrome", "fes", "hypoxia", "oxygen therapy", "abg", "chest x-ray"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "ABG (on O2): pH 7.48, pCO2 30 mmHg, pO2 60 mmHg (significant hypoxemia). Chest X-Ray: Bilateral diffuse 'snowstorm' infiltrates.", "keywords": ["respiratory alkalosis", "hypoxemia", "bilateral infiltrates"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "The ABG confirms severe hypoxemia despite oxygen, and the chest X-ray findings are consistent with FES. This is a clinical diagnosis based on Gurd's criteria (respiratory distress, neuro changes, petechiae). There's no specific test, but we need to support your breathing and organs. *[Tool Use: Consult Critical Care/ICU, Prepare for Possible Intubation and Mechanical Ventilation]*", "keywords": ["gurd's criteria", "clinical diagnosis", "supportive care", "critical care consult", "mechanical ventilation"]},
+                    {"speaker": "patient", "uttr_id": 7, "text": "(Agitated) What's happening?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "After a large bone fracture, fat globules can travel to your lungs and brain, causing breathing problems and confusion. We need to support your breathing, possibly with a breathing machine, while your body clears the fat. *[Tool Use: Consider Corticosteroids (Controversial but sometimes used)]*", "keywords": ["fes pathophysiology", "supportive treatment", "corticosteroids"]},
+                    {"speaker": "doctor", "uttr_id": 9, "text": "We're moving you to the ICU now for closer monitoring and respiratory support.", "keywords": ["icu transfer"]},
+                    {"speaker": "control", "uttr_id": 10, "text": "Patient transferred to ICU, intubated for worsening hypoxemia.", "keywords": ["intubation"]},
+                    {"speaker": "doctor", "uttr_id": 11, "text": "(Speaking to family later) His condition is critical, but with aggressive supportive care in the ICU, many patients with FES recover. It will take time.", "keywords": ["prognosis", "critical care"]},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "Final diagnosis: Fat Embolism Syndrome (FES) post-femur fracture.", "keywords": ["final diagnosis"]}
+                ]
+            },
+            "134": {
+                "dlg_id": "r1_134",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. Your family doctor was concerned about your weight loss and joint pain?", "keywords": ["weight loss", "arthralgia"]},
+                    {"speaker": "patient", "uttr_id": 1, "text": "Yes, I've lost nearly 30 pounds without trying over the last year. My knees and wrists ache constantly. I also have chronic diarrhea.", "keywords": ["unintentional weight loss", "polyarthralgia", "chronic diarrhea"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "That's a significant combination of symptoms. Any fevers? Abdominal pain?", "keywords": ["fever", "abdominal pain"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Low-grade fevers sometimes. And yes, cramping abdominal pain often comes with the diarrhea.", "keywords": ["low-grade fever", "abdominal cramping"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Have you noticed any neurological symptoms? Confusion, memory problems, unusual eye movements?", "keywords": ["neurological symptoms", "cognitive changes", "eye movements"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "It's strange you ask... lately my wife says my eyes sometimes make weird rhythmic movements when I chew. And my memory isn't what it used to be.", "keywords": ["oculomasticatory myorhythmia", "memory impairment"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, the joint pain, weight loss, diarrhea, and particularly those neurological findings like oculomasticatory myorhythmia, make me consider a rare systemic infection called Whipple's disease. We need thorough testing. *[Tool Use: Order CBC, CMP, ESR, CRP, Albumin Level]*, *[Tool Use: Consult Gastroenterology, Consult Neurology]*", "keywords": ["whipple's disease", "oculomasticatory myorhythmia", "systemic infection", "inflammatory markers", "gastroenterology consult", "neurology consult"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Labs show mild anemia, low albumin, elevated ESR and CRP. Neuro consult confirms rhythmic facial and eye movements suggestive of OMM.", "keywords": ["anemia", "hypoalbuminemia", "elevated inflammatory markers"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "Given these findings, the most crucial test is an upper endoscopy with biopsies from the small intestine. We need to look for specific changes caused by the bacteria. *[Tool Use: Schedule Upper GI Endoscopy with Duodenal Biopsies for PAS Stain and T. whipplei PCR]*", "keywords": ["upper gi endoscopy", "duodenal biopsy", "pas stain", "t whipplei pcr"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "Endoscopy performed. Biopsy results: Positive PAS-staining macrophages in the lamina propria. PCR positive for Tropheryma whipplei.", "keywords": ["pas-positive macrophages", "t whipplei positive"]},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The biopsies confirm Whipple's disease. This requires prolonged antibiotic treatment, starting intravenously and then transitioning to oral medication, often for over a year, to eradicate the infection and prevent relapse, especially neurological relapse. *[Tool Use: Admit for IV Ceftriaxone Initiation, Plan Long-Term Trimethoprim-Sulfamethoxazole Therapy, Arrange Central Line Access]*", "keywords": ["whipple's disease treatment", "ceftriaxone", "trimethoprim-sulfamethoxazole", "long-term antibiotics"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "Wow, a whole year of antibiotics? It's good to finally know what's wrong.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "Yes, it's a long course, but crucial for recovery and preventing serious complications. We'll monitor your progress closely. Final diagnosis: Whipple's Disease.", "keywords": ["treatment adherence", "monitoring", "final diagnosis"]}
+                ]
+            },
+            "135": {
+                "dlg_id": "r1_135",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hi, you were brought in by ambulance due to trouble walking and speaking?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "(Slurred speech) Yes... started few weeks ago... dizzy... clumsy... getting worse fast.", "keywords": ["dysarthria", "ataxia", "dizziness", "rapid progression"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Any numbness, weakness, vision changes?", "keywords": ["neurological symptoms"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "No... just... can't walk straight... words jumbled.", "keywords": ["gait ataxia"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Do you smoke? Have you had any recent infections or unexplained weight loss?", "keywords": ["smoking history", "constitutional symptoms"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "Smoked... years... quit recently. No weight loss.", "keywords": ["smoking history"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, your rapidly progressing cerebellar symptoms (ataxia, dysarthria) are very concerning. We need imaging and further tests immediately to rule out stroke or other acute processes. *[Tool Use: STAT Neurological Exam, STAT Head CT Scan (Non-contrast)]*", "keywords": ["cerebellar signs", "neurological exam", "head ct scan"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Neuro Exam: Severe truncal and appendicular ataxia, scanning dysarthria, nystagmus. Head CT: No acute hemorrhage or large infarct.", "keywords": ["severe ataxia", "nystagmus", "normal head ct"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "The CT is clear, but we need a more detailed look with MRI. Given the rapid progression and your smoking history, we must also consider paraneoplastic causes - where the immune system attacks the brain in response to an undetected cancer. *[Tool Use: Order Brain MRI with and without Gadolinium, Order Lumbar Puncture for CSF Analysis (including Cell Count, Protein, Glucose, IgG Index, Oligoclonal Bands, Paraneoplastic Antibody Panel - Anti-Yo, Anti-Hu, etc.)]*", "keywords": ["brain mri", "lumbar puncture", "csf analysis", "paraneoplastic syndrome", "paraneoplastic antibodies"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "Brain MRI: Mild cerebellar atrophy, no enhancing lesions. CSF: Mild pleocytosis, elevated protein, positive for Anti-Yo antibodies.", "keywords": ["cerebellar atrophy", "csf pleocytosis", "anti-yo positive"]},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The positive Anti-Yo antibody in your CSF confirms Paraneoplastic Cerebellar Degeneration (PCD). This antibody is strongly associated with underlying gynecological or breast cancer, but also sometimes lung cancer in smokers. We must search for the primary tumor. *[Tool Use: Order CT Chest/Abdomen/Pelvis with Contrast, Mammogram (if applicable), Consult Neurology, Consult Oncology, Consider PET Scan]*", "keywords": ["paraneoplastic cerebellar degeneration", "pcd", "anti-yo antibody", "malignancy screen", "ct scan", "oncology consult", "pet scan"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "(Distressed) Cancer? Attacking my brain?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "Unfortunately, yes. The immune response to the hidden tumor is damaging the cerebellum. Treating the underlying cancer is the main focus, though sometimes immunotherapy is used for the neurological symptoms, with variable success. *[Tool Use: Discuss Treatment Options (Tumor-directed therapy, Immunotherapy - IVIG/Steroids/Rituximab)]*", "keywords": ["pcd treatment", "immunotherapy"]},
+                    {"speaker": "control", "uttr_id": 13, "text": "CT Chest reveals a suspicious lung nodule.", "keywords": ["lung nodule"]},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "We have found a likely source in the lung. The oncology team will guide the next steps for biopsy and treatment. Final diagnosis: Paraneoplastic Cerebellar Degeneration (Anti-Yo positive) secondary to suspected Lung Cancer.", "keywords": ["lung cancer", "final diagnosis"]}
+                ]
+            },
+             "136": {
+                "dlg_id": "r1_136",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Good afternoon. Please tell me about your symptoms.", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "It started with numbness and tingling in my feet and hands about a year ago. Now it's progressing to weakness, and my legs are swollen. Also, my skin seems darker, especially in the creases.", "keywords": ["peripheral neuropathy", "paresthesias", "weakness", "edema", "hyperpigmentation"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "The combination of neuropathy, edema, and skin changes is unusual. Have you noticed any enlargement of your lymph nodes, liver, or spleen? Any hormonal issues?", "keywords": ["lymphadenopathy", "organomegaly", "endocrinopathy"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "My doctor felt some swollen glands in my neck. And I was recently diagnosed with hypothyroidism.", "keywords": ["lymphadenopathy", "hypothyroidism"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "This collection of findings – Polyneuropathy, Organomegaly, Endocrinopathy, Monoclonal protein, and Skin changes – suggests a rare condition called POEMS syndrome. We need several specific tests. *[Tool Use: Order Nerve Conduction Studies (NCS)/EMG, Order Serum Protein Electrophoresis (SPEP) with Immunofixation, Order Quantitative Immunoglobulins, Order Serum Free Light Chains]*", "keywords": ["poems syndrome", "polyneuropathy", "organomegaly", "endocrinopathy", "monoclonal gammopathy", "skin changes", "ncs", "emg", "spep", "immunofixation", "free light chains"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "NCS/EMG: Shows demyelinating polyneuropathy. SPEP/Immunofixation: Reveals an IgG lambda monoclonal protein spike.", "keywords": ["demyelinating neuropathy", "igg lambda", "monoclonal protein"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "The demyelinating neuropathy and the M-protein support POEMS. A key marker is often elevated VEGF levels. We also need to check for bone lesions. *[Tool Use: Order Serum Vascular Endothelial Growth Factor (VEGF) Level, Order Skeletal Survey (X-rays)]*", "keywords": ["vegf", "vascular endothelial growth factor", "skeletal survey", "bone lesions"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "VEGF Level: Markedly elevated. Skeletal Survey: Shows multiple small sclerotic bone lesions.", "keywords": ["elevated vegf", "sclerotic bone lesions"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "The elevated VEGF and sclerotic bone lesions essentially confirm POEMS syndrome. This is a paraneoplastic syndrome related to the monoclonal plasma cell disorder. Treatment often involves addressing the underlying plasma cell clone. *[Tool Use: Consult Hematology/Oncology, Perform Bone Marrow Biopsy]*", "keywords": ["poems syndrome diagnosis", "plasma cell dyscrasia", "hematology consult", "bone marrow biopsy"]},
+                    {"speaker": "patient", "uttr_id": 9, "text": "POEMS? I've never heard of it. Is it like cancer?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "It's related to a pre-cancerous or sometimes cancerous condition of plasma cells, similar to multiple myeloma but with a different constellation of symptoms. Treatment might involve radiation for localized bone lesions or systemic therapy like chemotherapy or stem cell transplant, depending on the extent. *[Tool Use: Discuss Treatment Options (Radiation, Chemotherapy, Stem Cell Transplant)]*", "keywords": ["poems syndrome explanation", "poems treatment"]},
+                    {"speaker": "control", "uttr_id": 11, "text": "Bone Marrow Biopsy: Shows mildly increased lambda-restricted plasma cells.", "keywords": ["plasma cell increase"]},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "The hematology team will determine the best treatment strategy based on all these findings. Managing POEMS can significantly improve the neuropathy and other symptoms. Final diagnosis: POEMS Syndrome.", "keywords": ["treatment planning", "final diagnosis"]}
+                ]
+            },
+             "137": {
+                "dlg_id": "r1_137",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what's been troubling you?", "keywords": []},
+                    {"speaker": "patient", "uttr_id": 1, "text": "For the past three weeks, I've been getting these high fevers every evening, like 103-104°F. They disappear by morning. I also have really sore joints, especially my wrists and knees, and a sore throat.", "keywords": ["high spiking fever", "quotidian fever", "arthralgia", "sore throat"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Any rash associated with the fevers?", "keywords": ["rash"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "Yes! A faint salmon-colored rash appears on my chest and arms when the fever spikes, then fades away.", "keywords": ["evanescent rash", "salmon-colored rash"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Have you had any infections recently? Any swollen glands?", "keywords": ["infection history", "lymphadenopathy"]},
+                    {"speaker": "patient", "uttr_id": 5, "text": "No known infections. My neck glands feel a bit swollen.", "keywords": ["lymphadenopathy"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "Okay, the combination of high spiking fevers, evanescent rash, arthritis, and sore throat in an adult makes me suspect Adult-Onset Still's Disease (AOSD). It's a diagnosis of exclusion, meaning we need to rule out infections, other autoimmune diseases, and malignancies. *[Tool Use: Order CBC with Differential, CMP, Ferritin, ESR, CRP, Rheumatoid Factor (RF), ANA, Blood Cultures x2, Viral Serologies (e.g., EBV, CMV), Throat Swab]*", "keywords": ["adult-onset still's disease", "aosd", "diagnosis of exclusion", "inflammatory markers", "ferritin", "infection workup", "autoimmune workup"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "Labs: Leukocytosis (high WBCs, mostly neutrophils), elevated ESR/CRP, markedly elevated Ferritin (>5000 ng/mL). RF and ANA negative. Blood cultures negative. Throat swab negative.", "keywords": ["leukocytosis", "neutrophilia", "elevated inflammatory markers", "hyperferritinemia", "negative autoimmune markers", "negative cultures"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "The extremely high ferritin level is a strong clue for AOSD, along with the negative infection and autoimmune markers. We should check your heart as well. *[Tool Use: Order Echocardiogram, Consult Rheumatology]*", "keywords": ["hyperferritinemia", "echocardiogram", "rheumatology consult"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "Echocardiogram: Normal, no signs of endocarditis or pericarditis.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "Based on your clinical picture and the lab results fitting diagnostic criteria like the Yamaguchi criteria, the diagnosis is Adult-Onset Still's Disease. Treatment typically starts with anti-inflammatories. *[Tool Use: Review Yamaguchi Criteria for AOSD Diagnosis, Start High-Dose NSAIDs (e.g., Indomethacin) or Corticosteroids (e.g., Prednisone)]*", "keywords": ["yamaguchi criteria", "aosd diagnosis", "aosd treatment", "nsaids", "corticosteroids"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "Still's Disease? What causes it?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "It's an inflammatory condition, likely autoinflammatory, meaning the body's own immune system is causing the inflammation without a clear external trigger. The steroids should help control the fevers and joint pain quickly. Some patients need longer-term biologic medications. *[Tool Use: Discuss Potential Need for Biologic Therapy (e.g., Anakinra, Tocilizumab) if Steroids Ineffective or Required Long-Term]*", "keywords": ["autoinflammatory disease", "biologic therapy"]},
+                    {"speaker": "patient", "uttr_id": 13, "text": "I hope it works. These fevers are exhausting.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "We'll monitor your response closely. Final diagnosis: Adult-Onset Still's Disease (AOSD).", "keywords": ["final diagnosis", "treatment monitoring"]}
+                ]
+            },
+            "138": {
+                "dlg_id": "r1_138",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Your family brought you in because they're concerned about changes in your memory and behavior?", "keywords": []},
+                    {"speaker": "spouse", "uttr_id": 1, "text": "Yes, doctor. Over just the past few months, his memory has declined incredibly fast. He gets confused, his personality changed, and he's started having these sudden jerky movements.", "keywords": ["rapidly progressive dementia", "personality changes", "confusion", "myoclonus"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "(To patient) Sir, can you tell me the date today? Who is the current president?", "keywords": ["cognitive assessment"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "(Confused, startled by sudden arm jerk) Uh... Tuesday? Is it... Reagan?", "keywords": ["disorientation", "myoclonus"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "The rapid cognitive decline and the myoclonus are alarming. We need to investigate this urgently. Has he had any vision problems or difficulty walking?", "keywords": ["visual symptoms", "gait disturbance"]},
+                    {"speaker": "spouse", "uttr_id": 5, "text": "He seems clumsier, yes. Sometimes complains his vision is blurry.", "keywords": ["ataxia", "blurred vision"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "This rapid progression raises concern for Creutzfeldt-Jakob Disease (CJD), a rare prion disease, although other causes need exclusion. We need brain imaging and electrical activity tests. *[Tool Use: STAT Neurological Exam, Order Brain MRI (with DWI and FLAIR sequences), Order Electroencephalogram (EEG)]*", "keywords": ["creutzfeldt-jakob disease", "cjd", "prion disease", "rapidly progressive dementia", "brain mri", "dwi", "flair", "eeg"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "MRI: Cortical ribboning and high signal intensity in the basal ganglia on DWI sequences. EEG: Shows periodic sharp wave complexes.", "keywords": ["cortical ribboning", "basal ganglia hyperintensity", "periodic sharp wave complexes"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "The MRI and EEG findings are highly characteristic of sporadic CJD. To further support the diagnosis, we should perform a lumbar puncture to check for specific proteins in the spinal fluid. *[Tool Use: Order Lumbar Puncture for CSF Analysis (including 14-3-3 protein, Tau protein, and RT-QuIC assay)]*", "keywords": ["lumbar puncture", "csf analysis", "14-3-3 protein", "tau protein", "rt-quic"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "CSF Analysis: Positive 14-3-3 protein. RT-QuIC assay positive.", "keywords": ["positive 14-3-3", "positive rt-quic"]},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The positive RT-QuIC test, along with the clinical picture and MRI/EEG findings, confirms the diagnosis of sporadic Creutzfeldt-Jakob Disease. *[Tool Use: Consult Neurology, Consult Palliative Care, Provide Genetic Counseling if family history suggested]*", "keywords": ["cjd diagnosis", "sporadic cjd", "neurology consult", "palliative care consult"]},
+                    {"speaker": "spouse", "uttr_id": 11, "text": "(Crying) Oh no... I read about that... there's no cure, is there?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "I'm so sorry, but unfortunately, you are correct. CJD is currently untreatable and universally fatal, usually within a year of onset. Our focus now is on supportive care, managing symptoms like the myoclonus, and ensuring his comfort. The palliative care team will be very helpful.", "keywords": ["cjd prognosis", "supportive care", "symptom management"]},
+                    {"speaker": "spouse", "uttr_id": 13, "text": "Okay... thank you for being direct.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "We will provide all the support we can for both of you during this difficult time. Final diagnosis: Sporadic Creutzfeldt-Jakob Disease (sCJD).", "keywords": ["end-of-life care", "final diagnosis"]}
+                ]
+            },
+             "139": {
+                "dlg_id": "r1_139",
+                "utterances": [
+                    {"speaker": "doctor", "uttr_id": 0, "text": "Hello, you were referred for evaluation of bone pain?", "keywords": ["bone pain"]},
+                    {"speaker": "patient", "uttr_id": 1, "text": "Yes, I've had this deep, aching pain in my shins and thighs for almost two years. It's worse at night. Painkillers barely touch it.", "keywords": ["lower extremity pain", "nocturnal pain", "chronic bone pain"]},
+                    {"speaker": "doctor", "uttr_id": 2, "text": "Any other symptoms? Shortness of breath, excessive thirst or urination, skin changes?", "keywords": ["systemic symptoms", "dyspnea", "diabetes insipidus symptoms", "skin changes"]},
+                    {"speaker": "patient", "uttr_id": 3, "text": "I do get short of breath sometimes. And I am always thirsty, constantly drinking water.", "keywords": ["dyspnea", "polydipsia", "polyuria"]},
+                    {"speaker": "doctor", "uttr_id": 4, "text": "Okay, the combination of symmetrical long bone pain, possible diabetes insipidus (thirst/urination), and shortness of breath is concerning for a rare infiltrative disorder. We need imaging of your bones and potentially other areas. *[Tool Use: Order Skeletal Survey (X-rays), Order Technetium-99m Bone Scan]*", "keywords": ["infiltrative disorder", "diabetes insipidus", "skeletal survey", "bone scan"]},
+                    {"speaker": "control", "uttr_id": 5, "text": "Skeletal Survey: Bilateral cortical thickening and sclerosis in the diaphyses of tibias and femurs. Bone Scan: Intense, symmetric uptake in the long bones of the legs.", "keywords": ["cortical thickening", "bone sclerosis", "symmetric bone scan uptake"]},
+                    {"speaker": "doctor", "uttr_id": 6, "text": "The imaging is highly suggestive of Erdheim-Chester Disease (ECD), a rare form of non-Langerhans cell histiocytosis. The disease can infiltrate many organs, explaining your other symptoms. We need to check other systems. *[Tool Use: Order CT Scan of Chest/Abdomen/Pelvis with Contrast, Order Brain MRI (specifically pituitary region), Echocardiogram]*", "keywords": ["erdheim-chester disease", "ecd", "histiocytosis", "multisystem involvement", "ct scan", "brain mri", "echocardiogram"]},
+                    {"speaker": "control", "uttr_id": 7, "text": "CT Scan: Shows 'coated aorta' appearance and retroperitoneal fibrosis encasing the ureters. Brain MRI: Thickening of the pituitary stalk. Echo: Mild pericardial thickening.", "keywords": ["coated aorta", "retroperitoneal fibrosis", "pituitary stalk thickening", "pericardial thickening"]},
+                    {"speaker": "doctor", "uttr_id": 8, "text": "These findings confirm widespread involvement typical of ECD (cardiovascular, CNS/pituitary causing DI, retroperitoneal). Definitive diagnosis requires a biopsy of affected tissue to identify the specific cells and check for a common mutation. *[Tool Use: Schedule CT-Guided Biopsy of Retroperitoneal Tissue or Bone Lesion, Request Immunohistochemistry (CD68+, CD1a-, S100-) and BRAF V600E Mutation Testing on Biopsy Sample]*", "keywords": ["ecd diagnosis", "tissue biopsy", "immunohistochemistry", "braf v600e mutation"]},
+                    {"speaker": "control", "uttr_id": 9, "text": "Biopsy successful. Pathology: Infiltration by foamy histiocytes, CD68 positive, CD1a negative. Molecular testing: Positive for BRAF V600E mutation.", "keywords": ["foamy histiocytes", "cd68 positive", "cd1a negative", "braf positive"]},
+                    {"speaker": "doctor", "uttr_id": 10, "text": "The biopsy confirms Erdheim-Chester Disease with the BRAF V600E mutation. This mutation is important because targeted therapies are often effective. *[Tool Use: Consult Hematology/Oncology/Rheumatology (Multi-disciplinary approach), Discuss Treatment Options (Interferon-alpha, BRAF inhibitors like Vemurafenib/Dabrafenib, MEK inhibitors)]*", "keywords": ["braf targeted therapy", "vemurafenib", "ecd treatment", "multi-disciplinary team"]},
+                    {"speaker": "patient", "uttr_id": 11, "text": "Erdheim-Chester... it sounds serious. Can it be treated?", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 12, "text": "It is a serious systemic disease, but the discovery of the BRAF mutation has led to effective targeted treatments that can control the disease and improve symptoms significantly for many patients. The specialists will determine the best approach for you.", "keywords": ["ecd prognosis", "targeted therapy benefits"]},
+                    {"speaker": "patient", "uttr_id": 13, "text": "That's hopeful. Thank you for finding this.", "keywords": []},
+                    {"speaker": "doctor", "uttr_id": 14, "text": "You're welcome. Getting the right diagnosis is the crucial first step. Final diagnosis: Erdheim-Chester Disease (BRAF V600E positive).", "keywords": ["final diagnosis"]}
+                ]
+            },
+                "140": {
+                    "dlg_id": "r1_140",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. You've been dealing with hives and bone pain?", "keywords": ["chronic urticaria", "bone pain"]},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, for years. These itchy hives come and go, but the aching pain in my legs, especially at night, is constant. I also get fevers sometimes.", "keywords": ["chronic hives", "nocturnal bone pain", "recurrent fever"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Chronic urticaria with bone pain and fevers is an unusual combination. Have you had blood work done recently?", "keywords": ["systemic symptoms"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Yes, my regular doctor said I had some inflammation and a funny protein in my blood.", "keywords": ["inflammation", "abnormal protein"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Okay, this pattern raises suspicion for Schnitzler Syndrome, a rare autoinflammatory condition characterized by chronic urticaria and a monoclonal gammopathy, usually IgM. Let's investigate further. *[Tool Use: Order CBC, ESR, CRP, Serum Protein Electrophoresis (SPEP) with Immunofixation, Quantitative Immunoglobulins (IgG, IgA, IgM)]*", "keywords": ["schnitzler syndrome", "autoinflammatory disease", "monoclonal gammopathy", "spep", "immunofixation", "immunoglobulins"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Labs: Elevated ESR/CRP. SPEP/Immunofixation: Confirms presence of an IgM kappa monoclonal protein.", "keywords": ["elevated inflammatory markers", "igm kappa", "monoclonal protein"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The IgM monoclonal protein with your symptoms strongly points towards Schnitzler Syndrome. We should check your bones and potentially biopsy the skin rash. *[Tool Use: Order Skeletal Survey or Bone Scan, Consider Skin Biopsy for Urticarial Vasculitis, Consult Rheumatology, Consult Hematology]*", "keywords": ["skeletal survey", "bone scan", "skin biopsy", "urticarial vasculitis", "rheumatology consult", "hematology consult"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Bone Scan: Increased uptake in distal femurs and tibias. Skin Biopsy: Neutrophilic urticaria, no definitive vasculitis.", "keywords": ["increased bone scan uptake", "neutrophilic urticaria"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The findings fit Schnitzler Syndrome. While antihistamines often don't work well, treatments targeting the IL-1 pathway are usually very effective for the rash, fever, and bone pain. *[Tool Use: Discuss Ineffectiveness of Antihistamines, Initiate Anakinra (IL-1 Receptor Antagonist) Trial]*", "keywords": ["anakinra", "il-1 inhibitor", "schnitzler syndrome treatment"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "A specific treatment? I've tried so many things for the hives!", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Yes, Anakinra often provides dramatic relief for this specific condition. You'll need monitoring by Rheumatology and Hematology long-term due to the monoclonal protein. Final diagnosis: Schnitzler Syndrome.", "keywords": ["treatment response", "long-term monitoring", "final diagnosis"]}
+                    ]
+                },
+                "141": {
+                    "dlg_id": "r1_141",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Your parents brought you to the ER. They say you've been acting strangely?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "(Agitated, speaking rapidly) They don't understand! Thoughts... racing... people watching me...", "keywords": ["agitation", "psychosis", "paranoia"]},
+                        {"speaker": "parent", "uttr_id": 2, "text": "Doctor, this started about two weeks ago after she had a flu-like illness. First anxiety, then this paranoia, memory issues, and yesterday she had a seizure!", "keywords": ["acute psychiatric symptoms", "post-viral", "memory impairment", "seizure"]},
+                        {"speaker": "doctor", "uttr_id": 3, "text": "Acute onset psychosis and a seizure in a previously healthy young person warrants urgent investigation for autoimmune or infectious encephalitis. Any abnormal movements? Trouble sleeping?", "keywords": ["autoimmune encephalitis", "infectious encephalitis", "movement disorder", "sleep disturbance"]},
+                        {"speaker": "parent", "uttr_id": 4, "text": "Yes, strange lip-smacking and writhing movements sometimes. And she barely sleeps.", "keywords": ["orofacial dyskinesia", "dyskinesia", "insomnia"]},
+                        {"speaker": "doctor", "uttr_id": 5, "text": "Okay, the combination of psychiatric symptoms, seizures, dyskinesias, and autonomic instability (will check vitals) after a viral prodrome is highly suspicious for Anti-NMDA Receptor Encephalitis. We need immediate workup. *[Tool Use: STAT Vitals Monitoring (for Autonomic Instability), Continuous EEG Monitoring, Order Brain MRI with/without Contrast, Order Lumbar Puncture for CSF Analysis (Cells, Protein, Glucose, HSV PCR, VZV PCR, Autoimmune Encephalitis Panel including NMDAR Antibodies)]*", "keywords": ["anti-nmda receptor encephalitis", "autonomic instability", "eeg", "brain mri", "lumbar puncture", "csf analysis", "nmdar antibody"]},
+                        {"speaker": "control", "uttr_id": 6, "text": "Vitals show labile BP and tachycardia. EEG shows diffuse slowing, no clear seizure activity now. MRI brain unremarkable initially. LP performed.", "keywords": ["labile blood pressure", "tachycardia", "eeg slowing", "normal mri"]},
+                        {"speaker": "doctor", "uttr_id": 7, "text": "Even with a normal MRI initially, we strongly suspect Anti-NMDAR encephalitis. We need to check for an underlying tumor, often an ovarian teratoma, which can trigger this. *[Tool Use: Order Pelvic Ultrasound and/or CT Abdomen/Pelvis, Consult Neurology, Consult Gynecology/Oncology pending results]*", "keywords": ["ovarian teratoma", "pelvic ultrasound", "ct scan", "neurology consult"]},
+                        {"speaker": "control", "uttr_id": 8, "text": "CSF results return: Positive for Anti-NMDA Receptor antibodies. Pelvic Ultrasound reveals a complex ovarian cyst suspicious for teratoma.", "keywords": ["nmdar antibody positive", "ovarian teratoma"]},
+                        {"speaker": "doctor", "uttr_id": 9, "text": "The diagnosis is confirmed. Treatment involves removing the teratoma and aggressive immunotherapy. *[Tool Use: Schedule Surgical Resection of Ovarian Teratoma, Start High-Dose Corticosteroids and IVIG, Consider Plasma Exchange or Rituximab if poor response]*", "keywords": ["anti-nmdar encephalitis treatment", "tumor removal", "immunotherapy", "corticosteroids", "ivig", "rituximab"]},
+                        {"speaker": "parent", "uttr_id": 10, "text": "Will she get better?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 11, "text": "Recovery can be slow, often taking months, but with tumor removal and immunotherapy, many patients make significant improvements. Early treatment is key. Final diagnosis: Anti-NMDA Receptor Encephalitis associated with Ovarian Teratoma.", "keywords": ["prognosis", "recovery", "final diagnosis"]}
+                    ]
+                },
+                "142": {
+                    "dlg_id": "r1_142",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, you're here because of recurrent episodes of weakness and vision loss?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes. Several times over the past few years, I've had what felt like a stroke – one side gets weak, vision blurs, terrible headache. But the MRI is always weird, not a typical stroke they say.", "keywords": ["stroke-like episodes", "hemiparesis", "visual disturbance", "headache", "recurrent neurological events"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "How old were you when these started? Any other symptoms like seizures, hearing loss, or muscle aches?", "keywords": ["age of onset", "seizures", "hearing loss", "myalgia"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Started in my late 20s. I'm 35 now. Yes, I've had seizures with some episodes, and I do have muscle fatigue and some hearing loss in my left ear.", "keywords": ["early onset", "seizures", "muscle fatigue", "hearing loss"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Stroke-like episodes not respecting vascular territories, seizures, headaches, and muscle involvement in a young person suggest a mitochondrial disorder, specifically MELAS - Mitochondrial Encephalopathy, Lactic Acidosis, and Stroke-like episodes. *[Tool Use: Review Prior Brain MRIs, Order Serum Lactate and Pyruvate Levels (Resting and Post-Exercise if feasible)]*", "keywords": ["melas", "mitochondrial encephalopathy lactic acidosis stroke-like episodes", "mitochondrial disease", "brain mri review", "serum lactate", "serum pyruvate"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Prior MRIs show migratory T2 hyperintensities crossing vascular territories, some with restricted diffusion during acute episodes. Serum lactate elevated at rest.", "keywords": ["migratory lesions", "elevated lactate"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The imaging pattern and elevated lactate strongly support MELAS. A muscle biopsy can sometimes show characteristic changes, and genetic testing is key for confirmation. *[Tool Use: Schedule Muscle Biopsy (looking for Ragged Red Fibers and COX-negative fibers), Order Genetic Testing for Mitochondrial DNA Mutations (specifically common MELAS mutations like A3243G)]*", "keywords": ["muscle biopsy", "ragged red fibers", "cox-negative fibers", "mitochondrial dna testing", "a3243g mutation"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Muscle Biopsy: Shows Ragged Red Fibers on Gomori trichrome stain. Genetic Testing: Positive for the m.A3243G mtDNA mutation.", "keywords": ["ragged red fibers positive", "a3243g positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The findings confirm MELAS. There's no cure, but treatment focuses on managing symptoms and potentially using certain supplements. *[Tool Use: Consult Neurology/Genetics/Metabolic Specialist, Discuss Symptomatic Management (Antiepileptics, Headache prophylaxis), Consider Arginine/Citrulline Supplementation (especially during stroke-like episodes), Recommend Aerobic Exercise]*", "keywords": ["melas diagnosis", "melas treatment", "symptomatic management", "arginine supplementation", "genetics consult"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "Mitochondrial disease... Is it inherited?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Yes, MELAS is caused by mutations in mitochondrial DNA, which is inherited from the mother. Genetic counseling is important for family planning and understanding risks for other family members. Final diagnosis: MELAS (Mitochondrial Encephalopathy, Lactic Acidosis, and Stroke-like episodes) due to m.A3243G mutation.", "keywords": ["maternal inheritance", "genetic counseling", "final diagnosis"]}
+                    ]
+                },
+                 "143": {
+                    "dlg_id": "r1_143",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. What brings you to the clinic?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "I've been having terrible burning pain in my hands and feet since I was a teenager. It gets worse with heat or exercise. I also barely sweat.", "keywords": ["acroparesthesias", "neuropathic pain", "heat intolerance", "hypohidrosis"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "That sounds very uncomfortable. Have you noticed any skin changes? Or had any kidney or heart issues?", "keywords": ["skin lesions", "renal disease", "cardiac disease"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Yes, I have these tiny reddish-purple spots on my skin, mostly around my belly button and groin. My kidney function is also starting to decline, my doctor said.", "keywords": ["angiokeratomas", "chronic kidney disease"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "The combination of painful neuropathy (acroparesthesias), angiokeratomas, hypohidrosis, and kidney disease strongly suggests Fabry disease, an X-linked lysosomal storage disorder. *[Tool Use: Perform Skin Examination, Order Urinalysis, Serum Creatinine/eGFR, Consult Nephrology]*", "keywords": ["fabry disease", "lysosomal storage disorder", "x-linked inheritance", "angiokeratomas", "nephrology consult"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Exam confirms widespread angiokeratomas. Urinalysis shows proteinuria. eGFR is reduced.", "keywords": ["angiokeratomas confirmed", "proteinuria", "reduced egfr"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "To confirm Fabry disease, we need to measure the activity of the deficient enzyme, alpha-galactosidase A, and perform genetic testing. An eye exam is also helpful. *[Tool Use: Order Alpha-galactosidase A Enzyme Activity Assay (Leukocytes or Dried Blood Spot), Order Genetic Testing for GLA Gene Mutation, Schedule Ophthalmologic Exam (Slit-Lamp for Corneal Verticillata)]*", "keywords": ["alpha-galactosidase a", "enzyme assay", "gla gene", "genetic testing", "corneal verticillata", "slit-lamp exam"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Alpha-galactosidase A activity markedly reduced. Genetic testing identifies pathogenic mutation in GLA gene. Ophthalmology confirms corneal verticillata.", "keywords": ["low enzyme activity", "gla mutation positive", "corneal verticillata positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "These results definitively confirm Fabry disease. The lack of enzyme activity leads to buildup of a substance called Gb3, damaging nerves, skin, kidneys, and heart. Enzyme replacement therapy (ERT) is available. *[Tool Use: Discuss Pathophysiology of Fabry Disease, Initiate Enzyme Replacement Therapy (e.g., Agalsidase beta or alpha), Consult Cardiology for Echocardiogram, Consult Genetics]*", "keywords": ["fabry disease diagnosis", "enzyme replacement therapy", "ert", "agalsidase", "cardiology consult", "genetics consult"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "Enzyme therapy? Will it cure it?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "ERT doesn't cure the disease, but it replaces the missing enzyme, helping to slow or prevent organ damage and often improving pain and quality of life. It requires regular infusions. Final diagnosis: Fabry Disease.", "keywords": ["ert effectiveness", "lifelong treatment", "final diagnosis"]}
+                    ]
+                },
+                 "144": {
+                    "dlg_id": "r1_144",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there. You have swelling near your eye and a swollen gland in front of your ear?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, my left eye got really red and swollen a week ago, and then this lump appeared in front of my ear on the same side. I also feel generally unwell, like I have the flu.", "keywords": ["conjunctivitis", "eyelid edema", "preauricular lymphadenopathy", "malaise"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Did you happen to get scratched or bitten by a cat recently?", "keywords": ["cat scratch", "cat bite", "animal exposure"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Now that you mention it, my new kitten scratched my left hand about two weeks ago. I didn't think much of it.", "keywords": ["cat scratch history"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "The combination of unilateral conjunctivitis (often granulomatous) and ipsilateral preauricular lymphadenopathy is known as Parinaud's oculoglandular syndrome. In the context of a cat scratch, this is highly suggestive of Cat Scratch Disease caused by Bartonella henselae. *[Tool Use: Perform Eye Examination (Slit-Lamp if possible), Palpate for Lymphadenopathy, Inspect Scratch Site]*", "keywords": ["parinaud's oculoglandular syndrome", "cat scratch disease", "bartonella henselae", "conjunctivitis", "lymphadenopathy"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Exam shows follicular conjunctivitis left eye, significant left preauricular and cervical lymphadenopathy. Faint healing scratch mark on left hand dorsum.", "keywords": ["follicular conjunctivitis", "lymphadenopathy confirmed"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "This presentation strongly fits. We can confirm with blood tests, although sometimes they take time or can be negative early on. Treatment is usually with antibiotics. *[Tool Use: Order Bartonella henselae Serology (IgM and IgG Titer), Consider Lymph Node Aspirate/Biopsy if Diagnosis Uncertain or Nodes Suppurative (for PCR/Warthin-Starry Stain)]*", "keywords": ["bartonella serology", "lymph node biopsy", "warthin-starry stain", "bartonella pcr"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Bartonella IgG titer returned elevated. IgM pending.", "keywords": ["bartonella igg positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The positive IgG supports the diagnosis. Given the oculoglandular involvement, antibiotics are recommended to speed recovery and prevent complications. *[Tool Use: Prescribe Azithromycin or Doxycycline, Counsel on Course Duration, Follow-up Plan]*", "keywords": ["cat scratch disease treatment", "azithromycin", "doxycycline"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "All this from a little scratch?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Yes, Bartonella bacteria are carried by fleas and can be transmitted by cat scratches or bites. Most cases are mild, but sometimes presentations like yours occur. You should recover well with antibiotics. Final diagnosis: Cat Scratch Disease presenting as Parinaud's Oculoglandular Syndrome.", "keywords": ["transmission", "prognosis", "final diagnosis"]}
+                    ]
+                },
+                 "145": {
+                    "dlg_id": "r1_145",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "My ears have been getting really red, swollen, and painful off and on for the past year. Sometimes my nose bridge feels the same way. My joints ache too.", "keywords": ["auricular chondritis", "ear pain", "ear swelling", "nasal chondritis", "arthralgia"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Does it affect the earlobe or just the cartilage part?", "keywords": ["earlobe sparing"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Just the firm cartilage part, the lobe feels fine.", "keywords": ["cartilage involvement"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Inflammation of the ear and nasal cartilage, along with joint pain, is highly suggestive of Relapsing Polychondritis, an autoimmune disease targeting cartilage. Have you had any eye redness or breathing problems? *[Tool Use: Examine Ears and Nose for Chondritis, Joint Examination, Auscultate Trachea]*", "keywords": ["relapsing polychondritis", "auricular chondritis", "nasal chondritis", "autoimmune disease", "cartilage inflammation"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Exam: Bilateral auricular chondritis with erythema and tenderness, sparing the lobes. Mild saddle nose deformity. Tenderness in several MCP joints.", "keywords": ["bilateral auricular chondritis", "saddle nose deformity", "mcp arthralgia"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The findings strongly support the clinical diagnosis. Biopsy can confirm inflammation but is often not necessary if the clinical picture is classic. We should check inflammatory markers and rule out mimics. *[Tool Use: Order ESR, CRP, CBC, ANA, ANCA panel, Consider Biopsy of Ear Cartilage if Diagnosis Unclear, Consult Rheumatology]*", "keywords": ["relapsing polychondritis diagnosis", "clinical diagnosis", "inflammatory markers", "cartilage biopsy", "rheumatology consult"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "ESR and CRP elevated. ANA/ANCA negative.", "keywords": ["elevated inflammatory markers", "negative autoimmune markers"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "This fits with Relapsing Polychondritis. Treatment involves suppressing the inflammation, usually starting with steroids. Airway involvement is a serious potential complication we need to monitor for. *[Tool Use: Start Prednisone Therapy, Order Pulmonary Function Tests (PFTs) with Flow-Volume Loop, Counsel on Disease and Potential Complications (Airway Stenosis, Aortic Aneurysm)]*", "keywords": ["relapsing polychondritis treatment", "corticosteroids", "prednisone", "pulmonary function tests", "pfts", "airway stenosis"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "My cartilage is being attacked? Will the steroids stop it?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Steroids are usually effective in controlling acute flares. Many patients require longer-term immunosuppressant medications to prevent relapses and potential damage to cartilage in the airways or joints. Final diagnosis: Relapsing Polychondritis.", "keywords": ["immunosuppressants", "disease modifying drugs", "prognosis", "final diagnosis"]}
+                    ]
+                },
+                 "146": {
+                    "dlg_id": "r1_146",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Good afternoon. You were referred by your eye doctor?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, she found swelling behind my eyes. I've also had painless swelling of my saliva glands under my jaw off and on for months, and my pancreas flared up recently - pancreatitis.", "keywords": ["orbital inflammation", "salivary gland swelling", "pancreatitis"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Swelling in multiple different glands and organs like the orbits, salivary glands, and pancreas suggests a systemic fibro-inflammatory process. Have you had any fatigue, weight loss, or back pain?", "keywords": ["systemic inflammation", "fibroinflammatory"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Yes, very fatigued. And some dull back pain.", "keywords": ["fatigue", "back pain"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "This pattern raises concern for IgG4-Related Disease (IgG4-RD), a condition where IgG4-producing plasma cells infiltrate and cause fibrosis in various organs. We need blood tests and likely a biopsy. *[Tool Use: Order Serum IgG4 Level, Serum IgG Subclasses, ESR, CRP, ANA, RF, Complement Levels (C3, C4)]*", "keywords": ["igg4-related disease", "igg4-rd", "fibroinflammatory", "serum igg4", "inflammatory markers"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Labs: Serum IgG4 level markedly elevated. ESR/CRP mildly elevated. Other markers normal.", "keywords": ["elevated igg4", "elevated inflammatory markers"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The elevated IgG4 is highly suggestive, but not diagnostic alone. Imaging of involved areas and biopsy are key. *[Tool Use: Order MRI Orbits, CT Abdomen/Pelvis (looking for pancreatitis signs, retroperitoneal fibrosis, renal involvement), Consult Rheumatology, Schedule Biopsy of Enlarged Salivary Gland]*", "keywords": ["imaging", "mri orbits", "ct abdomen pelvis", "tissue biopsy", "salivary gland biopsy", "rheumatology consult"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Imaging shows orbital pseudotumor, diffuse enlargement of pancreas, and mild retroperitoneal thickening. Salivary gland biopsy performed.", "keywords": ["orbital pseudotumor", "pancreatic enlargement", "retroperitoneal fibrosis"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "Let's review the biopsy results. *[Tool Use: Review Pathology Report (H&E Stain, IgG4 Immunohistochemistry)]*", "keywords": ["pathology review", "immunohistochemistry"]},
+                        {"speaker": "control", "uttr_id": 9, "text": "Pathology: Dense lymphoplasmacytic infiltrate with storiform fibrosis, obliterative phlebitis, and increased numbers of IgG4-positive plasma cells (>10 per HPF, IgG4/IgG ratio >40%).", "keywords": ["storiform fibrosis", "obliterative phlebitis", "igg4 positive plasma cells"]},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "The biopsy confirms IgG4-Related Disease. It's a treatable condition, typically responding well to steroids initially, often followed by steroid-sparing agents like Rituximab. *[Tool Use: Start Prednisone Therapy, Discuss Steroid-Sparing Options (e.g., Rituximab), Monitor Organ Function and IgG4 Levels]*", "keywords": ["igg4-rd diagnosis", "igg4-rd treatment", "corticosteroids", "rituximab", "monitoring"]},
+                        {"speaker": "patient", "uttr_id": 11, "text": "So steroids can shrink these swellings?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 12, "text": "Yes, corticosteroids are usually very effective at reducing the inflammation and swelling in IgG4-RD. Rituximab helps maintain remission. Final diagnosis: IgG4-Related Disease.", "keywords": ["treatment response", "remission", "final diagnosis"]}
+                    ]
+                },
+                 "147": {
+                    "dlg_id": "r1_147",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hi there, you're here for evaluation of recurrent infections?", "keywords": []},
+                        {"speaker": "parent", "uttr_id": 1, "text": "Yes, my son has had repeated bouts of pneumonia since he was a baby, some were really bad and left holes in his lungs, the doctors said. He also gets these awful skin boils that don't seem very red or hot.", "keywords": ["recurrent pneumonia", "pneumatocele", "recurrent skin abscesses", "cold abscesses"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Pneumatoceles and 'cold' skin abscesses are quite specific. Does he have eczema? Any characteristic facial features you've noticed?", "keywords": ["eczema", "characteristic facies"]},
+                        {"speaker": "parent", "uttr_id": 3, "text": "Yes, terrible eczema since infancy. And people have commented he has a 'broad' nose and maybe a prominent forehead.", "keywords": ["severe eczema", "coarse facies"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "The constellation of recurrent sino-pulmonary infections (with pneumatoceles), recurrent cold skin abscesses, severe eczema, and characteristic facies strongly suggests Hyper-IgE Syndrome, also known as Job's Syndrome. *[Tool Use: Examine Skin for Eczema and Abscesses, Assess Facial Features, Review Past Chest Imaging for Pneumatoceles]*", "keywords": ["hyper-ige syndrome", "hies", "job's syndrome", "pneumatocele", "cold abscesses", "eczema"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Exam shows widespread severe eczema, healing hypopigmented scars from prior abscesses. Mildly coarse facial features noted. Prior CT chest confirms multiple pneumatoceles.", "keywords": ["eczema confirmed", "pneumatoceles confirmed"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "This fits very well clinically. Key lab findings include extremely high IgE levels and often eosinophilia. Genetic testing can confirm the most common form. *[Tool Use: Order Serum IgE Level (Total), Order CBC with Differential (for Eosinophil Count), Order Genetic Testing for STAT3 Mutations]*", "keywords": ["serum ige", "eosinophilia", "stat3 gene", "genetic testing"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Serum IgE level > 10,000 IU/mL (markedly elevated). Eosinophilia present. STAT3 mutation testing positive for dominant-negative mutation.", "keywords": ["markedly elevated ige", "eosinophilia confirmed", "stat3 mutation positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The extremely high IgE and the confirmation of a STAT3 mutation confirm the diagnosis of Autosomal Dominant Hyper-IgE Syndrome. Management focuses on preventing and treating infections and managing the eczema. *[Tool Use: Consult Immunology/Infectious Disease, Discuss Prophylactic Antibiotics (e.g., TMP-SMX), Antifungal Prophylaxis, Aggressive Eczema Care, Monitor for Complications (Scoliosis, Fractures, Lymphoma)]*", "keywords": ["hies diagnosis", "autosomal dominant hies", "prophylactic antibiotics", "eczema management", "complication monitoring", "immunology consult"]},
+                        {"speaker": "parent", "uttr_id": 9, "text": "So it's a genetic immune problem? Is there a cure?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Yes, it's a primary immunodeficiency. There isn't a cure like gene therapy yet, but vigilant management with prophylactic antibiotics, antifungals, and skin care dramatically improves outcomes and prevents severe infections. Bone marrow transplant is considered only in very severe cases. Final diagnosis: Autosomal Dominant Hyper-IgE Syndrome (STAT3-deficient).", "keywords": ["primary immunodeficiency", "prognosis", "management strategy", "bone marrow transplant", "final diagnosis"]}
+                    ]
+                },
+                 "148": {
+                    "dlg_id": "r1_148",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in today?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "I've been getting increasingly stiff, mostly in my back and legs. It's like my muscles are constantly tight, and sometimes I get these incredibly painful spasms that almost knock me over.", "keywords": ["muscle stiffness", "rigidity", "muscle spasms", "axial stiffness"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Does anything trigger the spasms? Noise? Touch? Startle?", "keywords": ["spasm triggers", "sensory stimuli"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Yes! Sudden noises or even just being bumped into can set them off. It's making me afraid to go out.", "keywords": ["startle reflex", "stimulus sensitive spasms"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "This progressive rigidity and stimulus-sensitive spasms suggest a rare neurological disorder called Stiff-Person Syndrome (SPS). It's often autoimmune. Do you have diabetes or any other autoimmune conditions? *[Tool Use: Neurological Exam focusing on Tone, Reflexes, Gait, Observation for Spasms]*", "keywords": ["stiff-person syndrome", "sps", "rigidity", "muscle spasms", "autoimmune disease"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Exam: Marked axial and proximal lower limb rigidity with lumbar hyperlordosis. Gait is stiff and cautious. Reflexes brisk. Spasm observed upon sudden hand clap.", "keywords": ["axial rigidity", "lumbar hyperlordosis", "stiff gait", "hyperreflexia"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The exam findings are very consistent with SPS. Electromyography (EMG) can show characteristic findings, and blood tests can check for associated antibodies, most commonly anti-GAD antibodies. *[Tool Use: Order EMG (looking for continuous motor unit activity), Order Anti-GAD65 Antibody Test (Serum), Consider Lumbar Puncture for CSF Anti-GAD Antibodies if Serum Negative]*", "keywords": ["emg", "continuous motor unit activity", "anti-gad65 antibody", "lumbar puncture"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "EMG: Shows continuous motor unit activity at rest in agonist and antagonist muscles, resolving with nerve block/sleep. Serum Anti-GAD65 antibodies: Highly elevated.", "keywords": ["emg confirms continuous activity", "anti-gad positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The EMG findings and high levels of anti-GAD antibodies confirm the diagnosis of Stiff-Person Syndrome. Treatment focuses on symptom relief with muscle relaxants and potentially immunotherapy. *[Tool Use: Consult Neurology, Start Diazepam or Baclofen for Symptom Control, Discuss Immunotherapy Options (IVIG, Rituximab, Plasma Exchange)]*", "keywords": ["sps diagnosis", "sps treatment", "diazepam", "baclofen", "ivig", "neurology consult"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "Will these medications stop the stiffness and spasms?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Medications like diazepam are often very effective at reducing the stiffness and spasms. IVIG or other immunotherapies may help address the underlying autoimmune process. It requires careful management. Final diagnosis: Stiff-Person Syndrome (Anti-GAD positive).", "keywords": ["treatment effectiveness", "symptom management", "final diagnosis"]}
+                    ]
+                },
+                 "149": {
+                    "dlg_id": "r1_149",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. Your psychiatrist referred you due to persistent fatigue and low mood despite antidepressant trials?", "keywords": ["treatment resistant depression", "fatigue", "low mood"]},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes. Nothing seems to help the depression. I'm tired all the time, constipated, and just feel 'blah'. My thinking feels slow.", "keywords": ["depression", "fatigue", "constipation", "cognitive slowing"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Have you noticed any aches, pains, or issues with kidney stones?", "keywords": ["bone pain", "abdominal pain", "kidney stones"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "I do get constipated and sometimes have belly aches. No kidney stones that I know of. Maybe some vague bone aches.", "keywords": ["constipation", "abdominal pain", "bone aches"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Sometimes, subtle metabolic issues can mimic or worsen psychiatric symptoms. The constellation of 'bones, stones, abdominal groans, thrones (constipation), and psychiatric overtones' can be associated with high calcium levels, often from an overactive parathyroid gland. Let's check your calcium and parathyroid hormone levels. *[Tool Use: Order Serum Calcium (Corrected for Albumin), Serum Phosphate, Serum Intact Parathyroid Hormone (PTH), Vitamin D (25-OH) Level, Basic Metabolic Panel (for renal function)]*", "keywords": ["hypercalcemia", "primary hyperparathyroidism", "bones stones groans thrones overtones", "serum calcium", "serum pth"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Labs: Serum Calcium 11.5 mg/dL (High), Phosphate 2.4 mg/dL (Low), Intact PTH 150 pg/mL (High), Vitamin D Low-Normal, Creatinine normal.", "keywords": ["hypercalcemia confirmed", "hypophosphatemia", "elevated pth", "inappropriately high pth"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The high calcium level combined with a high PTH level confirms Primary Hyperparathyroidism. Your body should lower PTH when calcium is high, so this indicates one or more parathyroid glands are overactive, likely due to a benign tumor (adenoma). *[Tool Use: Calculate 24-hour Urine Calcium Excretion (to rule out FHH), Order Bone Density Scan (DXA)]*", "keywords": ["primary hyperparathyroidism diagnosis", "parathyroid adenoma", "urine calcium", "dxa scan"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "24-hour Urine Calcium: Elevated. DXA Scan: Shows evidence of osteoporosis.", "keywords": ["hypercalciuria", "osteoporosis"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The results confirm primary hyperparathyroidism with complications (osteoporosis). This condition can certainly cause or significantly exacerbate fatigue, cognitive issues, and mood problems. Surgical removal of the overactive gland(s) is the definitive treatment. *[Tool Use: Consult Endocrinology, Consult Endocrine Surgery, Order Neck Ultrasound and/or Sestamibi Scan (for Parathyroid Adenoma Localization)]*", "keywords": ["parathyroidectomy", "surgical treatment", "endocrinology consult", "endocrine surgery consult", "neck ultrasound", "sestamibi scan"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "So a neck surgery could help my mood and energy?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Yes, correcting the high calcium and PTH levels by removing the adenoma often leads to significant improvement in psychiatric and cognitive symptoms, as well as protecting your bones and kidneys long-term. Final diagnosis: Primary Hyperparathyroidism presenting with neuropsychiatric symptoms.", "keywords": ["treatment benefit", "neuropsychiatric symptoms of hypercalcemia", "final diagnosis"]}
+                    ]
+                },
+                 "150": {
+                    "dlg_id": "r1_150",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "You were transferred from an outside hospital with kidney failure and coughing up blood?", "keywords": ["acute kidney injury", "hemoptysis"]},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, it started last week with feeling tired and nauseous. Then my urine output dropped, I got really swollen, and this morning I started coughing up blood.", "keywords": ["fatigue", "nausea", "oliguria", "edema", "hemoptysis"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "The combination of rapidly progressive kidney failure (glomerulonephritis) and pulmonary hemorrhage is a medical emergency, highly concerning for Goodpasture Syndrome or severe ANCA vasculitis. We need immediate tests. *[Tool Use: STAT Urinalysis with Microscopy, STAT Serum Creatinine/BUN, CBC, Order Anti-Glomerular Basement Membrane (GBM) Antibody Test, Order ANCA Panel (MPO/PR3), Order Chest X-Ray]*", "keywords": ["rapidly progressive glomerulonephritis", "rpgn", "pulmonary hemorrhage", "pulmonary-renal syndrome", "goodpasture syndrome", "anca vasculitis", "anti-gbm antibody", "anca test", "chest x-ray"]},
+                        {"speaker": "control", "uttr_id": 3, "text": "Urinalysis: Gross hematuria, numerous RBC casts, proteinuria. Creatinine 8.5 mg/dL (markedly elevated). Chest X-Ray: Bilateral airspace opacities consistent with hemorrhage. Anti-GBM Antibody test: Strongly positive. ANCA: Negative.", "keywords": ["nephritic sediment", "rbc casts", "severe aki", "pulmonary hemorrhage confirmed", "anti-gbm positive", "anca negative"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "The positive Anti-GBM antibody confirms Goodpasture Syndrome (Anti-GBM Disease). This antibody attacks both the kidney glomeruli and lung alveoli. Treatment must start immediately to save kidney function and stop lung bleeding. *[Tool Use: Admit to ICU, Place Central Venous Catheter and Arterial Line, Initiate Emergent Plasma Exchange (PLEX), Start High-Dose Corticosteroids (IV Methylprednisolone), Start Cyclophosphamide, Consult Nephrology/Pulmonology/Critical Care]*", "keywords": ["goodpasture syndrome diagnosis", "anti-gbm disease", "plasma exchange", "plex", "corticosteroids", "cyclophosphamide", "immunosuppression", "icu admission"]},
+                        {"speaker": "patient", "uttr_id": 5, "text": "(Weakly) Plasma exchange? What is that?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "Plasma exchange is a procedure to remove the harmful anti-GBM antibodies from your blood. Combined with medications to suppress your immune system (steroids and cyclophosphamide), it's the standard treatment to stop the attack on your kidneys and lungs. A kidney biopsy is often done to confirm the diagnosis pathologically. *[Tool Use: Schedule Renal Biopsy (for Immunofluorescence showing linear IgG deposition)]*", "keywords": ["plasma exchange explanation", "renal biopsy", "linear igg deposition"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Patient undergoing PLEX, started on immunosuppression. Renal biopsy pending.", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "This is a very serious condition, but aggressive, immediate treatment offers the best chance for recovery, although long-term kidney damage or dialysis may still occur. Final diagnosis: Goodpasture Syndrome (Anti-GBM Disease).", "keywords": ["prognosis", "dialysis risk", "treatment urgency", "final diagnosis"]}
+                    ]
+                },
+                "151": {
+                    "dlg_id": "r1_151",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, what brings you in today?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "I keep having these episodes... suddenly I feel hot, my skin gets flushed and incredibly itchy, my stomach cramps up, and I get diarrhea. Sometimes I feel lightheaded too.", "keywords": ["flushing", "pruritus", "abdominal pain", "diarrhea", "presyncope", "episodic symptoms"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "How often do these episodes happen? Any known triggers? Have you ever felt like you couldn't breathe or passed out?", "keywords": ["episode frequency", "triggers", "anaphylaxis symptoms"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Maybe a few times a month. Stress seems to trigger them, sometimes exercise. I haven't passed out, but once I felt like my throat was tight.", "keywords": ["stress trigger", "exercise trigger", "throat tightness"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Do you have any skin spots or lesions?", "keywords": ["skin lesions"]},
+                        {"speaker": "patient", "uttr_id": 5, "text": "Yes, I have these brownish spots mostly on my trunk that have been there for years. They get itchier during the episodes.", "keywords": ["urticaria pigmentosa", "darier's sign"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "Okay, the recurrent episodes of flushing, itching, GI upset, and near-anaphylaxis, especially with skin lesions like urticaria pigmentosa, strongly suggest Systemic Mastocytosis. This is a disorder involving too many mast cells releasing mediators like histamine. *[Tool Use: Skin Examination (check for Darier's Sign on lesions), Order Serum Tryptase Level (Baseline), Provide Patient with EpiPen Prescription and Education]*", "keywords": ["systemic mastocytosis", "mast cell activation", "urticaria pigmentosa", "serum tryptase", "epipen"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Exam reveals multiple tan-brown macules on trunk; stroking one lesion causes localized wheal and flare (Positive Darier's Sign). Baseline serum tryptase level is elevated.", "keywords": ["positive darier's sign", "elevated baseline tryptase"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The positive Darier's sign and elevated baseline tryptase strongly support Systemic Mastocytosis. We need a bone marrow biopsy to confirm systemic involvement and check for specific mutations. *[Tool Use: Schedule Bone Marrow Biopsy and Aspirate (looking for mast cell aggregates, atypical morphology, CD25 expression, KIT D816V mutation testing), Consult Hematology, Consult Allergy/Immunology]*", "keywords": ["bone marrow biopsy", "mast cell aggregates", "kit d816v mutation", "hematology consult", "allergy consult"]},
+                        {"speaker": "control", "uttr_id": 9, "text": "Bone Marrow Biopsy: Shows multifocal dense aggregates of atypical mast cells, positive for CD25. KIT D816V mutation detected.", "keywords": ["atypical mast cells", "cd25 positive", "kit mutation positive"]},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "The bone marrow confirms Systemic Mastocytosis. Treatment focuses on managing symptoms with antihistamines, mast cell stabilizers, and having emergency medication (EpiPen). In some cases, targeted therapy against the KIT mutation is used. *[Tool Use: Prescribe Antihistamines (H1/H2 blockers), Mast Cell Stabilizers (e.g., Cromolyn Sodium), Discuss Trigger Avoidance, Consider KIT inhibitors (e.g., Midostaurin) if advanced disease]*", "keywords": ["systemic mastocytosis diagnosis", "systemic mastocytosis treatment", "antihistamines", "cromolyn sodium", "trigger avoidance", "kit inhibitors"]},
+                        {"speaker": "patient", "uttr_id": 11, "text": "So these episodes are from mast cells? Can it be controlled?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 12, "text": "Yes, the symptoms are from mediators released by mast cells. With trigger avoidance and medications, symptoms can usually be well controlled, although careful monitoring is needed. Final diagnosis: Systemic Mastocytosis.", "keywords": ["symptom control", "monitoring", "final diagnosis"]}
+                    ]
+                },
+                "152": {
+                    "dlg_id": "r1_152",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "You've been having recurrent swelling episodes?", "keywords": ["recurrent edema"]},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, for years. I get sudden swelling, usually on my hands, feet, face, or sometimes my stomach gets incredibly painful and bloated. It's not itchy, and antihistamines don't help.", "keywords": ["angioedema", "non-pruritic edema", "abdominal pain episodes", "antihistamine resistant"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Has the swelling ever involved your throat or tongue? Any difficulty breathing during an episode?", "keywords": ["airway edema", "laryngeal edema"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "Yes, once my tongue swelled up, it was terrifying. I went to the ER.", "keywords": ["tongue swelling", "airway involvement"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Recurrent non-itchy angioedema without hives, resistant to antihistamines, and potentially involving the airway, strongly suggests Hereditary Angioedema (HAE), usually due to C1 inhibitor deficiency or dysfunction. *[Tool Use: Ask about Family History of Similar Swelling, Order C4 Complement Level (Screening Test)]*", "keywords": ["hereditary angioedema", "hae", "c1 inhibitor deficiency", "non-histaminergic angioedema", "c4 complement"]},
+                        {"speaker": "patient", "uttr_id": 5, "text": "My mother had similar problems, but they never figured it out.", "keywords": ["family history positive"]},
+                        {"speaker": "control", "uttr_id": 6, "text": "Serum C4 level returned: Low.", "keywords": ["low c4"]},
+                        {"speaker": "doctor", "uttr_id": 7, "text": "The low C4 level is highly suggestive of HAE type 1 or 2. We need specific tests for the C1 inhibitor protein. *[Tool Use: Order C1 Inhibitor Quantitative Level (Antigenic), Order C1 Inhibitor Functional Assay]*", "keywords": ["c1 inhibitor level", "c1 inhibitor function"]},
+                        {"speaker": "control", "uttr_id": 8, "text": "C1 Inhibitor Quantitative Level: Normal. C1 Inhibitor Functional Assay: Markedly decreased activity.", "keywords": ["normal c1 inhibitor level", "low c1 inhibitor function"]},
+                        {"speaker": "doctor", "uttr_id": 9, "text": "This confirms HAE Type 2 (normal protein level but dysfunctional). It's crucial you have medication for acute attacks, especially given the history of tongue swelling, and we should discuss long-term prevention. *[Tool Use: Consult Allergy/Immunology, Prescribe Acute Attack Medication (e.g., C1 Inhibitor Concentrate, Ecallantide, or Icatibant), Develop Emergency Action Plan, Discuss Prophylactic Therapy Options (e.g., C1-INH concentrate, Lanadelumab, Berotralstat), Consider Genetic Testing (SERPING1)]*", "keywords": ["hae type 2", "hae treatment", "acute attack treatment", "hae prophylaxis", "emergency plan", "genetic testing", "allergy consult"]},
+                        {"speaker": "patient", "uttr_id": 10, "text": "There are specific medicines now? That's amazing!", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 11, "text": "Yes, tremendous progress has been made. Having rapid access to acute treatment is life-saving, and prophylactic options can significantly reduce attack frequency. Final diagnosis: Hereditary Angioedema (HAE) Type 2.", "keywords": ["treatment advances", "life-saving treatment", "final diagnosis"]}
+                    ]
+                },
+                 "153": {
+                    "dlg_id": "r1_153",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hello, you were referred for transient ischemic attacks (TIAs)?", "keywords": ["transient ischemic attack", "tia"]},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, I've had several episodes of temporary numbness on one side or trouble speaking. I'm only 35. My brain MRI showed some small old strokes, but the doctors were puzzled by the blood vessel imaging.", "keywords": ["recurrent tia", "young stroke", "neurological deficits"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Tell me more about the vessel imaging findings.", "keywords": ["neuroimaging"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "They said the main arteries deep in my brain looked narrowed, and there was a 'puff of smoke' look from tiny extra vessels.", "keywords": ["carotid stenosis", "collateral vessels", "puff of smoke sign"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Progressive stenosis of the internal carotid artery termini with development of basal collateral vessels ('puff of smoke') is characteristic of Moyamoya Disease (or Syndrome if associated with other conditions). It's more common in East Asian populations but occurs globally. *[Tool Use: Review Brain MRI/MRA reports and images, Order Transcranial Doppler (TCD) Ultrasonography]*", "keywords": ["moyamoya disease", "moyamoya syndrome", "internal carotid artery stenosis", "basal collaterals", "transcranial doppler"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "MRI/MRA review confirms bilateral supraclinoid ICA stenosis with extensive basal collateral vessel formation. TCD shows reduced flow velocities in MCAs.", "keywords": ["moyamoya pattern confirmed", "reduced mca velocity"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "This confirms Moyamoya pattern. While MRA is suggestive, the gold standard for diagnosis and surgical planning is conventional cerebral angiography. We also need to rule out associated conditions. *[Tool Use: Schedule Digital Subtraction Angiography (DSA) / Cerebral Angiography, Order Autoimmune Workup (ANA, ESR, etc.), Sickle Cell Screen, Thyroid Function Tests, Consult Neurosurgery, Consult Neurology (Stroke Specialist)]*", "keywords": ["digital subtraction angiography", "dsa", "cerebral angiography", "moyamoya associated conditions", "neurosurgery consult", "neurology consult"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Cerebral Angiography confirms severe bilateral stenosis of terminal ICAs with classic Moyamoya collateral vessels. Workup for associated conditions negative.", "keywords": ["dsa confirms moyamoya"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The angiography confirms Moyamoya Disease. Given your recurrent TIAs despite likely medical management (aspirin assumed), surgical revascularization is often recommended to improve blood flow and reduce future stroke risk. *[Tool Use: Discuss Aspirin Therapy, Discuss Surgical Revascularization Options (e.g., EDAS, STA-MCA bypass)]*", "keywords": ["moyamoya disease diagnosis", "revascularization surgery", "edas", "sta-mca bypass", "stroke prevention"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "Brain surgery? That sounds scary.", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "It's a significant procedure, but neurosurgeons specializing in Moyamoya have good outcomes. The goal is to bypass the narrowed vessels and provide better blood supply to prevent potentially disabling strokes. The neurosurgery team will discuss the risks and benefits in detail. Final diagnosis: Moyamoya Disease.", "keywords": ["surgical risks", "surgical benefits", "neurosurgical expertise", "final diagnosis"]}
+                    ]
+                },
+                "154": {
+                    "dlg_id": "r1_154",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Hi, you're here for evaluation of skin changes and neurological symptoms?", "keywords": []},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, I have this strange lacey, purplish rash on my legs that's been there for years. More recently, I've had a couple of episodes like mini-strokes, lasting a few hours.", "keywords": ["livedo reticularis", "skin rash", "transient ischemic attack", "tia"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Let me see the rash. Is it always present? Does it blanch with pressure?", "keywords": ["skin examination"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "It's always there, maybe more prominent in the cold. It doesn't completely disappear when pressed.", "keywords": ["persistent livedo", "non-blanching"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Okay, this looks like livedo racemosa - broken, irregular rings rather than closed loops. The combination of livedo racemosa and cerebrovascular events like TIAs defines Sneddon Syndrome. It's often associated with autoimmune conditions, particularly antiphospholipid syndrome. *[Tool Use: Perform Detailed Skin Examination, Neurological Exam, Order Brain MRI]*", "keywords": ["livedo racemosa", "sneddon syndrome", "cerebrovascular disease", "antiphospholipid syndrome", "brain mri"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "Exam confirms livedo racemosa on lower extremities and trunk. Neuro exam non-focal currently. Brain MRI shows multiple small lacunar infarcts in different vascular territories.", "keywords": ["livedo racemosa confirmed", "lacunar infarcts"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The MRI confirms past strokes. We must test for antiphospholipid antibodies and other relevant autoimmune markers. *[Tool Use: Order Antiphospholipid Antibody Panel (Lupus Anticoagulant, Anti-cardiolipin IgG/IgM, Anti-beta2-glycoprotein I IgG/IgM - repeat in 12 weeks if positive), Order ANA, ENA panel, ESR, CRP, Complement Levels]*", "keywords": ["antiphospholipid antibody panel", "lupus anticoagulant", "anti-cardiolipin", "anti-beta2-glycoprotein i", "autoimmune workup"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Antiphospholipid Panel: Positive for Lupus Anticoagulant and high-titer Anti-cardiolipin IgG antibodies.", "keywords": ["lupus anticoagulant positive", "anti-cardiolipin positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The persistently positive antiphospholipid antibodies confirm associated Antiphospholipid Syndrome (APS), which is common in Sneddon Syndrome and increases stroke risk. Treatment involves anticoagulation or antiplatelet therapy. *[Tool Use: Consult Neurology, Consult Rheumatology, Discuss Antiplatelet vs. Anticoagulation Therapy (e.g., Aspirin vs. Warfarin/DOAC based on risk)]*", "keywords": ["antiphospholipid syndrome diagnosis", "aps", "sneddon syndrome treatment", "antiplatelet therapy", "anticoagulation", "rheumatology consult", "neurology consult"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "So the rash and the strokes are related? What do I need to do?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Yes, they are part of the same syndrome, likely driven by the antiphospholipid antibodies affecting blood vessels. Lifelong antiplatelet or anticoagulation medication is usually necessary to prevent further strokes. The rheumatology team will help manage the APS. Final diagnosis: Sneddon Syndrome associated with Antiphospholipid Syndrome.", "keywords": ["pathophysiology", "stroke prevention", "lifelong therapy", "final diagnosis"]}
+                    ]
+                },
+                 "155": {
+                    "dlg_id": "r1_155",
+                    "utterances": [
+                        {"speaker": "doctor", "uttr_id": 0, "text": "Good morning. You were referred by your primary doctor due to anemia and fatigue?", "keywords": ["anemia", "fatigue"]},
+                        {"speaker": "patient", "uttr_id": 1, "text": "Yes, I'm tired all the time. My doctor said I'm anemic, but iron pills didn't help much. Sometimes my urine is dark, especially the first thing in the morning.", "keywords": ["iron-refractory anemia", "dark urine", "hemoglobinuria"]},
+                        {"speaker": "doctor", "uttr_id": 2, "text": "Dark urine in the morning can be a sign of hemoglobinuria. Have you ever had blood clots, particularly in unusual places like abdominal veins? Or difficulty swallowing?", "keywords": ["hemoglobinuria", "thrombosis", "dysphagia"]},
+                        {"speaker": "patient", "uttr_id": 3, "text": "I had a blood clot in my leg years ago. And sometimes food feels like it gets stuck.", "keywords": ["history of thrombosis", "dysphagia"]},
+                        {"speaker": "doctor", "uttr_id": 4, "text": "Anemia with signs of hemolysis (dark urine), thrombosis history, and potential bone marrow dysfunction (fatigue, other cytopenias possible) raise suspicion for Paroxysmal Nocturnal Hemoglobinuria (PNH). This is an acquired stem cell disorder. *[Tool Use: Order CBC with Reticulocyte Count, Order LDH, Bilirubin (Indirect), Haptoglobin (Hemolysis Labs), Order Urinalysis for Hemoglobin]*", "keywords": ["paroxysmal nocturnal hemoglobinuria", "pnh", "hemolysis", "thrombosis", "bone marrow failure", "hemolysis labs", "hemoglobinuria"]},
+                        {"speaker": "control", "uttr_id": 5, "text": "CBC shows normocytic anemia with high reticulocyte count. LDH and Indirect Bilirubin elevated, Haptoglobin low. Urinalysis positive for hemoglobin.", "keywords": ["normocytic anemia", "reticulocytosis", "hemolysis confirmed", "hemoglobinuria confirmed"]},
+                        {"speaker": "doctor", "uttr_id": 6, "text": "The labs confirm active hemolysis. The gold standard test for PNH is flow cytometry on blood cells to look for the absence of specific proteins (GPI-anchored proteins). *[Tool Use: Order High-Sensitivity Flow Cytometry for GPI-Anchored Proteins (CD55/CD59) on Red Blood Cells and White Blood Cells (Granulocytes, Monocytes)]*", "keywords": ["flow cytometry", "gpi-anchored proteins", "cd55", "cd59", "pnh diagnosis"]},
+                        {"speaker": "control", "uttr_id": 7, "text": "Flow Cytometry Results: Significant populations of CD55/CD59 deficient granulocytes and monocytes identified, confirming a large PNH clone.", "keywords": ["pnh clone detected", "flow cytometry positive"]},
+                        {"speaker": "doctor", "uttr_id": 8, "text": "The flow cytometry confirms the diagnosis of PNH. This condition leads to complement-mediated destruction of blood cells and a high risk of thrombosis. Treatment involves targeting the complement system. *[Tool Use: Consult Hematology, Discuss Complement Inhibitor Therapy (e.g., Eculizumab, Ravulizumab), Discuss Anticoagulation, Consider Bone Marrow Biopsy to assess marrow function]*", "keywords": ["pnh confirmed", "complement mediated hemolysis", "complement inhibitors", "eculizumab", "ravulizumab", "anticoagulation", "hematology consult"]},
+                        {"speaker": "patient", "uttr_id": 9, "text": "So it's my immune system attacking my blood cells?", "keywords": []},
+                        {"speaker": "doctor", "uttr_id": 10, "text": "Specifically, it's the complement part of the immune system attacking the PNH blood cells that lack protective proteins. Medications like eculizumab block this process very effectively, reducing hemolysis and the dangerous blood clot risk. Final diagnosis: Paroxysmal Nocturnal Hemoglobinuria (PNH).", "keywords": ["pnh pathophysiology", "complement inhibition", "treatment effectiveness", "final diagnosis"]}
+                    ]
+                }
+}
