@@ -9,5 +9,4 @@ fastapi
 uvicorn
 pydantic
 ipykernel
-python-dotenv
 supabase
