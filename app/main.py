@@ -4,9 +4,11 @@ from app.services.session_manager import SessionManager, TASKS
 from app.services.log_vis import LogVisService
 from app.routes.dependencies.security import validate_teacher_reply
 from app.agents.teacher_agent import TeacherAgent
+
 app = FastAPI()
 session_manager = SessionManager()
 log_vis_service = LogVisService()
+
 
 def get_start_session(task: Task) -> ReplyResponse:
     """
@@ -25,7 +27,7 @@ def get_start_session(task: Task) -> ReplyResponse:
     session["scenario"] = scenario
     session["history"] = history
     session_manager.dump_session(session)
-    
+
     return ReplyResponse(
         session_id=session["session_id"],
         history=history,
@@ -55,10 +57,17 @@ def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
         ChatMessage(role="teacher", content="A sample reply from the teacher.")
     )
 
-    session.history = reply_request.history
     session_manager.dump_session(session)
 
-    return ReplyResponse(scenario=session, score=0.9, is_end=False)
+    # TODO@zeynepyorulmaz: implement scoring and end conditions
+    score, is_end = 0.8, False
+
+    return ReplyResponse(
+        session_id=reply_request.session_id,
+        history=reply_request.history,
+        score=score,
+        is_end=is_end,
+    )
 
 
 @app.get("/tasks", response_model=list[Task])
