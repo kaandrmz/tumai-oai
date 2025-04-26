@@ -8,7 +8,7 @@ from typing import List, Dict, Any
 
 # Add the project root to path to enable imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import openai_client
+from app.config import openai_client
 
 
 class SecurityFilter:

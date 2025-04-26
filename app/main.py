@@ -1,21 +1,18 @@
 from fastapi import FastAPI, HTTPException
 from app.models import Task, ChatMessage, ScoreFeedback, Scenario, ReplyRequest
-# from app.security import SecurityLayer
-from app.storage import init_session, TASKS, load_session, dump_session
-
+from app.services.session_manager import SessionManager, TASKS
+from app.services.log_vis import LogVisService
 
 app = FastAPI()
-
-# security = SecurityLayer()
-
+session_manager = SessionManager()
+log_vis_service = LogVisService()
 
 def get_start_session(task: Task) -> Scenario:
     """
     Initiates the session. Caches data.
     Returns a history with the first message: task decription.
     """
-    # also validate using security layer
-    return init_session(task)
+    return session_manager.init_session(task)
 
 
 def get_task_by_id(task_id: int) -> Task | None:
@@ -32,7 +29,7 @@ def _eval_reply(reply_request: ReplyRequest) -> ScoreFeedback:
     """
     Evaluates the response of the student, appends a new message.
     """
-    scenario = load_session(reply_request.session_id)
+    scenario = session_manager.load_session(reply_request.session_id)
     if not scenario:
         raise HTTPException(status_code=404, detail="Session not found.")
 
@@ -41,8 +38,7 @@ def _eval_reply(reply_request: ReplyRequest) -> ScoreFeedback:
     )
 
     scenario.history = reply_request.history
-
-    dump_session(scenario)
+    session_manager.dump_session(scenario)
 
     return ScoreFeedback(scenario=scenario, score=0.9, is_end=False)
 
