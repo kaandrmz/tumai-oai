@@ -1,7 +1,6 @@
 """
 Case generator agent for selecting and adapting real medical cases from retrieved documents.
 Ensures no confidential patient information is exposed while maintaining educational value.
-Fixed to handle document retrieval errors more gracefully.
 """
 from typing import Dict, List, Optional
 from openai import OpenAI
@@ -10,6 +9,10 @@ import logging
 
 from app.config import OPENAI_API_KEY, DEFAULT_MODEL
 from app.agents.security_agent import SecurityAgent
+try:
+    from app.utils.document_retriever import DocumentRetriever
+except Exception as e:
+    logging.error(f"Error importing DocumentRetriever: {e}")
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -31,15 +34,8 @@ class CaseGeneratorAgent:
         try:
             from app.utils.document_retriever import DocumentRetriever
             self.document_retriever = DocumentRetriever()
-            # Verify the retriever was properly initialized
-            if hasattr(self.document_retriever, 'retriever') and self.document_retriever.retriever:
-                self.document_retrieval_available = True
-                logger.info("Document retriever initialized successfully")
-            else:
-                logger.warning("Document retriever initialized but retriever is not available")
-        except ImportError:
-            logger.error("Failed to import DocumentRetriever")
-            logger.warning("Will fall back to generating cases without document retrieval")
+            self.document_retrieval_available = True
+            logger.info("Document retriever initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize document retriever: {e}")
             logger.warning("Will fall back to generating cases without document retrieval")
@@ -242,36 +238,64 @@ class CaseGeneratorAgent:
         logger.info(f"Case preview: {preview}...")
 
         # Check if the case contains confidential information
-        has_confidential = False
-        try:
-            has_confidential = self.security_agent.check_for_confidential_information(selected_case['content'])
-        except Exception as e:
-            logger.error(f"Error checking for confidential information: {e}")
-            has_confidential = True  # Be conservative
-
-        if has_confidential:
+        if self.security_agent.check_for_confidential_information(selected_case['content']):
             logger.info("Case contains confidential information, will adapt accordingly")
 
         # Prepare the prompt for adapting the case
-        additional_instruction = ""
-        if has_confidential:
-            additional_instruction = (
-                "IMPORTANT: This case may contain confidential information. "
-                "Please be thorough in anonymizing all patient identifiers and specific details "
-                "while preserving the educational value."
-            )
+        variables = {
+            "medical_field": medical_field,
+            "difficulty_level": difficulty_level,
+            "raw_case": selected_case['content']
+        }
 
         try:
-            # Import the prompt factory here to avoid circular imports
-            from app.agents.prompts.prompt_factory import get_prompt
-
-            # Get the adaptation prompt
-            prompt = get_prompt("case_generator/adapt_case", {
-                "medical_field": medical_field,
-                "difficulty_level": difficulty_level,
-                "raw_case": selected_case['content'],
-                "additional_instruction": additional_instruction
-            })
+            # Create adaptation prompt directly since prompt_factory might not work
+            # if we're running in an error recovery mode
+            prompt = f"""
+            You are an expert medical educator adapting a real clinical case for educational purposes.
+            
+            Medical Field: {medical_field}
+            Difficulty Level: {difficulty_level}
+            
+            Real Case Document:
+            {selected_case['content']}
+            
+            Instructions:
+            Take the real case above and adapt it for educational use, following these guidelines:
+            
+            1. PRESERVE THE CORE MEDICAL CASE
+               - Keep the same medical condition, symptoms, progression, and diagnosis
+               - Maintain the same level of clinical detail and educational value
+               - Preserve the key decision points and diagnostic reasoning
+            
+            2. REMOVE ALL CONFIDENTIAL INFORMATION
+               - Change all patient identifiers (name, age, exact dates, locations)
+               - Remove specific identifiers (MRN, exact dates of service, provider names)
+               - Modify any rare or unique characteristics that could identify the patient
+               - Generalize demographic details while maintaining clinical relevance
+            
+            3. ADAPT THE DIFFICULTY
+               - Adjust the presentation to match the {difficulty_level} level
+            
+            4. FORMAT THE OUTPUT
+               - Structure the case as a clear patient scenario
+               - Include presenting complaint, history, physical findings, and relevant test results
+               - Clearly state the final diagnosis
+               - Include a brief rationale for teaching purposes
+            
+            Output Format:
+            
+            **Scenario:**
+            [Adapted patient presentation]
+            [Relevant history]
+            [Physical examination findings]
+            [Test results if applicable]
+            
+            **Final Diagnosis:**
+            [Diagnosis]
+            
+            ENSURE ALL CONFIDENTIAL INFORMATION IS REMOVED while preserving the educational value of the case.
+            """
 
             # Process the case using the prompt
             logger.info("Adapting case to remove confidential information")
@@ -285,14 +309,7 @@ class CaseGeneratorAgent:
             case_text = case_response.choices[0].message.content
 
             # Have security agent check the adapted case
-            still_confidential = False
-            try:
-                still_confidential = self.security_agent.check_for_confidential_information(case_text)
-            except Exception as e:
-                logger.error(f"Error checking adapted case for confidential information: {e}")
-                still_confidential = False  # Assume it's OK since we already tried to remove confidential info
-
-            if still_confidential:
+            if self.security_agent.check_for_confidential_information(case_text):
                 logger.warning("Adapted case still contains confidential information, applying stronger anonymization")
                 # If any potential confidential information is found, anonymize further
                 additional_instruction = (
@@ -301,25 +318,15 @@ class CaseGeneratorAgent:
                     "while preserving the medical learning points."
                 )
 
-                try:
-                    # Get the adaptation prompt with stronger instructions
-                    prompt = get_prompt("case_generator/adapt_case", {
-                        "medical_field": medical_field,
-                        "difficulty_level": difficulty_level,
-                        "raw_case": selected_case['content'],
-                        "additional_instruction": additional_instruction
-                    })
+                prompt += f"\n\n{additional_instruction}"
 
-                    case_response = self.openai_client.chat.completions.create(
-                        model=DEFAULT_MODEL,
-                        messages=[{"role": "user", "content": prompt}],
-                        temperature=0.3,
-                        max_tokens=1500
-                    )
-                    case_text = case_response.choices[0].message.content
-                except Exception as e:
-                    logger.error(f"Error during stronger anonymization: {e}")
-                    # Continue with the original adaptation
+                case_response = self.openai_client.chat.completions.create(
+                    model=DEFAULT_MODEL,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.3,
+                    max_tokens=1500
+                )
+                case_text = case_response.choices[0].message.content
 
             # Parse the case text to separate scenario and diagnosis
             parts = case_text.split("**Final Diagnosis:**")
@@ -347,20 +354,3 @@ class CaseGeneratorAgent:
             logger.error(f"Error adapting case: {e}")
             # Fall back to generating a case if adaptation fails
             return self.generate_fallback_case(medical_field, difficulty_level)
-
-    def check_for_confidential_information(self, text: str) -> bool:
-        """
-        Check if the text contains confidential information.
-        Wrapper around the security agent's method with error handling.
-
-        Args:
-            text: The text to check
-
-        Returns:
-            True if confidential information is detected, False otherwise
-        """
-        try:
-            return self.security_agent.check_for_confidential_information(text)
-        except Exception as e:
-            logger.error(f"Error checking for confidential information: {e}")
-            return True  # Be conservative and assume it might contain confidential info
