@@ -1,6 +1,5 @@
 """
 Teacher agent implementation for the multiagent system.
-Optimized for better performance.
 """
 from app.agents.prompts.prompt_factory import get_prompt
 from app.config import OPENAI_API_KEY, DEFAULT_MODEL
@@ -9,68 +8,15 @@ from app.agents.case_generator_agent import CaseGeneratorAgent
 from app.models import Task
 import logging
 import re
-import functools
-from cachetools import TTLCache, cached
 
 # Set up logging
 logger = logging.getLogger(__name__)
 
-# Create a TTL cache for OpenAI completions
-openai_completion_cache = TTLCache(maxsize=100, ttl=3600)  # Cache for 1 hour
-
 class TeacherAgent():
     def __init__(self):
         self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
-        self._case_cache = {}  # Cache for cases by medical field and difficulty
+        self.case_generator = CaseGeneratorAgent()
         logger.info("TeacherAgent initialized")
-
-    def _get_cached_completion(self, model, messages, temperature=0.7, max_tokens=None):
-        """Get a cached OpenAI completion or generate a new one"""
-        # Create a cache key from the request parameters
-        cache_key = f"{model}_{str(messages)}_{temperature}_{max_tokens}"
-
-        # Check if we have a cached response
-        if cache_key in openai_completion_cache:
-            logger.info("Using cached OpenAI completion")
-            return openai_completion_cache[cache_key]
-
-        # Generate a new completion
-        kwargs = {
-            "model": model,
-            "messages": messages,
-            "temperature": temperature
-        }
-        if max_tokens:
-            kwargs["max_tokens"] = max_tokens
-
-        response = self.openai_client.chat.completions.create(**kwargs)
-
-        # Cache the response
-        openai_completion_cache[cache_key] = response
-
-        return response
-
-    def get_case_from_cache(self, medical_field, difficulty_level):
-        """Get a case from the cache or generate a new one"""
-        cache_key = f"{medical_field}_{difficulty_level}"
-
-        if cache_key in self._case_cache and self._case_cache[cache_key]:
-            logger.info(f"Using cached case for {medical_field} at {difficulty_level} difficulty")
-            return self._case_cache[cache_key].pop(0)
-
-        return None
-
-    def add_case_to_cache(self, medical_field, difficulty_level, case, max_cache_size=5):
-        """Add a case to the cache"""
-        cache_key = f"{medical_field}_{difficulty_level}"
-
-        if cache_key not in self._case_cache:
-            self._case_cache[cache_key] = []
-
-        # Only cache if we're under the max size
-        if len(self._case_cache[cache_key]) < max_cache_size:
-            self._case_cache[cache_key].append(case)
-            logger.info(f"Added case to cache for {medical_field} at {difficulty_level} difficulty")
 
     def start_session(self, task: Task):
         """
@@ -93,27 +39,11 @@ class TeacherAgent():
 
         logger.info(f"Starting session with medical field: {medical_field}, difficulty: {difficulty_level}")
 
-        # Try to get a case from the cache
-        case = self.get_case_from_cache(medical_field, difficulty_level)
-
-        if not case:
-            # If not in cache, generate a new case
-            case_generator = CaseGeneratorAgent()
-            case = case_generator.select_case(
-                medical_field=medical_field,
-                difficulty_level=difficulty_level
-            )
-
-            # Pre-generate a few more cases for this field and difficulty for future use
-            for _ in range(2):  # Generate 2 additional cases
-                try:
-                    additional_case = case_generator.select_case(
-                        medical_field=medical_field,
-                        difficulty_level=difficulty_level
-                    )
-                    self.add_case_to_cache(medical_field, difficulty_level, additional_case)
-                except Exception as e:
-                    logger.warning(f"Failed to generate additional case: {e}")
+        # Select and adapt a real case from documents
+        case = self.case_generator.select_case(
+            medical_field=medical_field,
+            difficulty_level=difficulty_level
+        )
 
         # Use the generated scenario for the simulation
         scenario = case["scenario"]
@@ -127,7 +57,7 @@ class TeacherAgent():
             "conversation_history": ""
         })
 
-        gen_response_response = self._get_cached_completion(
+        gen_response_response = self.openai_client.chat.completions.create(
             model=DEFAULT_MODEL,
             messages=[{"role": "user", "content": prompt_response}],
             temperature=0.7
@@ -158,7 +88,6 @@ class TeacherAgent():
         logger.info("Evaluating student reply")
 
         # Create a prompt for the evaluation model
-        # Optimize by reducing the prompt size and focusing on key elements
         prompt = f"""
         **Role**: You are an expert medical educator evaluating a student doctor's diagnostic performance in a simulated patient case.
 
@@ -219,33 +148,22 @@ class TeacherAgent():
         """
 
         try:
-            # Generate the evaluation using OpenAI with caching
-            evaluation_response = self._get_cached_completion(
+            # Generate the evaluation using OpenAI
+            evaluation_response = self.openai_client.chat.completions.create(
                 model=DEFAULT_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.3,
-                max_tokens=500  # Reduce token count for faster response
+                max_tokens=1000
             )
 
             evaluation_text = evaluation_response.choices[0].message.content
             logger.info("Received evaluation response")
 
-            # Parse the evaluation results - use more direct regex patterns
-            # Use a single regex pattern with named groups for faster extraction
-            pattern = r"Diagnostic Reasoning Score: (\d+(?:\.\d+)?).+?Information Gathering Score: (\d+(?:\.\d+)?).+?Diagnosis Accuracy Score: (\d+(?:\.\d+)?).+?Communication Score: (\d+(?:\.\d+)?)"
-            match = re.search(pattern, evaluation_text, re.DOTALL)
-
-            if match:
-                dr_score = float(match.group(1))
-                ig_score = float(match.group(2))
-                da_score = float(match.group(3))
-                comm_score = float(match.group(4))
-            else:
-                # Fallback to individual extraction if the combined pattern fails
-                dr_score = self._extract_score(evaluation_text, "Diagnostic Reasoning Score")
-                ig_score = self._extract_score(evaluation_text, "Information Gathering Score")
-                da_score = self._extract_score(evaluation_text, "Diagnosis Accuracy Score")
-                comm_score = self._extract_score(evaluation_text, "Communication Score")
+            # Parse the evaluation results
+            dr_score = self._extract_score(evaluation_text, "Diagnostic Reasoning Score")
+            ig_score = self._extract_score(evaluation_text, "Information Gathering Score")
+            da_score = self._extract_score(evaluation_text, "Diagnosis Accuracy Score")
+            comm_score = self._extract_score(evaluation_text, "Communication Score")
 
             # Calculate overall score (0.0 to 1.0 scale)
             overall_score = (dr_score + ig_score + da_score + comm_score) / 40.0
@@ -264,6 +182,7 @@ class TeacherAgent():
             # Default to continuing conversation with moderate score
             return 0.5, False, "Error evaluating response, please continue."
 
+    # Corrected function for teacher_agent.py
     def _format_conversation_history(self, history: list) -> str:
         """
         Format the conversation history for easier evaluation. Handles history
@@ -284,7 +203,7 @@ class TeacherAgent():
 
                 role = "Student" if role_key == "user" else "Patient"  # Assuming 'assistant' maps to 'Patient'
                 formatted.append(f"{role}: {content_key}")
-            except (AttributeError, TypeError):
+            except AttributeError:
                 # Handle cases where an item might not be a dictionary as expected
                 logger.error(f"Unexpected item format in conversation history: {message}")
                 formatted.append(f"Unknown: [Error processing message]")
