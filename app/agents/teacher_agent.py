@@ -135,7 +135,7 @@ class TeacherAgent():
             - "Improve eye contact during patient explanations."
 
         **Case Details**:
-        {scenario[:1000]}
+        {scenario[-1000:]} # reverse index bc di
 
         **Correct Diagnosis**:
         {diagnosis}
