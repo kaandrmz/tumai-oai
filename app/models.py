@@ -23,3 +23,9 @@ class ReplyResponse(BaseModel):
 class SessionInfo(BaseModel):
     id: str
     status: str
+
+class TrainingRequest(BaseModel):
+    task_id: int
+    session_id: int | None = None
+    teacher_url: str | None
+    max_turns: int

@@ -13,8 +13,8 @@ STORAGE_DIR.mkdir(exist_ok=True)
 
 
 TASKS = [
-    Task(id=1, title="Disease", description="Disease description?"),
-    Task(id=2, title="Prognosis", description="Prognosis description?"),
+    Task(id=1, title="Diagnostics", description="Disease description?"),
+    Task(id=2, title="Hotline", description="Prognosis description?"),
 ]
 
 class SessionManager:
@@ -32,21 +32,37 @@ class SessionManager:
         else:
             return False, f"Session {session_id} does not exist. Cannot delete."
 
-    def init_session(self, task: Task) -> Dict:
+    def init_session(self, task: Task, session_id: int | None = None) -> Dict:
         """
         Initializes the session by creating a json file for the task.
+        Uses the provided session_id if available, otherwise generates a new one.
         Sets initial status to 'active'.
         """
-        session_id = random.randint(10000, 99999)
-        scenario = {
+        if session_id is None:
+            session_id = random.randint(10000, 99999)
+            print(f"No session ID provided, generated new ID: {session_id}")
+        else:
+            # Check if session already exists with this ID
+            if (self.storage_dir / f"{session_id}.json").exists():
+                print(f"Warning: Session file for provided ID {session_id} already exists. Overwriting.")
+                # Optionally, could raise an error or load existing instead:
+                # raise ValueError(f"Session with ID {session_id} already exists.")
+            print(f"Using provided session ID: {session_id}")
+            
+        # Note: History generation now happens in get_start_session in main.py
+        # The first message (task description) is no longer added here.
+        scenario_data = {
             "session_id": session_id,
-            "history": [
-                ChatMessage(role="teacher", content=task.description),
-            ],
+            "task_id": task.id,
+            "task_title": task.title,
+            "task_description": task.description,
+            "history": [], # History will be populated by the caller (get_start_session)
             "status": "active",  # Initial status
+            "scenario": None, # Will be set by TeacherAgent later
+            "diagnosis": None # Will be set by TeacherAgent later
         }
-        self.dump_session(scenario)
-        return scenario
+        self.dump_session(scenario_data)
+        return scenario_data
 
     def load_session(self, session_id: int) -> Dict | None:
         """

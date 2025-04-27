@@ -12,7 +12,7 @@ class LogVisService:
         if not self.url or not self.key:
             print("Warning: Supabase URL or Service Key not properly loaded from config. LogVisService disabled.")
 
-    async def connect(self):
+    async def connect(self, tasks):
         """Establishes the asynchronous connection to Supabase."""
         if self.supabase:
             print("LogVisService already connected.")
@@ -24,7 +24,7 @@ class LogVisService:
 
         try:
             self.supabase = await acreate_client(self.url, self.key)
-            await self.register_self()
+            await self.register_self(tasks)
             print("LogVisService Supabase client initialized.")
         except Exception as e:
             print(f"Error initializing LogVisService Supabase client: {e}")
@@ -75,7 +75,7 @@ class LogVisService:
         # Clear stored channels
         self.channels = {}
 
-    async def register_self(self):
+    async def register_self(self, tasks):
         """Registers the current instance in the "teachers" table.
         
         columns: id, name, url, logo_url
@@ -88,7 +88,8 @@ class LogVisService:
             await self.supabase.table("teacher").insert({
                 "url": SELF_URL,
                 "name": SELF_NAME,
-                "logo_url": SELF_LOGO_URL
+                "logo_url": SELF_LOGO_URL,
+                "tasks": [task.model_dump() for task in tasks]
             }).execute()
             print("LogVisService registered in teachers table.")
         except Exception as e:
