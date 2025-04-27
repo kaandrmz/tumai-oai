@@ -130,7 +130,7 @@ class SecurityAgent:
 
         # Advanced security check
         security_analysis = self.analyze_security_risks(text)
-        if security_analysis.startswith("UNSAFE"):
+        if "UNSAFE" in security_analysis:
             # Provide more specific reason if available
             reason = (
                 security_analysis.split(":", 1)[1].strip()
