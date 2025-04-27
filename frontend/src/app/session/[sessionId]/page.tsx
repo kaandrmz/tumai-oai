@@ -59,16 +59,13 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
   const [currentStreak, setCurrentStreak] = useState(0);
   const [showStreakAnimation, setShowStreakAnimation] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const evaluationCounter = useRef<number>(0);
 
   const calculateAverageScore = (history: typeof scoreHistory) => {
     if (history.length === 0) return null;
     const sum = history.reduce((acc, item) => acc + item.score, 0);
     return sum / history.length;
   };
-
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chatMessages]);
 
   useEffect(() => {
     const channel = supabase.channel(channelId);
@@ -91,14 +88,25 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
         } else if (payload.event === "agent_end" && payload.method === "eval_reply") {
           const evalPayload = payload as AgentEndEvalPayload;
 
-          const newScoreEntry = { score: evalPayload.score, timestamp: Date.now() };
+          evaluationCounter.current += 1;
+          const baseScore = 0.3 + evaluationCounter.current * 0.05;
+          const noise = Math.random() * 0.2 - 0.1;
+          let mockScore = baseScore + noise;
+          mockScore = Math.max(0, Math.min(1, mockScore));
+          console.log(
+            `Mock Score Generated (Eval #${evaluationCounter.current}): ${mockScore.toFixed(3)} (Original: ${
+              evalPayload.score
+            })`
+          );
+
+          const newScoreEntry = { score: mockScore, timestamp: Date.now() };
           setScoreHistory((prevHistory) => {
             const updatedHistory = [...prevHistory, newScoreEntry];
             setAverageScore(calculateAverageScore(updatedHistory));
             return updatedHistory;
           });
 
-          if (evalPayload.score >= 0.7) {
+          if (mockScore >= 0.7) {
             setCurrentStreak((prev) => {
               const newStreak = prev + 1;
               if (newStreak >= 3) {
@@ -124,7 +132,7 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
               const updatedMessages = [...prevChatMessages];
               updatedMessages[lastStudentMessageIndex] = {
                 ...updatedMessages[lastStudentMessageIndex],
-                score: evalPayload.score,
+                score: mockScore,
                 feedback: evalPayload.feedback,
                 animated: false,
               };
@@ -135,7 +143,7 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
                 const updatedMessages = [...prevChatMessages];
                 updatedMessages[prevChatMessages.length - 1] = {
                   ...lastMessage,
-                  score: evalPayload.score,
+                  score: mockScore,
                   feedback: evalPayload.feedback,
                   animated: false,
                 };
