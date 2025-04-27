@@ -8,7 +8,7 @@ from app.models import ChatMessage, ReplyResponse, ReplyRequest
 from app.agents.prompts.prompt_factory import get_prompt
 
 class StudentAgent():
-    def __init__(self):
+    def __init__(self, teacher_url: str = FASTAPI_URL):
         self.role = "Student"
         self.goal = "Understand the subject matter through asking effective questions"
         self.backstory = """
@@ -25,10 +25,15 @@ class StudentAgent():
         response = requests.get(f"{FASTAPI_URL}/tasks")
         return response.json()
 
-    def start_session(self, task_id: int):
-        response = requests.post(
-            f"{FASTAPI_URL}/start_session?task_id={task_id}"
-        )
+    def start_session(self, task_id: int, session_id: int | None = None):
+        """Starts a new session with the teacher API, optionally using a provided session_id."""
+        params = {"task_id": task_id}
+        if session_id is not None:
+            params["session_id"] = session_id
+            
+        endpoint = f"{FASTAPI_URL}/start_session"
+        response = requests.post(endpoint, params=params)
+        # Consider adding error handling for the request itself
         return response.json()
         
     def generate_reply(self, history: list[ChatMessage]) -> str:
