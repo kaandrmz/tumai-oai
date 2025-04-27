@@ -1,18 +1,21 @@
 """
-Case generator agent for selecting and adapting real medical cases from retrieved documents.
-Ensures no confidential patient information is exposed while maintaining educational value.
+Modified case generator agent for selecting and adapting real medical cases from retrieved documents.
+Uses the optimized document retriever for better performance.
 """
 from typing import Dict, List, Optional
 from openai import OpenAI
 import random
 import logging
+import os
 
 from app.config import OPENAI_API_KEY, DEFAULT_MODEL
 from app.agents.security_agent import SecurityAgent
+
+# Import the optimized document retriever instead of the original
 try:
-    from app.utils.document_retriever import DocumentRetriever
+    from app.utils.document_retriever import OptimizedDocumentRetriever
 except Exception as e:
-    logging.error(f"Error importing DocumentRetriever: {e}")
+    logging.error(f"Error importing OptimizedDocumentRetriever: {e}")
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -21,6 +24,7 @@ class CaseGeneratorAgent:
     """
     Agent for selecting real medical cases from documents and adapting them
     to remove confidential information while preserving educational value.
+    Uses pre-computed embeddings for better performance.
     """
 
     def __init__(self):
@@ -30,14 +34,13 @@ class CaseGeneratorAgent:
         self.document_retriever = None
         self.document_retrieval_available = False
 
-        # Attempt to initialize the document retriever
+        # Attempt to initialize the optimized document retriever
         try:
-            from app.utils.document_retriever import DocumentRetriever
-            self.document_retriever = DocumentRetriever()
+            self.document_retriever = OptimizedDocumentRetriever()
             self.document_retrieval_available = True
-            logger.info("Document retriever initialized successfully")
+            logger.info("Optimized document retriever initialized successfully")
         except Exception as e:
-            logger.error(f"Failed to initialize document retriever: {e}")
+            logger.error(f"Failed to initialize optimized document retriever: {e}")
             logger.warning("Will fall back to generating cases without document retrieval")
 
         logger.info("CaseGeneratorAgent initialized")
