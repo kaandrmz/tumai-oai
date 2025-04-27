@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
         task_id: taskId,
         session_id: sessionId,
         teacher_url: teacherUrl,
-        max_turns: 4
+        max_turns: 10
       }),
     });
 
