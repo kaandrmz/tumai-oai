@@ -33,3 +33,9 @@ SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 if not NEXT_PUBLIC_SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
     raise ValueError("Supabase URL or Service Key not found. Make sure they are set in your .env file.")
+
+SELF_NAME = os.getenv("SELF_NAME")
+SELF_URL = os.getenv("SELF_URL")
+SELF_LOGO_URL = os.getenv("SELF_LOGO_URL")
+if not SELF_NAME or not SELF_URL or not SELF_LOGO_URL:
+    raise ValueError("Self name or URL or logo URL not found. Make sure they are set in your .env file.")

@@ -153,7 +153,7 @@ class SecurityAgent:
             return "Sensitive information detected"
 
         sec_risk_analysis = self.analyze_security_risks(text)
-        if not sec_risk_analysis.startswith("SAFE"):
+        if "SAFE" not in sec_risk_analysis:
             return sec_risk_analysis
         # If no risks detected, return safe message
         return ""

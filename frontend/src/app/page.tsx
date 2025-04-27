@@ -4,102 +4,114 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Session } from "@/types";
+import Image from "next/image";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const SessionTable = ({ title, sessions }: { title: string; sessions: Session[] }) => {
-  if (sessions.length === 0) {
-    return null; // Don't render table if no sessions
-  }
-  return (
-    <div className="mb-8">
-      <h2 className="text-xl font-semibold mb-3">{title}</h2>
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Session ID</TableHead>
-              <TableHead>Status</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {sessions.map((session) => (
-              <TableRow key={session.id}>
-                <TableCell>
-                  <Link href={`/session/${session.id}`} className="text-blue-600 hover:underline">
-                    {session.id}
-                  </Link>
-                </TableCell>
-                <TableCell>{session.status}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
+const student_image = "/student.png";
+
+type Teacher = {
+  id: string;
+  name: string;
+  url: string;
+  logo_url: string;
 };
 
 export default function Home() {
-  const [sessions, setSessions] = useState<Session[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [teachers, setTeachers] = useState<Teacher[]>([]);
 
-  const fetchSessions = useCallback(async () => {
+  const fetchTeachers = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("/api/fetch-sessions");
+      const response = await fetch("/api/fetch-teachers");
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
-      const data: Session[] = await response.json();
-      // Sort sessions: active first, then by ID descending (newest first)
-      const sortedData = (Array.isArray(data) ? data : []).sort((a, b) => {
-        if (a.status === "active" && b.status !== "active") return -1;
-        if (a.status !== "active" && b.status === "active") return 1;
-        // Assuming session IDs are numeric strings, sort descending
-        return parseInt(b.id, 10) - parseInt(a.id, 10);
-      });
-      setSessions(sortedData);
+      const data: Teacher[] = await response.json();
+      console.log("Fetched teachers:", data);
+      setTeachers(data);
     } catch (e: unknown) {
-      console.error("Failed to fetch sessions:", e);
+      console.error("Failed to fetch teachers:", e);
       if (e instanceof Error) {
-        setError(e.message || "Failed to load sessions.");
+        setError(e.message || "Failed to load teachers.");
       } else {
         setError("An unknown error occurred.");
       }
-      setSessions([]);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchSessions();
-    const intervalId = setInterval(fetchSessions, 5000); // Refresh every 5 seconds
+    fetchTeachers();
+    const intervalId = setInterval(fetchTeachers, 5000);
 
     return () => clearInterval(intervalId);
-  }, [fetchSessions]);
-
-  const activeSessions = sessions.filter((s) => s.status === "active");
-  const finishedSessions = sessions.filter((s) => s.status !== "active"); // Includes finished, crashed, unknown etc.
+  }, [fetchTeachers]);
 
   return (
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Session Dashboard</h1>
-        <Button onClick={fetchSessions} disabled={isLoading}>
+        <Button onClick={fetchTeachers} disabled={isLoading}>
           {isLoading ? "Refreshing..." : "Refresh"}
         </Button>
       </div>
 
-      {isLoading && sessions.length === 0 && <p>Loading sessions...</p>}
-      {error && <p className="text-red-500 mb-4">Error: {error}</p>}
-      {!isLoading && sessions.length === 0 && !error && <p>No sessions found.</p>}
+      <div className="flex flex-row items-center mb-6">
+        <div className="flex w-1/2 flex-col items-center">
+          <Image src={student_image} alt="Student" width={480} height={480} />
+          <p>Student</p>
+        </div>
+        <div className="flex w-1/2 flex-col items-center">
+          {isLoading && teachers.length === 0 && <p>Loading Training Agents...</p>}
+          {error && <p className="text-red-500 mb-4">Error: {error}</p>}
+          {!isLoading && teachers.length === 0 && !error && <p>No Training Agents Found.</p>}
 
-      <SessionTable title="Active Sessions" sessions={activeSessions} />
-      <SessionTable title="Finished / Other Sessions" sessions={finishedSessions} />
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Agent</TableHead>
+                <TableHead>Start</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {teachers.map((teacher) => (
+                <TableRow key={teacher.id}>
+                  <TableCell>
+                    <div className="flex flex-row items-center gap-2">
+                      {teacher.name}
+                      <Image src={teacher.logo_url} alt={teacher.name} width={48} height={48} />
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button>Train {"->"}</Button>
+                      </DropdownMenuTrigger>
+
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>
+                          <Link href={`/session/${teacher.id}`}>Train {"->"}</Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 }

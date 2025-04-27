@@ -104,12 +104,10 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
     )
     
     student_message = reply_request.history[-1]
-    # Log incoming student message
-    if student_message.role == 'user':
-        await log_vis_service.publish_log(
-            session_id,
-            {"event": "chat_message", "role": student_message.role, "content": student_message.content}
-        )
+    await log_vis_service.publish_log(
+        session_id,
+        {"event": "chat_message", "role": student_message.role, "content": student_message.content}
+    )
 
     session = session_manager.load_session(reply_request.session_id)
     if not session:
@@ -119,10 +117,6 @@ async def _eval_reply(reply_request: ReplyRequest) -> ReplyResponse:
     scenario = session.get("scenario", "")
     diagnosis = session.get("diagnosis", "")
 
-    # Log agent eval start
-    await log_vis_service.publish_log(
-        session_id, {"event": "agent_start", "agent": "TeacherAgent", "method": "eval_reply"}
-    )
     score, is_end, feedback = teacher_agent.eval_reply(
         reply=student_message.content,
         scenario=scenario,

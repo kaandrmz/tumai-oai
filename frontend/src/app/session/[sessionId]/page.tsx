@@ -26,7 +26,7 @@ type LogPayload = {
 
 type ChatMessagePayload = {
   event: "chat_message";
-  role: "user" | "teacher";
+  role: "student" | "teacher";
   content: string;
   [key: string]: unknown;
 };
@@ -51,7 +51,7 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
           payload.event === "chat_message" &&
           payload.role &&
           payload.content &&
-          (payload.role === "user" || payload.role === "teacher")
+          (payload.role === "student" || payload.role === "teacher")
         ) {
           setChatMessages((prev) => [...prev, payload as ChatMessagePayload]);
         } else {
@@ -87,8 +87,8 @@ export default function SessionPage({ params }: { params: Promise<{ sessionId: s
           <p className="text-gray-500 text-center pt-4">Waiting for messages...</p>
         ) : (
           chatMessages.map((msg, index) => (
-            <div key={index} className={`flex items-end gap-2 ${msg.role === "user" ? "justify-start" : "justify-end"}`}>
-              {msg.role === "user" && (
+            <div key={index} className={`flex items-end gap-2 ${msg.role === "student" ? "justify-start" : "justify-end"}`}>
+              {msg.role === "student" && (
                 <>
                   <Image src={student_image} alt="Student" width={32} height={32} className="rounded-full" />
                   <div className="bg-blue-100 text-blue-900 rounded-lg p-3 max-w-xs sm:max-w-md">
